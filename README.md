@@ -4,8 +4,8 @@ Printer Setup System is a main center that provides a single point of contact be
 
 Tasks which should be done:
 - [x] Create basic Home Page
-- [ ] Create basic Show Printers Page
-- [ ] Create basic Show Printer Page
+- [x] Create basic Show Branch Printers Page
+- [x] Create basic Show Printer Page
 - [ ] Create basic Admin Login Home page
 - [ ] Create basic Admin Branches page
 - [ ] Create basic Admin Printers page
