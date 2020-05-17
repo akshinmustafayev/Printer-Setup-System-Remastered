@@ -10,16 +10,11 @@ public class User
 	private Integer id;
 	private String login;
 	private String password;
-	private String email;
 	private String fullname;
 	private String lastlogindate;
 	private String passwordsalt;
 	private String session;
 	private String language;
-	private Integer requestsgroup;
-	
-	private Integer userrole;
-	private String userrolename;
 	
 	public User() { }
 	
@@ -45,14 +40,6 @@ public class User
 	
 	public void SetPassword(String password) {
 		this.password = HashUtil.GetSHA256String(password);
-	}
-
-	public String GetEmail() {
-		return email;
-	}
-	
-	public void SetEmail(String email) {
-		this.email = email;
 	}
 
 	public String GetFullName() {
@@ -93,30 +80,5 @@ public class User
 	
 	public void SetLanguage(String language) {
 		this.language = language;
-	}
-	
-	public Integer GetRequestsGroup() {
-		return requestsgroup;
-	}
-	
-	public void SetRequestsGroup(Integer requestsgroup) {
-		this.requestsgroup = requestsgroup;
-	}
-
-	
-	public Integer GetUserRole() {
-		return userrole;
-	}
-	
-	public void SetUserRole(Integer userrole) {
-		this.userrole = userrole;
-	}
-	
-	public String GetUserRoleName() {
-		return userrolename;
-	}
-	
-	public void SetUserRoleName(String userrolename) {
-		this.userrolename = userrolename;
 	}
 }

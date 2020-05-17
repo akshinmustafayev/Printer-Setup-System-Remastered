@@ -5,41 +5,40 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import org.PrinterSetupSystem.beans.Branch;
+import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
-public class HomeDao 
+public class BranchDao 
 {
 	/**
 	Function returns all branches in ArrayList type.
 	@return Returns ArrayList<Branch> array
 	*/
-	public static ArrayList<Branch> GetBranches()
+	public static ArrayList<Printer> GetPrinters(Integer branchid)
     {
-		ArrayList<Branch> branches = new ArrayList<Branch>();
+		ArrayList<Printer> printers = new ArrayList<Printer>();
 		
 		try
         {
         	Connection conn = ConnectionUtils.getConnection();
             PreparedStatement pstmt = null;
             
-            pstmt = conn.prepareStatement("select * from branches");
+            pstmt = conn.prepareStatement("select * from printers where branchid=?");
+            pstmt.setInt(1, branchid);
             ResultSet rs = pstmt.executeQuery();
             
             while (rs.next())
             {
-            	if(rs.getInt("id") == 1) continue;
-            	
-            	Branch branch = new Branch();
-            	branch.SetId(rs.getInt("id"));
-            	branch.SetName(rs.getString("name"));
-            	branch.SetDescription(rs.getString("description"));
+            	Printer printer = new Printer();
+            	printer.SetId(rs.getInt("id"));
+            	printer.SetName(rs.getString("name"));
+            	printer.SetDescription(rs.getString("description"));
             	if(rs.getString("image") != "")
-            		branch.SetImage("uploads/" + rs.getString("image"));
+            		printer.SetImage("uploads/" + rs.getString("image"));
             	else
-            		branch.SetImage("img/no-image.png");
-            	branch.SetCreatedDate(rs.getString("createddate"));
-            	branches.add(branch);
+            		printer.SetImage("img/no-image.png");
+            	printer.SetCreatedDate(rs.getString("createddate"));
+            	printers.add(printer);
             }
             
             pstmt.close();
@@ -50,6 +49,6 @@ public class HomeDao
             e.printStackTrace();
         }
 		
-		return branches;
+		return printers;
     }
 }

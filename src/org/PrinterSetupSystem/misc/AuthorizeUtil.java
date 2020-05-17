@@ -28,7 +28,7 @@ public class AuthorizeUtil
 	@param	response	Default HttpServletResponse
 	@return Returns User bean class if true, else it returns Null
 	*/
-	public static User AuthorizeUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	public static User AuthorizeUser(HttpServletRequest request, HttpServletResponse response) throws ServletException
     {
 		User user;
 		HttpSession session = request.getSession();
@@ -52,13 +52,11 @@ public class AuthorizeUtil
             	user = new User();
             	user.SetId(rs.getInt("id"));
             	user.SetLogin((String)rs.getString("login"));
-            	user.SetEmail((String)rs.getString("email"));
             	user.SetFullName(rs.getString("fullname"));
             	user.SetLastLoginDate(rs.getString("lastlogindate"));
             	user.SetSession(rs.getString("session"));
             	user.SetLanguage(rs.getString("language"));
             	user.SetLanguage(rs.getString("language"));
-            	user.SetRequestsGroup(rs.getInt("requestsgroup"));
                 return user;
             }
             
@@ -77,7 +75,7 @@ public class AuthorizeUtil
 	@param	request	Default HttpServletRequest
 	@param	response	Default HttpServletResponse
 	*/
-	public static void AuthorizedRedirect(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	public static void AuthorizedRedirect(HttpServletRequest request, HttpServletResponse response) throws ServletException
     {
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute("login");
@@ -97,7 +95,7 @@ public class AuthorizeUtil
 	@param	response	Default HttpServletResponse
 	@return Returns true if user is authorized, else it returns false
 	*/
-	public static Boolean CheckAuthorized(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	public static Boolean CheckAuthorized(HttpServletRequest request, HttpServletResponse response) throws ServletException
     {
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute("login");
@@ -116,7 +114,7 @@ public class AuthorizeUtil
 	@param	request	Default HttpServletRequest
 	@param	response	Default HttpServletResponse
 	*/
-	public static void AuthorizedRedirectLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	public static void AuthorizedRedirectLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException
     {
         HttpSession session = request.getSession();
         String login = (String) session.getAttribute("login");
@@ -127,6 +125,17 @@ public class AuthorizeUtil
         	response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
 			response.setHeader("Location", request.getContextPath() + "/home");
         }
+    }
+	
+	/**
+	Function for checking redirection to Home if page opened without /home link.
+	@param	request	Default HttpServletRequest
+	@param	response	Default HttpServletResponse
+	*/
+	public static void AuthorizedRedirectHome(HttpServletRequest request, HttpServletResponse response) throws ServletException
+    {
+        response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
+		response.setHeader("Location", request.getContextPath() + "/home");
     }
 	
 	/**
@@ -184,13 +193,11 @@ public class AuthorizeUtil
             	user = new User();
             	user.SetId(rs.getInt("id"));
             	user.SetLogin((String)rs.getString("login"));
-            	user.SetEmail((String)rs.getString("email"));
             	user.SetFullName(rs.getString("fullname"));
             	user.SetLastLoginDate(rs.getString("lastlogindate"));
             	user.SetLanguage(rs.getString("language"));
             	user.SetSession(rs.getString("session"));
             	user.SetLanguage(rs.getString("language"));
-            	user.SetRequestsGroup(rs.getInt("requestsgroup"));
             } 
             
             pstmt.close();
@@ -217,4 +224,19 @@ public class AuthorizeUtil
 	    cookie.setMaxAge(maxage);
 	    response.addCookie(cookie);
 	}
+	
+	public static void SetAdminAuthorized(HttpServletRequest request, HttpServletResponse response) throws ServletException
+    {
+		Boolean isAdminEntered = false;
+        HttpSession session = request.getSession();
+        String login = (String) session.getAttribute("login");
+    	String sessionc = (String) session.getAttribute("session");
+    	String fullname = (String) session.getAttribute("fullname");
+        if (login != null && sessionc != null && fullname != null) 
+        {
+        	isAdminEntered = true; 
+        }
+        
+        request.setAttribute("isAdminEntered", isAdminEntered); 
+    }
 }

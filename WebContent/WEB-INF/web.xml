@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
-  <display-name>RequestDesk</display-name>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>PrinterSetupSystem</display-name>
   <welcome-file-list>
     <welcome-file>Home.jsp</welcome-file>
   </welcome-file-list>
-  <session-config>
-    <session-timeout>21600</session-timeout>
-  </session-config>
   
-  <!-- Servlets -->
+    <!-- Servlets -->
   <servlet>
 	<servlet-name>Home</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.HomeController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>Branch</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.BranchController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>Printer</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.PrinterController</servlet-class>
   </servlet>
   
   <!-- ****************************************************************** -->
@@ -20,5 +25,13 @@
   <servlet-mapping>
 	<servlet-name>Home</servlet-name>
 	<url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>Branch</servlet-name>
+	<url-pattern>/branch</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>Printer</servlet-name>
+	<url-pattern>/printer</url-pattern>
   </servlet-mapping>
 </web-app>

@@ -1,8 +1,11 @@
 package org.PrinterSetupSystem.controller;
 
+import org.PrinterSetupSystem.beans.Branch;
+import org.PrinterSetupSystem.dao.HomeDao;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -27,10 +30,10 @@ public class HomeController extends HttpServlet
     {
     	AuthorizeUtil.FixUtf8(response);
     	System.out.println("Enter doGet for Home Controller");
-    	//AuthorizeUtil.AuthorizedRedirect(request, response);
+    	AuthorizeUtil.SetAdminAuthorized(request, response);
     	
-    	Boolean isAdminEntered = AuthorizeUtil.CheckAuthorized(request, response);
-    	request.setAttribute("isAdminEntered", isAdminEntered); 
+    	ArrayList<Branch> branches = HomeDao.GetBranches();
+    	request.setAttribute("branches", branches);
     	
         RequestDispatcher rd = request.getRequestDispatcher("/Home.jsp"); 
         rd.include(request, response);
