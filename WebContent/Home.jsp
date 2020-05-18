@@ -6,6 +6,9 @@
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="ErrorBranchNotFound" value='${requestScope["ErrorBranchNotFound"]}'/>
+<c:set var="ErrorEmptyBranchID" value='${requestScope["ErrorEmptyBranchID"]}'/>
+<c:set var="ErrorBranchNotNumber" value='${requestScope["ErrorBranchNotNumber"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -59,10 +62,27 @@
 				</c:when>
 			</c:choose>
 		</nav>
+		<c:choose>
+			<c:when test = "${ErrorBranchNotFound == true}">
+				<div class="alert alert-danger ml-4 mr-4 mt-2 mb-4" role="alert">Branch not found!</div>
+			</c:when>
+		</c:choose>
+		<c:choose>
+			<c:when test = "${ErrorEmptyBranchID == true}">
+				<div class="alert alert-danger ml-4 mr-4 mt-2 mb-4" role="alert">Empty branch ID. Please enter a valid branch id!</div>
+			</c:when>
+		</c:choose>
+		<c:choose>
+			<c:when test = "${ErrorBranchNotNumber == true}">
+				<div class="alert alert-danger ml-4 mr-4 mt-2 mb-4" role="alert">Branch number must be entered!</div>
+			</c:when>
+		</c:choose>
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
 				<div class="d-flex align-items-center">
-					<span class="align-middle">Branches</span>
+					<span class="align-middle">
+						Branches
+					</span>
 				</div>
 			</div>
 			<div class="card-body p-0">

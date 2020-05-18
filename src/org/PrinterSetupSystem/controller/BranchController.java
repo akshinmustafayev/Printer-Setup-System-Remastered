@@ -1,5 +1,6 @@
 package org.PrinterSetupSystem.controller;
 
+import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.dao.BranchDao;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
@@ -48,6 +49,18 @@ public class BranchController extends HttpServlet
         	
 	    	ArrayList<Printer> printers = BranchDao.GetPrinters(branchID);
 	    	request.setAttribute("printers", printers);
+	    	
+	    	Branch branch = BranchDao.GetBranchByID(branchID);
+	    	if(branch != null)
+	    	{
+	    		request.setAttribute("branch", branch);
+	    		request.setAttribute("branchid", branchID);
+	    	}
+	    	else
+	    	{
+	    		request.setAttribute("ErrorBranchNotFound", true); 
+	        	request.getRequestDispatcher("/home").forward(request, response);
+	    	}
         }
         else
         {

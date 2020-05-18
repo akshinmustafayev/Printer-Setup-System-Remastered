@@ -1,7 +1,10 @@
 package org.PrinterSetupSystem.controller;
 
+import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.beans.Printer;
+import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.dao.PrinterDao;
+import org.PrinterSetupSystem.interfaces.IPrinterShow;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
 
 import java.io.IOException;
@@ -32,7 +35,9 @@ public class PrinterController extends HttpServlet
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	
     	if(request.getParameter("id") != null &&
-        		request.getParameter("id") != "")
+        		request.getParameter("id") != "" &&
+        		request.getParameter("branchid") != null &&
+        		request.getParameter("branchid") != "")
         {
     		Integer printerID = 0;
         	try
@@ -45,21 +50,38 @@ public class PrinterController extends HttpServlet
             	request.getRequestDispatcher("/home").forward(request, response);
         	}
         	
-	    	Printer printer = PrinterDao.GetPrinter(printerID);
-	    	if(printer != null)
+        	Integer branchID = 0;
+        	try
         	{
-	    		request.setAttribute("printer", printer);
+        		branchID = Integer.parseInt(request.getParameter("branchid"));
+        	}
+        	catch (NumberFormatException e) 
+        	{
+        		request.setAttribute("ErrorBranchNotNumber", true); 
+            	request.getRequestDispatcher("/home").forward(request, response);
+        	}
+        	
+        	IPrinterShow printer = new PrinterDao();
+	    	Printer _printer = printer.GetPrinter(printerID);
+	    	
+	    	if(_printer != null)
+        	{
+		    	PrinterType _printertype = printer.GetPrinterType();
+		    	Branch _printerbranch = printer.GetPrinterBranch();
+	    		request.setAttribute("printer", _printer);
+	    		request.setAttribute("printertype", _printertype);
+	    		request.setAttribute("printerbranch", _printerbranch);
         	}
         	else
         	{
         		request.setAttribute("ErrorPrinterNotFound", true); 
-            	request.getRequestDispatcher("/branch").forward(request, response);
+            	request.getRequestDispatcher("/branch?id=" + branchID).forward(request, response);
         	}
         }
         else
         {
         	request.setAttribute("ErrorEmptyPrinterID", true); 
-        	request.getRequestDispatcher("/branch").forward(request, response);
+        	request.getRequestDispatcher("/branch?id=1").forward(request, response);
         }
     	
         RequestDispatcher rd = request.getRequestDispatcher("/Printer.jsp"); 

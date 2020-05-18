@@ -5,6 +5,7 @@
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="ErrorPrinterNotFound" value='${requestScope["ErrorPrinterNotFound"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -58,6 +59,27 @@
 				</c:when>
 			</c:choose>
 		</nav>
+		<c:choose>
+			<c:when test = "${ErrorPrinterNotFound == true}">
+				<div class="alert alert-danger ml-4 mr-4 mt-2 mb-4" role="alert">Printer not found!</div>
+			</c:when>
+		</c:choose>
+		<c:choose>
+			<c:when test = "${ErrorPrinterNotNumber == true}">
+				<div class="alert alert-danger ml-4 mr-4 mt-2 mb-4" role="alert">Empty printer ID. Please enter a valid printer id!</div>
+			</c:when>
+		</c:choose>
+		<c:choose>
+			<c:when test = "${ErrorBranchNotNumber == true}">
+				<div class="alert alert-danger ml-4 mr-4 mt-2 mb-4" role="alert">Branch number must be entered!</div>
+			</c:when>
+		</c:choose>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb ml-4 mr-4">
+				<li class="breadcrumb-item"><a href="${context}/home">Home</a></li>
+				<li class="breadcrumb-item active" aria-current="page">${branch.GetName()}</li>
+			</ol>
+		</nav>
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
 				<div class="d-flex align-items-center">
@@ -75,7 +97,7 @@
 										<div class="card-body">
 											<h5 class="card-title">${printer.GetName()}</h5>
 											<p class="card-text">${printer.GetDescription()}</p>
-											<a href="${context}/printer?id=${printer.GetId()}" class="stretched-link"></a>
+											<a href="${context}/printer?id=${printer.GetId()}&branchid=${branchid}" class="stretched-link"></a>
 										</div>
 									</div>
 								</div>

@@ -49,7 +49,7 @@ public class Printer
 		return branchid;
 	}
 	
-	public void BranchId(Integer branchid) {
+	public void SetBranchId(Integer branchid) {
 		this.branchid = branchid;
 	}
 	

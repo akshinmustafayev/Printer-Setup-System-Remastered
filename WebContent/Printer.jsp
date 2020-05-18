@@ -5,6 +5,7 @@
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="ErrorPrinterNotFound" value='${requestScope["ErrorPrinterNotFound"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -58,6 +59,13 @@
 				</c:when>
 			</c:choose>
 		</nav>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb ml-4 mr-4">
+				<li class="breadcrumb-item"><a href="${context}/home">Home</a></li>
+				<li class="breadcrumb-item"><a href="${context}/branch?id=${printerbranch.GetId()}">${printerbranch.GetName()}</a></li>
+				<li class="breadcrumb-item active" aria-current="page">${printer.GetName()}</li>
+			</ol>
+		</nav>
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
 				<div class="d-flex align-items-center">
@@ -65,9 +73,34 @@
 				</div>
 			</div>
 			<div class="card-body p-0">
-				<div class="row row-cols-1 row-cols-md-3 m-3">
-					<img src="${printer.GetImage()}" alt="Printer Image">
-					${printer.GetDescription()}
+				<div class="row m-3">
+				    <div class="col">
+						<img class="img-fluid" src="${printer.GetImage()}" alt="Printer Image">
+				    </div>
+				    <div class="col">
+						<h3>${printer.GetName()} <span class="badge badge-secondary">${printertype.GetType()}</span></h3>
+						<h6 class="pt-3">Printer Description</h6>
+						<p class="pt-2"><em>${printer.GetDescription()}</em></p>
+						<h6 class="pt-3">Printer Details</h6>
+						<table class="table">
+							<tbody>
+								<tr>
+									<td>IP</td>
+									<td><em><a href="http://${printer.GetIp()}" target="_blank">${printer.GetIp()}</a></em></td>
+								</tr>
+								<tr>
+									<td>Vendor</td>
+									<td><em>${printer.GetVendor()}</em></td>
+								</tr>
+								<tr>
+									<td>Created date</td>
+									<td><em>${printer.GetCreatedDate()}</em></td>
+								</tr>
+							</tbody>
+						</table>
+						<h6 class="pt-3 pb-2">Printer Installation</h6>
+						<a class="btn btn-primary" href="">Install</a>
+				    </div>
 				</div>
 			</div>
 		</div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2020 at 04:48 PM
+-- Generation Time: May 18, 2020 at 04:01 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -57,15 +57,45 @@ CREATE TABLE `printers` (
   `branchid` int(32) NOT NULL DEFAULT 1,
   `ip` text NOT NULL DEFAULT '',
   `vendor` text NOT NULL DEFAULT '',
-  `createddate` text NOT NULL DEFAULT ''
+  `createddate` text NOT NULL DEFAULT '',
+  `printertypeid` int(5) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `printers`
 --
 
-INSERT INTO `printers` (`id`, `name`, `description`, `image`, `branchid`, `ip`, `vendor`, `createddate`) VALUES
-(1, 'Printer 1', 'Printer on the 1st floor', '', 2, '192.168.100.10', 'HP', '12 12 12');
+INSERT INTO `printers` (`id`, `name`, `description`, `image`, `branchid`, `ip`, `vendor`, `createddate`, `printertypeid`) VALUES
+(1, 'HP LaserJet 4350  1st floor', 'Printer on the 1st floor', '', 2, '192.168.100.10', 'HP', '18.05.2020 00:00', 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `printerstype`
+--
+
+CREATE TABLE `printerstype` (
+  `id` int(32) NOT NULL,
+  `type` text NOT NULL DEFAULT '',
+  `createddate` text NOT NULL DEFAULT ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `printerstype`
+--
+
+INSERT INTO `printerstype` (`id`, `type`, `createddate`) VALUES
+(1, 'None', '18.05.2020 00:00'),
+(2, 'Laser Printer', '18.05.2020 00:00'),
+(3, 'Solid Ink Printer', '18.05.2020 00:00'),
+(4, 'LED Printer', '18.05.2020 00:00'),
+(5, 'Business InkJet Printer', '18.05.2020 00:00'),
+(6, 'Home Office Printer', '18.05.2020 00:00'),
+(7, 'Multifunction printer', '18.05.2020 00:00'),
+(8, 'All-in-One InkJet', '18.05.2020 00:00'),
+(9, 'Dot Matrix', '18.05.2020 00:00'),
+(10, 'A3 Printer', '18.05.2020 00:00'),
+(11, '3D Printer', '18.05.2020 00:00');
 
 -- --------------------------------------------------------
 
@@ -113,6 +143,14 @@ ALTER TABLE `printers`
   ADD KEY `branchid` (`branchid`);
 
 --
+-- Indexes for table `printerstype`
+--
+ALTER TABLE `printerstype`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `id` (`id`),
+  ADD KEY `id_2` (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -135,6 +173,12 @@ ALTER TABLE `branches`
 --
 ALTER TABLE `printers`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `printerstype`
+--
+ALTER TABLE `printerstype`
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `users`
