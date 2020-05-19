@@ -22,11 +22,12 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/printersetupsystem.js"></script>
 		<title>Printer Setup System - Branch Printers</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand navbar-light bg-light">
-			<a class="navbar-brand ml-4" href="${context}/home"><img src="img/logo.png" alt="Logo" class="printersetupsystem-logo"> RequestDesk</a>
+			<a class="navbar-brand ml-4" href="${context}/home"><img src="img/logo.png" alt="Logo" class="printersetupsystem-logo"> PrintDesk</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -75,7 +76,7 @@
 			</c:when>
 		</c:choose>
 		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb ml-4 mr-4">
+			<ol class="breadcrumb ml-4 mr-4 mt-3">
 				<li class="breadcrumb-item"><a href="${context}/home">Home</a></li>
 				<li class="breadcrumb-item active" aria-current="page">${branch.GetName()}</li>
 			</ol>
@@ -83,11 +84,20 @@
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
 				<div class="d-flex align-items-center">
-					<span class="align-middle">Branch Printers</span>
+					<span class="align-middle" id="PSSBranchID" data-info="${branch.GetId()}">Branch Printers</span>
+					<div class="border-left vertical-separator ml-4 mr-4"></div>
+					<span class="align-middle pr-2">Search:</span>
+					<div class="d-flex align-middle float-right">
+						<input id="PSSPrinterName" type="text" class="form-control" placeholder="Printer name" required="">
+						<div class="btn-group pl-2" role="group" aria-label="Basic example">
+							<button type="button" class="btn btn-outline-primary" onclick="BranchSearchPrinter()">Search</button>
+							<button type="button" class="btn btn-outline-primary" onclick="BranchResetPrinter()">Reset</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="card-body p-0">
-				<div class="row row-cols-1 row-cols-md-3 m-3">
+				<div id="PSSResult" class="row row-cols-2 row-cols-md-3 m-3">
 					<c:choose>
 						<c:when test = "${printers.size() > 0}">
 							<c:forEach begin="0" items="${printers}" var="printer">

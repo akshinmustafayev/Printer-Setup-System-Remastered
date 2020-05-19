@@ -4,6 +4,17 @@
   <welcome-file-list>
     <welcome-file>Home.jsp</welcome-file>
   </welcome-file-list>
+  <!-- ****************************************************************** -->
+  <!-- SERVLET CONFIGS -->
+  <!-- APIs -->
+  <servlet>
+	<servlet-name>ApiSearchPrinterByName</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.api.SearchPrinterByName</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>ApiGetAllBranchPrinters</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.api.GetAllBranchPrinters</servlet-class>
+  </servlet>
   
     <!-- Servlets -->
   <servlet>
@@ -33,5 +44,15 @@
   <servlet-mapping>
 	<servlet-name>Printer</servlet-name>
 	<url-pattern>/printer</url-pattern>
+  </servlet-mapping>
+  
+  <!-- APIs mapping -->
+  <servlet-mapping>
+	<servlet-name>ApiSearchPrinterByName</servlet-name>
+	<url-pattern>/api/SearchPrinterByName</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>ApiGetAllBranchPrinters</servlet-name>
+	<url-pattern>/api/GetAllBranchPrinters</url-pattern>
   </servlet-mapping>
 </web-app>

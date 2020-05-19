@@ -6,6 +6,7 @@ Tasks which should be done:
 - [x] Create basic Home Page
 - [x] Create basic Show Branch Printers Page
 - [x] Create basic Show Printer Page
+- [x] Search branch printer from page
 - [ ] Create basic Admin Login Home page
 - [ ] Create basic Admin Branches page
 - [ ] Create basic Admin Printers page
@@ -15,4 +16,3 @@ Tasks which should be done:
 - [ ] Implement additional features
 
 Images:
-

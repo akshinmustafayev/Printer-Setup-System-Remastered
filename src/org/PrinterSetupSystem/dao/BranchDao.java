@@ -38,7 +38,6 @@ public class BranchDao
             		printer.SetImage("uploads/" + rs.getString("image"));
             	else
             		printer.SetImage("img/no-image.png");
-            	printer.SetCreatedDate(rs.getString("createddate"));
             	printers.add(printer);
             }
             

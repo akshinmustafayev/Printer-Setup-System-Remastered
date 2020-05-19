@@ -35,9 +35,7 @@ public class PrinterController extends HttpServlet
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	
     	if(request.getParameter("id") != null &&
-        		request.getParameter("id") != "" &&
-        		request.getParameter("branchid") != null &&
-        		request.getParameter("branchid") != "")
+        		request.getParameter("id") != "")
         {
     		Integer printerID = 0;
         	try
@@ -47,17 +45,6 @@ public class PrinterController extends HttpServlet
         	catch (NumberFormatException e) 
         	{
         		request.setAttribute("ErrorPrinterNotNumber", true); 
-            	request.getRequestDispatcher("/home").forward(request, response);
-        	}
-        	
-        	Integer branchID = 0;
-        	try
-        	{
-        		branchID = Integer.parseInt(request.getParameter("branchid"));
-        	}
-        	catch (NumberFormatException e) 
-        	{
-        		request.setAttribute("ErrorBranchNotNumber", true); 
             	request.getRequestDispatcher("/home").forward(request, response);
         	}
         	
@@ -75,7 +62,7 @@ public class PrinterController extends HttpServlet
         	else
         	{
         		request.setAttribute("ErrorPrinterNotFound", true); 
-            	request.getRequestDispatcher("/branch?id=" + branchID).forward(request, response);
+            	request.getRequestDispatcher("/branch?id=1").forward(request, response);
         	}
         }
         else

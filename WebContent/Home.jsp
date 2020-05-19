@@ -29,7 +29,7 @@
 	</head>
 	<body>
 		<nav class="navbar navbar-expand navbar-light bg-light">
-			<a class="navbar-brand ml-4" href="${context}/home"><img src="img/logo.png" alt="Logo" class="printersetupsystem-logo"> RequestDesk</a>
+			<a class="navbar-brand ml-4" href="${context}/home"><img src="img/logo.png" alt="Logo" class="printersetupsystem-logo"> PrintDesk</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 			<div class="card-body p-0">
-				<div class="row row-cols-1 row-cols-md-3 m-3">
+				<div class="row row-cols-2 row-cols-md-3 m-3">
 					<c:choose>
 						<c:when test = "${branches.size() > 0}">
 							<c:forEach begin="0" items="${branches}" var="branch">

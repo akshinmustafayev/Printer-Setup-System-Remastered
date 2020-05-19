@@ -43,6 +43,9 @@ public class PrinterDao implements IPrinterShow
             	printer.SetVendor(rs.getString("vendor"));
             	printer.SetCreatedDate(rs.getString("createddate"));
             	
+            	_AddViewsCountToPrinter(printer);
+            	printer.SetViews(rs.getInt("views"));
+            	
             	printertype = new PrinterType();
             	printertype.SetType(rs.getString("printertype"));
             	printertype.SetCreatedDate(rs.getString("printertypedate"));
@@ -120,5 +123,24 @@ public class PrinterDao implements IPrinterShow
 		}
 			 
 		return printerbranch;
+	}
+	
+	private void _AddViewsCountToPrinter(Printer _printer)
+	{
+		try
+        {
+        	Connection conn = ConnectionUtils.getConnection();
+            PreparedStatement pstmt = null;
+            
+            pstmt = conn.prepareStatement("UPDATE printers SET views = views + 1 where id=?"); 
+            pstmt.setInt(1, _printer.GetId());
+            pstmt.executeUpdate();
+            pstmt.close();
+            conn.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
 	}
 }
