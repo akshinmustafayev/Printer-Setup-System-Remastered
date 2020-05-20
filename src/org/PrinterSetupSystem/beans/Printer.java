@@ -11,6 +11,7 @@ public class Printer
 	private String vendor;
 	private String createddate;
 	private Integer views;
+	private String serversharename;
 	
 	public Printer() { }
 	
@@ -84,5 +85,19 @@ public class Printer
 	
 	public void SetViews(Integer views) {
 		this.views = views;
+	}
+	
+	public String GetServerShareName() {
+		return serversharename;
+	}
+	
+	public void SetServerShareName(String serversharename) {
+		this.serversharename = serversharename;
+	}
+	
+	public String GetServerShareNameLink() {
+		String serversharenamelink = serversharename;
+		serversharenamelink = serversharenamelink.replace("\\", "/");
+		return serversharename;
 	}
 }

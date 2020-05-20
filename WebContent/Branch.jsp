@@ -36,6 +36,9 @@
 					<li class="nav-item active">
 						<a class="nav-link" href="${context}/home">Home<span class="sr-only">(current)</span></a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
+					</li>
 					<c:choose>
 						<c:when test = "${isAdminEntered == true}">
 							<li class="nav-item">
@@ -87,9 +90,9 @@
 					<span class="align-middle" id="PSSBranchID" data-info="${branch.GetId()}">Branch Printers</span>
 					<div class="border-left vertical-separator ml-4 mr-4"></div>
 					<span class="align-middle pr-2">Search:</span>
-					<div class="d-flex align-middle float-right">
+					<div class="d-flex align-middle">
 						<input id="PSSPrinterName" type="text" class="form-control" placeholder="Printer name" required="">
-						<div class="btn-group pl-2" role="group" aria-label="Basic example">
+						<div class="btn-group pl-2" role="group">
 							<button type="button" class="btn btn-outline-primary" onclick="BranchSearchPrinter()">Search</button>
 							<button type="button" class="btn btn-outline-primary" onclick="BranchResetPrinter()">Reset</button>
 						</div>

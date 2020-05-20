@@ -25,6 +25,7 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/printersetupsystem.js"></script>
 		<title>Printer Setup System - Home</title>
 	</head>
 	<body>
@@ -37,6 +38,9 @@
 				<ul class="navbar-nav">
 					<li class="nav-item active">
 						<a class="nav-link" href="${context}/home">Home<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
 					<c:choose>
 						<c:when test = "${isAdminEntered == true}">
@@ -77,16 +81,28 @@
 				<div class="alert alert-danger ml-4 mr-4 mt-2 mb-4" role="alert">Branch number must be entered!</div>
 			</c:when>
 		</c:choose>
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb ml-4 mr-4 mt-3">
+				<li class="breadcrumb-item">Home</li>
+			</ol>
+		</nav>
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
 				<div class="d-flex align-items-center">
-					<span class="align-middle">
-						Branches
-					</span>
+					<span class="align-middle">Branches</span>
+					<div class="border-left vertical-separator ml-4 mr-4"></div>
+					<span class="align-middle pr-2">Search:</span>
+					<div class="d-flex align-middle">
+						<input id="PSSBranchName" type="text" class="form-control" placeholder="Branch name" required="">
+						<div class="btn-group pl-2" role="group">
+							<button type="button" class="btn btn-outline-primary" onclick="BranchSearch()">Search</button>
+							<button type="button" class="btn btn-outline-primary" onclick="BranchReset()">Reset</button>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="card-body p-0">
-				<div class="row row-cols-2 row-cols-md-3 m-3">
+				<div id="PSSResult" class="row row-cols-2 row-cols-md-3 m-3">
 					<c:choose>
 						<c:when test = "${branches.size() > 0}">
 							<c:forEach begin="0" items="${branches}" var="branch">

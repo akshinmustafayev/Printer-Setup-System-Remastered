@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2020 at 12:01 PM
+-- Generation Time: May 20, 2020 at 01:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -60,17 +60,18 @@ CREATE TABLE `printers` (
   `vendor` text NOT NULL DEFAULT '',
   `createddate` text NOT NULL DEFAULT '',
   `printertypeid` int(5) NOT NULL DEFAULT 1,
-  `views` int(255) NOT NULL DEFAULT 0
+  `views` int(255) NOT NULL DEFAULT 0,
+  `serversharename` text NOT NULL DEFAULT 'None'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `printers`
 --
 
-INSERT INTO `printers` (`id`, `name`, `description`, `image`, `branchid`, `ip`, `vendor`, `createddate`, `printertypeid`, `views`) VALUES
-(1, 'HP LaserJet 4350  1st floor', 'Printer on the 1st floor', '', 2, '192.168.100.10', 'HP', '18.05.2020 00:00', 5, 14),
-(2, 'Xerox WorkCentre 5325 floor6', 'Xerox work centre printer which is located on 6th floor, near legal issues divison. This printer can print 1000 pages in 10 minutes.', '', 2, '192.168.16.16', 'Xerox', '19.05.2020 00:00', 3, 4),
-(3, 'HP Color Laserjet 1224 floor3', 'Color printer for all purposes which can print using A4, A3 and A5 type papers. ', '', 3, '192.168.67.67', 'HP', '19.05.2020 00:00', 7, 0);
+INSERT INTO `printers` (`id`, `name`, `description`, `image`, `branchid`, `ip`, `vendor`, `createddate`, `printertypeid`, `views`, `serversharename`) VALUES
+(1, 'HP LaserJet 4350  1st floor', 'Printer on the 1st floor', '', 2, '192.168.100.10', 'HP', '18.05.2020 00:00', 5, 21, '\\\\server01\\printer1'),
+(2, 'Xerox WorkCentre 5325 floor6', 'Xerox work centre printer which is located on 6th floor, near legal issues divison. This printer can print 1000 pages in 10 minutes.', '', 2, '192.168.16.16', 'Xerox', '19.05.2020 00:00', 3, 11, '\\\\server01\\printer2'),
+(3, 'HP Color Laserjet 1224 floor3', 'Color printer for all purposes which can print using A4, A3 and A5 type papers. ', '', 3, '192.168.67.67', 'HP', '19.05.2020 00:00', 7, 8, 'None');
 
 -- --------------------------------------------------------
 
@@ -119,7 +120,8 @@ CREATE TABLE `systemsettings` (
 
 INSERT INTO `systemsettings` (`id`, `parameter`, `value`) VALUES
 (1, 'installscript', ''),
-(2, 'installscriptextension', '');
+(2, 'installscriptextension', ''),
+(3, 'helpmanual', 'some help');
 
 -- --------------------------------------------------------
 
@@ -218,7 +220,7 @@ ALTER TABLE `printerstype`
 -- AUTO_INCREMENT for table `systemsettings`
 --
 ALTER TABLE `systemsettings`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

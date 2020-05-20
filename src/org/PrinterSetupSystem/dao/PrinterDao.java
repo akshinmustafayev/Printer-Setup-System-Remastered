@@ -46,6 +46,8 @@ public class PrinterDao implements IPrinterShow
             	_AddViewsCountToPrinter(printer);
             	printer.SetViews(rs.getInt("views"));
             	
+            	printer.SetServerShareName(rs.getString("serversharename"));
+            	
             	printertype = new PrinterType();
             	printertype.SetType(rs.getString("printertype"));
             	printertype.SetCreatedDate(rs.getString("printertypedate"));

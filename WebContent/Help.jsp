@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.PrinterSetupSystem.misc.AuthorizeUtil" %>
 <%
-	AuthorizeUtil.UserLoadedJspRedirect(request, response, "Printer.jsp", "/printer");
+	AuthorizeUtil.UserLoadedJspRedirect(request, response, "Help.jsp", "/help");
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
-<c:set var="ErrorPrinterNotFound" value='${requestScope["ErrorPrinterNotFound"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -22,7 +21,7 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<title>Printer Setup System - Branch Printer</title>
+		<title>Printer Setup System - Help</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand navbar-light bg-light">
@@ -32,11 +31,11 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" href="${context}/home">Home<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
+						<a class="nav-link active" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
 					<c:choose>
 						<c:when test = "${isAdminEntered == true}">
@@ -62,55 +61,16 @@
 				</c:when>
 			</c:choose>
 		</nav>
-		<nav aria-label="breadcrumb">
-			<ol class="breadcrumb ml-4 mr-4 mt-3">
-				<li class="breadcrumb-item"><a href="${context}/home">Home</a></li>
-				<li class="breadcrumb-item"><a href="${context}/branch?id=${printerbranch.GetId()}">${printerbranch.GetName()}</a></li>
-				<li class="breadcrumb-item active" aria-current="page">${printer.GetName()}</li>
-			</ol>
-		</nav>
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
-				<div class="align-items-center">
-					<span class="align-middle">Printer</span>
-					<div class="d-inline p-1 bg-dark text-white align-middle float-right rounded"><span class="oi oi-eye"></span> ${printer.GetViews()}</div>
-					
+				<div class="d-flex align-items-center">
+					<span class="align-middle">
+						Help
+					</span>
 				</div>
 			</div>
-			<div class="card-body p-0">
-				<div class="row m-3">
-				    <div class="col">
-						<img class="img-fluid" src="${printer.GetImage()}" alt="Printer Image">
-				    </div>
-				    <div class="col">
-						<h3>${printer.GetName()} <span class="badge badge-secondary">${printertype.GetType()}</span></h3>
-						<h6 class="pt-3">Printer Description</h6>
-						<p class="pt-2"><em>${printer.GetDescription()}</em></p>
-						<h6 class="pt-3">Printer Details</h6>
-						<table class="table">
-							<tbody>
-								<tr>
-									<td>IP</td>
-									<td><em><a href="http://${printer.GetIp()}" target="_blank">${printer.GetIp()}</a></em></td>
-								</tr>
-								<tr>
-									<td>Vendor</td>
-									<td><em>${printer.GetVendor()}</em></td>
-								</tr>
-								<tr>
-									<td>Created date</td>
-									<td><em>${printer.GetCreatedDate()}</em></td>
-								</tr>
-								<tr>
-									<td>Server share name</td>
-									<td><em><a href="file:${printer.GetServerShareNameLink()}" target="_blank">${printer.GetServerShareName()}</a></em></td>
-								</tr>
-							</tbody>
-						</table>
-						<h6 class="pt-3 pb-2">Printer Installation</h6>
-						<a class="btn btn-primary" href="">Install</a>
-				    </div>
-				</div>
+			<div class="card-body">
+				<p>${helpmanual}</p>
 			</div>
 		</div>
 	</body>
