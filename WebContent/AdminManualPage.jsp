@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.PrinterSetupSystem.misc.AuthorizeUtil" %>
 <%
-	AuthorizeUtil.UserLoadedJspRedirect(request, response, "Help.jsp", "/help");
+	AuthorizeUtil.UserLoadedJspRedirect(request, response, "AdminManualPage.jsp", "/adminmanualpage");
+	AuthorizeUtil.AuthorizedRedirect(request, response);
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="ManualPageSaved" value='${requestScope["ManualPageSaved"]}'/>
+<c:set var="ManualPageSaveError" value='${requestScope["ManualPageSaveError"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -16,12 +19,15 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/open-iconic-bootstrap.css">
+		<link rel="stylesheet" href="css/summernote-bs4.min.css">
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<title>Printer Setup System - Help</title>
+		<script src="js/summernote-bs4.min.js"></script>
+		<script src="js/manualpage.js"></script>
+		<title>PrintDesk - Admin Manual Page</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand navbar-light bg-light">
@@ -38,11 +44,11 @@
 						<a class="nav-link" href="${context}/search">Search<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link active" href="${context}/help">Help<span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
 					<c:choose>
 						<c:when test = "${isAdminEntered == true}">
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link" href="${context}/adminhome">Admin</a>
 							</li>
 						</c:when>
@@ -64,16 +70,32 @@
 				</c:when>
 			</c:choose>
 		</nav>
-		<div class="card ml-4 mr-4 mt-2 mb-4">
-			<div class="card-header">
-				<div class="d-flex align-items-center">
-					<span class="align-middle">
-						Help
-					</span>
-				</div>
+		<div class="row ml-4 mr-4 mt-3 mb-4">
+			<div class="col-3 p-4 border-right">
+				<p class="mb-2"><em>Details</em></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/printers.png" alt="Printers"/><a class="ml-2 text-body" href="${context}/adminprinters">Printers</a></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/branches.png" alt="Branches"/><a class="ml-2 text-body" href="${context}/adminbranches">Branches</a></p>
+				<p><img class="size-16" src="img/admin/administrators.png" alt="Administrators"/><a class="ml-2 text-body" href="${context}/adminadmins">Administrators</a></p>
+				<p class="mb-1 pt-3"><em>Types</em></p>
+				<p><img class="size-16" src="img/admin/printertypes.png" alt="Printer types"/><a class="ml-2 text-body" href="${context}/adminbranches">Printer types</a></p>
+				<p class="mb-1 pt-3"><em>System</em></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/help.png" alt="Manual page settings"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminmanualpage"><u>Manual page settings</u></a></p>
+				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body" href="${context}/admininstallscript">Install Script page settings</a></p>
 			</div>
-			<div class="card-body">
-				<p>${helpmanual}</p>
+			<div class="col-9 pl-4">
+				<h1 class="display-5 mr-4 mt-2 mb-4">Manual Page</h1>
+				<div class="mb-3">
+					<form method="post" action="adminmanualpage">
+						<textarea name="adminmanual" id="adminmanualInput" rows="15" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">${helpmanual}</textarea>
+						<button name="savemanual_button" type="submit" class="btn btn-outline-primary mt-3">Save</button>
+					</form>
+					<c:if test = "${ManualPageSaved == true}">
+						<div class="alert alert-success mt-3" role="alert">Manual saved!</div>
+					</c:if>
+					<c:if test = "${ManualPageSaveError == true}">
+						<div class="alert alert-danger mt-3" role="alert">Manual not saved. Error!</div>
+					</c:if>
+				</div>
 			</div>
 		</div>
 	</body>

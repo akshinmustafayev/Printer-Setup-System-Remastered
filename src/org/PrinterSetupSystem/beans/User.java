@@ -14,7 +14,6 @@ public class User
 	private String lastlogindate;
 	private String passwordsalt;
 	private String session;
-	private String language;
 	
 	public User() { }
 	
@@ -72,13 +71,5 @@ public class User
 	
 	public void SetSession(String session) {
 		this.session = session;
-	}
-
-	public String GetLanguage() {
-		return language;
-	}
-	
-	public void SetLanguage(String language) {
-		this.language = language;
 	}
 }

@@ -55,8 +55,6 @@ public class AuthorizeUtil
             	user.SetFullName(rs.getString("fullname"));
             	user.SetLastLoginDate(rs.getString("lastlogindate"));
             	user.SetSession(rs.getString("session"));
-            	user.SetLanguage(rs.getString("language"));
-            	user.SetLanguage(rs.getString("language"));
                 return user;
             }
             
@@ -84,7 +82,7 @@ public class AuthorizeUtil
         if (login == null || sessionc == null || fullname == null) 
         {
         	response.setStatus(HttpServletResponse.SC_TEMPORARY_REDIRECT);
-			response.setHeader("Location", request.getContextPath() + "/login");
+			response.setHeader("Location", request.getContextPath() + "/home");
         }
     }
 	
@@ -195,9 +193,7 @@ public class AuthorizeUtil
             	user.SetLogin((String)rs.getString("login"));
             	user.SetFullName(rs.getString("fullname"));
             	user.SetLastLoginDate(rs.getString("lastlogindate"));
-            	user.SetLanguage(rs.getString("language"));
             	user.SetSession(rs.getString("session"));
-            	user.SetLanguage(rs.getString("language"));
             } 
             
             pstmt.close();

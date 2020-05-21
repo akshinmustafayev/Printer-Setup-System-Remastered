@@ -8,3 +8,24 @@
 	width: 1px;
 	height: 25px;
 }
+
+.display-5 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.2;
+}
+
+.size-32{
+	width:32px;
+	height:32px;
+}
+
+.size-24{
+	width:24px;
+	height:24px;
+}
+
+.size-16{
+	width:16px;
+	height:16px;
+}

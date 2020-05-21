@@ -4,6 +4,10 @@
   <welcome-file-list>
     <welcome-file>Home.jsp</welcome-file>
   </welcome-file-list>
+  <session-config>
+    <session-timeout>21600</session-timeout>
+  </session-config>
+  
   <!-- ****************************************************************** -->
   <!-- SERVLET CONFIGS -->
   <!-- APIs -->
@@ -41,6 +45,18 @@
 	<servlet-name>Help</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.HelpController</servlet-class>
   </servlet>
+  <servlet>
+	<servlet-name>Login</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.LoginController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>AdminHome</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminHomeController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>AdminManualPage</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminManualPageController</servlet-class>
+  </servlet>
   
   <!-- ****************************************************************** -->
   <!-- SSERVLET MAPPINGS -->
@@ -60,6 +76,18 @@
   <servlet-mapping>
 	<servlet-name>Help</servlet-name>
 	<url-pattern>/help</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>Login</servlet-name>
+	<url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>AdminHome</servlet-name>
+	<url-pattern>/adminhome</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>AdminManualPage</servlet-name>
+	<url-pattern>/adminmanualpage</url-pattern>
   </servlet-mapping>
   
   <!-- APIs mapping -->

@@ -145,4 +145,28 @@ public class PrinterDao implements IPrinterShow
             e.printStackTrace();
         }
 	}
+	
+	public static String GetPrinterLogoByName(Printer _printer)
+	{
+		String vendorlogo = "";
+		if(_printer.GetVendor().toLowerCase().contains("hp") || _printer.GetVendor().toLowerCase().contains("hewlett") ||
+				_printer.GetVendor().toLowerCase().contains("packard"))
+		{
+			vendorlogo = "<img src=\"img/vendors/hp.png\" style=\"margin-right:5px;height:18px;\">";
+		}
+		else if(_printer.GetVendor().toLowerCase().contains("xerox"))
+		{
+			vendorlogo = "<img src=\"img/vendors/xerox.png\" style=\"margin-right:5px;height:18px;\">";
+		}
+		else if(_printer.GetVendor().toLowerCase().contains("epson"))
+		{
+			vendorlogo = "<img src=\"img/vendors/epson.png\" style=\"margin-right:5px;height:18px;\">";
+		}
+		else if(_printer.GetVendor().toLowerCase().contains("canon"))
+		{
+			vendorlogo = "<img src=\"img/vendors/canon.png\" style=\"margin-right:5px;height:18px;\">";
+		}
+		
+		return vendorlogo;
+	}
 }

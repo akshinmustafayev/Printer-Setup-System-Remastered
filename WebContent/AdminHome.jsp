@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.PrinterSetupSystem.misc.AuthorizeUtil" %>
 <%
-	AuthorizeUtil.UserLoadedJspRedirect(request, response, "Help.jsp", "/help");
+	AuthorizeUtil.UserLoadedJspRedirect(request, response, "AdminHome.jsp", "/adminhome");
+	AuthorizeUtil.AuthorizedRedirect(request, response);
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
@@ -13,6 +14,7 @@
 		<link rel="shortcut icon" href="img/logo.png" type="image/x-icon">
 		<!-- All CSS -->
 		<link rel="stylesheet" href="css/printersetupsystem.css">
+		<link rel="stylesheet" href="css/adminhome.css">
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/open-iconic-bootstrap.css">
@@ -21,7 +23,7 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<title>Printer Setup System - Help</title>
+		<title>PrintDesk - Admin Home</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand navbar-light bg-light">
@@ -35,14 +37,11 @@
 						<a class="nav-link" href="${context}/home">Home<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="${context}/search">Search<span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="${context}/help">Help<span class="sr-only">(current)</span></a>
+						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
 					<c:choose>
 						<c:when test = "${isAdminEntered == true}">
-							<li class="nav-item">
+							<li class="nav-item active">
 								<a class="nav-link" href="${context}/adminhome">Admin</a>
 							</li>
 						</c:when>
@@ -64,17 +63,48 @@
 				</c:when>
 			</c:choose>
 		</nav>
-		<div class="card ml-4 mr-4 mt-2 mb-4">
-			<div class="card-header">
-				<div class="d-flex align-items-center">
-					<span class="align-middle">
-						Help
-					</span>
+		<div class="m-3">
+			<h1 class="display-5 ml-4 mr-4 mt-2 mb-4">Details</h1>
+			<div class="row ml-4 mr-4 mt-2 mb-4">
+	            <div class="thumbnails">
+				    <a class="thumbnail" href="${context}/adminprinters">
+				        <img class="thumbnail-image" src="img/admin/printers.png" alt="Printers" />
+				        <p class="caption mt-1">Printers</p>
+				    </a>
+				    <a class="thumbnail" href="${context}/adminbranches">
+				        <img class="thumbnail-image" src="img/admin/branches.png" alt="Branches" />
+				        <p class="caption mt-1">Branches</p>
+				    </a>
+				    <a class="thumbnail" href="${context}/adminadmins">
+				        <img class="thumbnail-image" src="img/admin/administrators.png" alt="Administrators" />
+				        <p class="caption mt-1">Administrators</p>
+				    </a>
 				</div>
-			</div>
-			<div class="card-body">
-				<p>${helpmanual}</p>
-			</div>
-		</div>
+	        </div>
+	        <h1 class="display-5 ml-4 mr-4 mt-2 mb-4">Types</h1>
+			<div class="row ml-4 mr-4 mt-2 mb-4">
+	            <div class="thumbnails">
+				    <a class="thumbnail" href="${context}/adminprintertypes">
+				        <img class="thumbnail-image" src="img/admin/printertypes.png" alt="Printer types" />
+				        <p class="caption mt-1">Printer types</p>
+				    </a>
+				</div>
+	        </div>
+	        <h1 class="display-5 ml-4 mr-4 mt-2 mb-4">System</h1>
+			<div class="row ml-4 mr-4 mt-2 mb-4">
+	            <div class="thumbnails">
+				    <a class="thumbnail" href="${context}/adminmanualpage">
+				        <img class="thumbnail-image" src="img/admin/help.png" alt="Manual page settings" />
+				        <p class="caption mt-1">Manual page</p>
+				    </a>
+				</div>
+				<div class="thumbnails">
+				    <a class="thumbnail" href="${context}/admininstallscript">
+				        <img class="thumbnail-image" src="img/admin/installscript.png" alt="Install Script page settings" />
+				        <p class="caption mt-1">Install script</p>
+				    </a>
+				</div>
+	        </div>
+        </div>
 	</body>
 </html>

@@ -1,0 +1,23 @@
+.caption {
+	text-align: center;
+}
+
+.thumbnails .thumbnail {
+	display: inline-block; 
+	margin: 20px;
+	padding:5px;
+	text-decoration: none;
+	cursor: pointer;
+	color:black;
+}
+
+.thumbnail:hover {
+	background:#e2e3e5;
+}
+
+.thumbnail-image{
+	width:70px;
+	height:70px;
+	margin: 0 auto;
+    display: table;
+}

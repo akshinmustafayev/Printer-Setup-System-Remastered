@@ -40,6 +40,9 @@
 						<a class="nav-link" href="${context}/home">Home<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="${context}/search">Search<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
 					<c:choose>
@@ -93,7 +96,7 @@
 					<div class="border-left vertical-separator ml-4 mr-4"></div>
 					<span class="align-middle pr-2">Search:</span>
 					<div class="d-flex align-middle">
-						<input id="PSSBranchName" type="text" class="form-control" placeholder="Branch name" required="">
+						<input id="PSSBranchName" type="text" class="form-control" placeholder="Branch name" required="required">
 						<div class="btn-group pl-2" role="group">
 							<button type="button" class="btn btn-outline-primary" onclick="BranchSearch()">Search</button>
 							<button type="button" class="btn btn-outline-primary" onclick="BranchReset()">Reset</button>

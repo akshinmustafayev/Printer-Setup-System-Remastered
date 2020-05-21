@@ -36,6 +36,9 @@
 						<a class="nav-link" href="${context}/home">Home<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="${context}/search">Search<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
 					<c:choose>
@@ -95,7 +98,7 @@
 								</tr>
 								<tr>
 									<td>Vendor</td>
-									<td><em>${printer.GetVendor()}</em></td>
+									<td>${vendorlogo}<em>${printer.GetVendor()}</em></td>
 								</tr>
 								<tr>
 									<td>Created date</td>
