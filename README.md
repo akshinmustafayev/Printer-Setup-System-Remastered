@@ -7,10 +7,14 @@ Tasks which should be done:
 - [x] Create basic Show Branch Printers Page
 - [x] Create basic Show Printer Page
 - [x] Search branch printer from page
-- [ ] Create basic Admin Login Home page
+- [x] Create basic Admin Login page
+- [x] Create basic Admin Home page
 - [ ] Create basic Admin Branches page
 - [ ] Create basic Admin Printers page
-- [ ] Create basic Admin System Settings page
+- [ ] Create basic Admin Administrators page
+- [ ] Create basic Admin Printer types
+- [x] Create basic Admin Manual Page 
+- [ ] Create basic Install Script Page 
 - [ ] Create Reports page for statistic reports
 - [ ] Refactor code, fix bugs
 - [ ] Implement additional features
