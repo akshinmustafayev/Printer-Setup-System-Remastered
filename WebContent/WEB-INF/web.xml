@@ -16,6 +16,10 @@
 	<servlet-class>org.PrinterSetupSystem.api.SearchPrinterByName</servlet-class>
   </servlet>
   <servlet>
+	<servlet-name>ApiSearchPrinterByNameAll</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.api.SearchPrinterByNameAll</servlet-class>
+  </servlet>
+  <servlet>
 	<servlet-name>ApiSearchBranchByName</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.api.SearchBranchByName</servlet-class>
   </servlet>
@@ -40,6 +44,10 @@
   <servlet>
 	<servlet-name>Printer</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.PrinterController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>Search</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.SearchController</servlet-class>
   </servlet>
   <servlet>
 	<servlet-name>Help</servlet-name>
@@ -74,6 +82,10 @@
 	<url-pattern>/printer</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+	<servlet-name>Search</servlet-name>
+	<url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
 	<servlet-name>Help</servlet-name>
 	<url-pattern>/help</url-pattern>
   </servlet-mapping>
@@ -94,6 +106,10 @@
   <servlet-mapping>
 	<servlet-name>ApiSearchPrinterByName</servlet-name>
 	<url-pattern>/api/SearchPrinterByName</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>ApiSearchPrinterByNameAll</servlet-name>
+	<url-pattern>/api/SearchPrinterByNameAll</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
 	<servlet-name>ApiSearchBranchByName</servlet-name>

@@ -37,8 +37,8 @@
 					<li class="nav-item">
 						<a class="nav-link" href="${context}/search">Search<span class="sr-only">(current)</span></a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link active" href="${context}/help">Help<span class="sr-only">(current)</span></a>
+					<li class="nav-item active">
+						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
 					<c:choose>
 						<c:when test = "${isAdminEntered == true}">
@@ -67,9 +67,7 @@
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
 				<div class="d-flex align-items-center">
-					<span class="align-middle">
-						Help
-					</span>
+					<span class="align-middle">Help</span>
 				</div>
 			</div>
 			<div class="card-body">
