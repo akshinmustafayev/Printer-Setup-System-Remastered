@@ -98,8 +98,8 @@
 					<div class="d-flex align-middle">
 						<input id="PSSBranchName" type="text" class="form-control" placeholder="Branch name" required="required">
 						<div class="btn-group pl-2" role="group">
-							<button type="button" class="btn btn-outline-primary" onclick="BranchSearch()">Search</button>
-							<button type="button" class="btn btn-outline-primary" onclick="BranchReset()">Reset</button>
+							<button type="button" class="btn btn-outline-primary" onclick="BranchSearch('PSSBranchName', 'PSSResult')">Search</button>
+							<button type="button" class="btn btn-outline-primary" onclick="BranchReset('PSSResult')">Reset</button>
 						</div>
 					</div>
 				</div>

@@ -21,6 +21,7 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/printersetupsystem.js"></script>
 		<title>Printer Setup System - Search</title>
 	</head>
 	<body>
@@ -71,7 +72,39 @@
 				</div>
 			</div>
 			<div class="card-body">
-				
+				<div class="btn-group btn-group-toggle" data-toggle="buttons">
+					<label class="btn btn-outline-primary active">
+						<input type="radio" name="options" id="PSSPrintersRadio" onclick="SearchShowPrinters()" checked> Printers
+					</label>
+					<label class="btn btn-outline-primary">
+						<input type="radio" name="options" id="PSSBranchesRadio" onclick="SearchShowBranches()"> Branches
+					</label>
+				</div>
+				<br><br>
+				<div id="PSSPrintersContent">
+					<span class="align-middle mb-2">Search:</span>
+					<br>
+					<div class="d-flex align-middle">
+						<input id="PSSPrinterName" type="text" class="form-control w-50" placeholder="Printer name" required="required">
+						<button type="button" class="btn btn-outline-primary ml-2" onclick="SearchPrinter('PSSPrinterName', 'PSSResultPrinter')">Search</button>
+					</div>
+					<br>
+					<div id="PSSResultPrinter" class="row row-cols-2 row-cols-md-3 m-3 mt-3">
+						
+					</div>
+				</div>
+				<div id="PSSBranchesContent" class="hidden">
+					<span class="align-middle mb-2">Search:</span>
+					<br>
+					<div class="d-flex align-middle">
+						<input id="PSSBranchName" type="text" class="form-control w-50" placeholder="Branch name" required="required">
+						<button type="button" class="btn btn-outline-primary ml-2" onclick="BranchSearch('PSSBranchName', 'PSSResultBranch')">Search</button>
+					</div>
+					<br>
+					<div id="PSSResultBranch" class="row row-cols-2 row-cols-md-3 m-3 mt-3">
+						
+					</div>
+				</div>
 			</div>
 		</div>
 	</body>

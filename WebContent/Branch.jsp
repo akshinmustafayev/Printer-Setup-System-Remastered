@@ -94,10 +94,10 @@
 					<div class="border-left vertical-separator ml-4 mr-4"></div>
 					<span class="align-middle pr-2">Search:</span>
 					<div class="d-flex align-middle">
-						<input id="PSSPrinterName" type="text" class="form-control" placeholder="Printer name" required="">
+						<input id="PSSPrinterName" type="text" class="form-control" placeholder="Printer name" required="required">
 						<div class="btn-group pl-2" role="group">
-							<button type="button" class="btn btn-outline-primary" onclick="BranchSearchPrinter()">Search</button>
-							<button type="button" class="btn btn-outline-primary" onclick="BranchResetPrinter()">Reset</button>
+							<button type="button" class="btn btn-outline-primary" onclick="SearchBranchPrinter('PSSBranchID', 'PSSPrinterName', 'PSSResult')">Search</button>
+							<button type="button" class="btn btn-outline-primary" onclick="ResetBranchPrinter('PSSBranchID', 'PSSResult')">Reset</button>
 						</div>
 					</div>
 				</div>
