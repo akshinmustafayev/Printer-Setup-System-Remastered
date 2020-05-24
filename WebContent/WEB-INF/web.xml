@@ -62,8 +62,16 @@
 	<servlet-class>org.PrinterSetupSystem.controller.AdminHomeController</servlet-class>
   </servlet>
   <servlet>
+	<servlet-name>AdminAdmins</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminAdminsController</servlet-class>
+  </servlet>
+  <servlet>
 	<servlet-name>AdminManualPage</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.AdminManualPageController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>AdminInstallScript</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminInstallScriptController</servlet-class>
   </servlet>
   
   <!-- ****************************************************************** -->
@@ -98,8 +106,16 @@
 	<url-pattern>/adminhome</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+	<servlet-name>AdminAdmins</servlet-name>
+	<url-pattern>/adminadmins</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
 	<servlet-name>AdminManualPage</servlet-name>
 	<url-pattern>/adminmanualpage</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>AdminInstallScript</servlet-name>
+	<url-pattern>/admininstallscript</url-pattern>
   </servlet-mapping>
   
   <!-- APIs mapping -->

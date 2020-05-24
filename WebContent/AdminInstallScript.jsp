@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.PrinterSetupSystem.misc.AuthorizeUtil" %>
 <%
-	AuthorizeUtil.UserLoadedJspRedirect(request, response, "AdminManualPage.jsp", "/adminmanualpage");
+	AuthorizeUtil.UserLoadedJspRedirect(request, response, "AdminInstallScript.jsp", "/admininstallscript");
 	AuthorizeUtil.AuthorizedRedirect(request, response);
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
-<c:set var="ManualPageSaved" value='${requestScope["ManualPageSaved"]}'/>
-<c:set var="ManualPageSaveError" value='${requestScope["ManualPageSaveError"]}'/>
+<c:set var="InstallScriptSaved" value='${requestScope["InstallScriptSaved"]}'/>
+<c:set var="InstallScriptSaveError" value='${requestScope["InstallScriptSaveError"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -19,15 +19,12 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/open-iconic-bootstrap.css">
-		<link rel="stylesheet" href="css/summernote-bs4.min.css">
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="js/summernote-bs4.min.js"></script>
-		<script src="js/manualpage.js"></script>
-		<title>PrintDesk - Admin Manual Page</title>
+		<title>PrintDesk - Admin Install Script configuration Page</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand navbar-light bg-light">
@@ -79,22 +76,33 @@
 				<p class="mb-1 pt-3"><em>Types</em></p>
 				<p><img class="size-16" src="img/admin/printertypes.png" alt="Printer types"/><a class="ml-2 text-body" href="${context}/adminbranches">Printer types</a></p>
 				<p class="mb-1 pt-3"><em>System</em></p>
-				<p class="mb-1"><img class="size-16" src="img/admin/help.png" alt="Manual page settings"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminmanualpage"><u>Manual page settings</u></a></p>
-				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body" href="${context}/admininstallscript">Install Script page settings</a></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/help.png" alt="Manual page settings"/><a class="ml-2 text-body" href="${context}/adminmanualpage">Manual page settings</a></p>
+				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body font-weight-bold" href="${context}/admininstallscript"><u>Install Script page settings</u></a></p>
 			</div>
 			<div class="col-9 pl-4">
-				<h1 class="display-5 mr-4 mt-2 mb-4">Manual Page</h1>
-				<p><em>* Make changes to Manual page and press Save button.</em></p>
+				<h1 class="display-5 mr-4 mt-2 mb-4">Install Script</h1>
+				<p><em>* Make changes to Install Script and press Save button. Variables listed below will be changed to the specified value:</em></p>
+				<ul class="mb-3">
+					<li class="mb-1"><kbd>%PRINTER_NAME%</kbd> - <em>Printer name</em></li>
+					<li class="mb-1"><kbd>%PRINTER_DESCRIPTION%</kbd> - <em>Printer description</em></li>
+					<li class="mb-1"><kbd>%PRINTER_SHARE_NAME%</kbd> - <em>Printer shared name on server</em></li>
+					<li class="mb-1"><kbd>%PRINTER_ID%</kbd> - <em>Printer ID in the system</em></li>
+					<li class="mb-1"><kbd>%PRINTER_BRANCH_ID%</kbd> - <em>Printer branch ID in the system</em></li>
+					<li class="mb-1"><kbd>%PRINTER_IP%</kbd> - <em>Printer IP address</em></li>
+					<li class="mb-1"><kbd>%PRINTER_VENDOR%</kbd> - <em>Printer vendor</em></li>
+					<li class="mb-1"><kbd>%PRINTER_TYPE%</kbd> - <em>Printer type</em></li>
+				</ul>
+				
 				<div class="mb-3">
-					<form method="post" action="adminmanualpage">
-						<textarea name="adminmanual" id="adminmanualInput" rows="15" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">${helpmanual}</textarea>
-						<button name="savemanual_button" type="submit" class="btn btn-outline-primary mt-3">Save</button>
+					<form method="post" action="admininstallscript">
+						<textarea name="adminscript" id="adminscriptInput" class="w-100" rows="15" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">${installscript}</textarea>
+						<button name="savescript_button" type="submit" class="btn btn-outline-primary mt-3">Save</button>
 					</form>
-					<c:if test = "${ManualPageSaved == true}">
-						<div class="alert alert-success mt-3" role="alert">Manual saved!</div>
+					<c:if test = "${InstallScriptSaved == true}">
+						<div class="alert alert-success mt-3" role="alert">Install script saved!</div>
 					</c:if>
-					<c:if test = "${ManualPageSaveError == true}">
-						<div class="alert alert-danger mt-3" role="alert">Manual not saved. Error!</div>
+					<c:if test = "${InstallScriptSaveError == true}">
+						<div class="alert alert-danger mt-3" role="alert">Install script not saved. Error!</div>
 					</c:if>
 				</div>
 			</div>

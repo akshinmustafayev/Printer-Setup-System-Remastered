@@ -37,6 +37,9 @@
 						<a class="nav-link" href="${context}/home">Home<span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
+						<a class="nav-link" href="${context}/search">Search<span class="sr-only">(current)</span></a>
+					</li>
+					<li class="nav-item">
 						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
 					<c:choose>
@@ -100,7 +103,7 @@
 				</div>
 				<div class="thumbnails">
 				    <a class="thumbnail" href="${context}/admininstallscript">
-				        <img class="thumbnail-image" src="img/admin/installscript.png" alt="Install Script page settings" />
+				        <img class="thumbnail-image" src="img/admin/installscript.png" alt="Install Script settings" />
 				        <p class="caption mt-1">Install script</p>
 				    </a>
 				</div>
