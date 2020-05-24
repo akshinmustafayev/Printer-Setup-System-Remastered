@@ -12,7 +12,7 @@ Tasks which should be done:
 - [x] Create basic Admin Home page
 - [ ] Create basic Admin Branches page
 - [ ] Create basic Admin Printers page
-- [-] Create basic Admin Administrators page
+- [X] Create basic Admin Administrators page
 - [ ] Create basic Admin Printer types
 - [x] Create basic Admin Manual Page 
 - [x] Create basic Install Script Page 
