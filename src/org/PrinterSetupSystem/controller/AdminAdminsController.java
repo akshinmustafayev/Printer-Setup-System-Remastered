@@ -1,8 +1,11 @@
 package org.PrinterSetupSystem.controller;
 
+import org.PrinterSetupSystem.beans.User;
+import org.PrinterSetupSystem.dao.AdminAdminsDao;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -30,7 +33,8 @@ public class AdminAdminsController extends HttpServlet
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
-    	
+    	ArrayList<User> administrators = AdminAdminsDao.GetAdministrators();
+    	request.setAttribute("administrators", administrators);
     	
         RequestDispatcher rd = request.getRequestDispatcher("/AdminAdmins.jsp"); 
         rd.include(request, response);
@@ -45,7 +49,56 @@ public class AdminAdminsController extends HttpServlet
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
+    	if(request.getParameter("button_deleteadmin") != null && request.getParameter("deleteadminid") != null)
+        {
+    		Integer adminid = 0;
+        	try
+        	{
+        		adminid = Integer.parseInt(request.getParameter("deleteadminid"));
+        	}
+        	catch (NumberFormatException e) 
+        	{
+        		request.setAttribute("ErrorAdminIDNotNumber", true); 
+        	}
+
+        	if(adminid == 1)
+        	{
+        		request.setAttribute("ErrorMainAdminCanNotBeDeleted", true);
+        	}
+        	else
+        	{
+	        	Boolean result = AdminAdminsDao.DeleteAdministrator(adminid);
+	        	if(result)
+	        	{
+	        		request.setAttribute("AdminDeleted", true); 
+	        	}
+	        	else
+	        	{
+	        		request.setAttribute("ErrorAdminDelete", true); 
+	        	}
+        	}
+        }
     	
+    	if(request.getParameter("button_createadmin") != null && request.getParameter("newadminlogin") != null &&
+    			request.getParameter("newadminfullname") != null && request.getParameter("newadminpassword") != null)
+        {
+    		String newadminlogin = request.getParameter("newadminlogin");
+    		String newadminfullname = request.getParameter("newadminfullname");
+    		String newadminpassword = request.getParameter("newadminpassword");
+
+	        Boolean result = AdminAdminsDao.CreateAdministrator(newadminlogin, newadminfullname, newadminpassword);
+	        if(result)
+	        {
+	        	request.setAttribute("NewAdminCreateSuccess", true); 
+	        }
+	        else
+	        {
+	        	request.setAttribute("ErrorNewAdminCreate", true); 
+	        }
+        }
+    	
+    	ArrayList<User> administrators = AdminAdminsDao.GetAdministrators();
+    	request.setAttribute("administrators", administrators);
 
         RequestDispatcher rd = request.getRequestDispatcher("/AdminAdmins.jsp"); 
         rd.include(request, response);
