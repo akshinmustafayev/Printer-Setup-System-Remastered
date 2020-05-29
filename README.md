@@ -1,8 +1,19 @@
 # Printer Setup System Remastered
 
-Printer Setup System is a main center that provides a single point of contact between users and printers.
+## Overview
 
-Tasks which should be done:
+*Printer Setup System Remastered is a remaster of [PrinterSetupSystem](https://github.com/akshinmustafayev/PrinterSetupSystem) project originally written on PHP, to Java Web Application.*
+
+Printer Setup System is a center that provides a single point of contact between users and printers. User can install required printers to his computer without technical support help. 
+
+## Installation
+System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL. 
+	* Install Tomcat 8 and MYSQl to your server. 
+	* Download from release page or directly [PrinterSetupSystem.war](https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/tree/master/deploy) file. 
+	* Rename it to _ROOT.war_ file. 
+	* Copy renamed WAR file to your tomcat installation _WEBAPPS_ folder. 
+
+## Tasks which should be done:
 - [x] Create basic Home Page
 - [x] Create basic Branch Printers Page
 - [x] Create basic Printer Page
@@ -17,14 +28,17 @@ Tasks which should be done:
 - [x] Create basic Admin Manual Page 
 - [x] Create basic Install Script Page 
 - [ ] Create Reports page for statistic reports
-- [ ] Refactor code, fix bugs
+- [ ] Refactor code
 - [ ] Implement additional features
 
-Known bugs:
-- [ ] Send printer link via Email
+## Known bugs:
+- [ ] Send printer link via Email not working
 
-Features for future implementation
+## Features for future implementation:
 - [ ] List of paper types which printer can print
 - [ ] Create basic Admin Printer paper types page
+
+## Small fixes:
+- [ ] Fix all descriptions of the functions
 
 Images:
