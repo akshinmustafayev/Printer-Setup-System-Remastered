@@ -59,6 +59,7 @@ public class PrinterController extends HttpServlet
 	    		request.setAttribute("printertype", _printertype);
 	    		request.setAttribute("printerbranch", _printerbranch);
     			request.setAttribute("vendorlogo", PrinterDao.GetPrinterLogoByName(_printer));
+    			request.setAttribute("printeremaillink", PrinterDao.GetPrinterEmailLink(_printer, request));
         	}
         	else
         	{

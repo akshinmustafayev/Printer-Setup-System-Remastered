@@ -12,6 +12,7 @@ public class Printer
 	private String createddate;
 	private Integer views;
 	private String serversharename;
+	private String location;
 	
 	public Printer() { }
 	
@@ -99,5 +100,13 @@ public class Printer
 		String serversharenamelink = serversharename;
 		serversharenamelink = serversharenamelink.replace("\\", "/");
 		return serversharename;
+	}
+	
+	public String GetLocation() {
+		return location;
+	}
+	
+	public void SetLocation(String location) {
+		this.location = location;
 	}
 }

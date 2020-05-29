@@ -68,4 +68,58 @@ public class AdminInstallScriptDao
 		
 		return result;
     }
+	
+	public static String GetScriptExtension()
+    {
+		String scriptextension = "No script extension found";
+		
+		
+		try
+        {
+        	Connection conn = ConnectionUtils.getConnection();
+            PreparedStatement pstmt = null;
+            
+            pstmt = conn.prepareStatement("select value from systemsettings where parameter='installscriptextension'");
+            ResultSet rs = pstmt.executeQuery();
+            
+            while (rs.next())
+            {
+            	scriptextension = rs.getString("value");
+            }
+            
+            rs.close();
+            pstmt.close();
+            conn.close();
+        }
+		catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+		
+		return scriptextension;
+    }
+	
+	public static Boolean SetScriptExtension(String scriptextension)
+    {
+		Boolean result = true;
+		try
+        {
+        	Connection conn = ConnectionUtils.getConnection();
+            PreparedStatement pstmt = null;
+            
+            pstmt = conn.prepareStatement("update systemsettings set value = ? where parameter='installscriptextension'");
+            pstmt.setString(1, scriptextension);
+            pstmt.executeUpdate();
+
+            pstmt.close();
+            conn.close();
+        }
+		catch(Exception e)
+        {
+			result = false;
+            e.printStackTrace();
+        }
+		
+		return result;
+    }
 }

@@ -34,6 +34,9 @@ public class AdminInstallScriptController extends HttpServlet
     	String installscript = AdminInstallScriptDao.GetInstallScript();
     	request.setAttribute("installscript", installscript);
     	
+    	String scriptextension = AdminInstallScriptDao.GetScriptExtension();
+    	request.setAttribute("scriptextension", scriptextension);
+    	
         RequestDispatcher rd = request.getRequestDispatcher("/AdminInstallScript.jsp"); 
         rd.include(request, response);
     }
@@ -47,9 +50,12 @@ public class AdminInstallScriptController extends HttpServlet
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
-    	if(request.getParameter("savescript_button") != null && request.getParameter("adminscript") != null)
+    	if(request.getParameter("savescript_button") != null && request.getParameter("adminscript") != null
+    			 && request.getParameter("adminscriptextension") != null)
         {
     		String installscript = request.getParameter("adminscript");
+    		String scriptextension = request.getParameter("adminscriptextension");
+    		
     		Boolean result = AdminInstallScriptDao.SetInstallScript(installscript);
     		if(result)
     		{
@@ -59,11 +65,23 @@ public class AdminInstallScriptController extends HttpServlet
     		{
     			request.setAttribute("InstallScriptSaveError", true);
     		}
+    		
+    		Boolean result2 = AdminInstallScriptDao.SetScriptExtension(scriptextension);
+    		if(result2)
+    		{
+    			request.setAttribute("ScriptExtensionSaved", true); 
+    		}
+    		else
+    		{
+    			request.setAttribute("ScriptExtensionSaveError", true);
+    		}
         }
     	
     	String installscript = AdminInstallScriptDao.GetInstallScript();
     	request.setAttribute("installscript", installscript);
     	
+    	String scriptextension = AdminInstallScriptDao.GetScriptExtension();
+    	request.setAttribute("scriptextension", scriptextension);
     	
         RequestDispatcher rd = request.getRequestDispatcher("/AdminInstallScript.jsp"); 
         rd.include(request, response);

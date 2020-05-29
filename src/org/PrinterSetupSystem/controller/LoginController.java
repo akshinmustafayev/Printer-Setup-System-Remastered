@@ -31,9 +31,7 @@ public class LoginController extends HttpServlet
     {
     	AuthorizeUtil.FixUtf8(response);
     	System.out.println("Enter doGet for Login Controller");
-    	AuthorizeUtil.SetAdminAuthorized(request, response);
-    	
-    	
+    	AuthorizeUtil.AuthorizedRedirectLogin(request, response);
     	
         RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp"); 
         rd.include(request, response);

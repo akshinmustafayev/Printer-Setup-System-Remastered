@@ -93,6 +93,10 @@
 						<table class="table">
 							<tbody>
 								<tr>
+									<td>Location</td>
+									<td><em>${printer.GetLocation()}</em></td>
+								</tr>
+								<tr>
 									<td>IP</td>
 									<td><em><a href="http://${printer.GetIp()}" target="_blank">${printer.GetIp()}</a></em></td>
 								</tr>
@@ -107,6 +111,10 @@
 								<tr>
 									<td>Server share name</td>
 									<td><em><a href="file:${printer.GetServerShareNameLink()}" target="_blank">${printer.GetServerShareName()}</a></em></td>
+								</tr>
+								<tr>
+									<td>Send printer link by email</td>
+									<td><em><a href="${printeremaillink}">Send email</a></em></td>
 								</tr>
 							</tbody>
 						</table>

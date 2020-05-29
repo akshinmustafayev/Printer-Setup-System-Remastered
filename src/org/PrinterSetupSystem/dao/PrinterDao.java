@@ -3,6 +3,11 @@ package org.PrinterSetupSystem.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.beans.Printer;
@@ -47,6 +52,7 @@ public class PrinterDao implements IPrinterShow
             	printer.SetViews(rs.getInt("views"));
             	
             	printer.SetServerShareName(rs.getString("serversharename"));
+            	printer.SetLocation(rs.getString("location"));
             	
             	printertype = new PrinterType();
             	printertype.SetType(rs.getString("printertype"));
@@ -168,5 +174,24 @@ public class PrinterDao implements IPrinterShow
 		}
 		
 		return vendorlogo;
+	}
+	
+	public static String GetPrinterEmailLink(Printer _printer, HttpServletRequest request)
+	{
+		String emaillink = "";
+		String mailto = "mail@organization.local";
+		String printername = _printer.GetName().toString();
+		String printerlink = request.getRequestURL().toString();
+		
+		emaillink = "mailto:" + mailto + "?subject=" + printername + "&body=Link%20for%20the%20printer%20is%3A%0D%0A" + printerlink;
+		
+		try {
+			URLEncoder.encode(emaillink, StandardCharsets.UTF_8.toString());
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return emaillink;
 	}
 }

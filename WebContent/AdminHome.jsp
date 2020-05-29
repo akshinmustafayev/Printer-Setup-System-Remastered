@@ -2,6 +2,7 @@
 <%@ page import="org.PrinterSetupSystem.misc.AuthorizeUtil" %>
 <%
 	AuthorizeUtil.UserLoadedJspRedirect(request, response, "AdminHome.jsp", "/adminhome");
+	AuthorizeUtil.UserLoadedJspRedirect(request, response, "/admin", "/adminhome");
 	AuthorizeUtil.AuthorizedRedirect(request, response);
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>

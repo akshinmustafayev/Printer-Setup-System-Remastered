@@ -10,14 +10,21 @@ Tasks which should be done:
 - [x] Create basic Search Page
 - [x] Create basic Admin Login page
 - [x] Create basic Admin Home page
-- [ ] Create basic Admin Branches page
+- [x] Create basic Admin Branches page
 - [ ] Create basic Admin Printers page
-- [X] Create basic Admin Administrators page
-- [ ] Create basic Admin Printer types
+- [x] Create basic Admin Administrators page
+- [x] Create basic Admin Printer types
 - [x] Create basic Admin Manual Page 
 - [x] Create basic Install Script Page 
 - [ ] Create Reports page for statistic reports
 - [ ] Refactor code, fix bugs
 - [ ] Implement additional features
+
+Known bugs:
+- [ ] Send printer link via Email
+
+Features for future implementation
+- [ ] List of paper types which printer can print
+- [ ] Create basic Admin Printer paper types page
 
 Images:

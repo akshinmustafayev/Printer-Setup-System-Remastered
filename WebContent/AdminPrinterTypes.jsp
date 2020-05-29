@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="org.PrinterSetupSystem.misc.AuthorizeUtil" %>
 <%
-	AuthorizeUtil.UserLoadedJspRedirect(request, response, "AdminManualPage.jsp", "/adminmanualpage");
+	AuthorizeUtil.UserLoadedJspRedirect(request, response, "AdminPrinterTypes.jsp", "/adminprintertypes");
 	AuthorizeUtil.AuthorizedRedirect(request, response);
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
-<c:set var="ManualPageSaved" value='${requestScope["ManualPageSaved"]}'/>
-<c:set var="ManualPageSaveError" value='${requestScope["ManualPageSaveError"]}'/>
+<c:set var="ErrorTypeIDNotNumber" value='${requestScope["ErrorTypeIDNotNumber"]}'/>
+<c:set var="ErrorNoneTypeNotBeDeleted" value='${requestScope["ErrorNoneTypeNotBeDeleted"]}'/>
+<c:set var="PrinterTypeDeleted" value='${requestScope["PrinterTypeDeleted"]}'/>
+<c:set var="ErrorPrinterTypeDelete" value='${requestScope["ErrorPrinterTypeDelete"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -19,15 +21,12 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<link rel="stylesheet" href="css/open-iconic-bootstrap.css">
-		<link rel="stylesheet" href="css/summernote-bs4.min.css">
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<script src="js/summernote-bs4.min.js"></script>
-		<script src="js/manualpage.js"></script>
-		<title>PrintDesk - Admin Manual Page</title>
+		<title>PrintDesk - Admin Printer Types</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand navbar-light bg-light">
@@ -79,26 +78,71 @@
 				<p class="mb-1"><img class="size-16" src="img/admin/branches.png" alt="Branches"/><a class="ml-2 text-body" href="${context}/adminbranches">Branches</a></p>
 				<p><img class="size-16" src="img/admin/administrators.png" alt="Administrators"/><a class="ml-2 text-body" href="${context}/adminadmins">Administrators</a></p>
 				<p class="mb-1 pt-3"><em>Types</em></p>
-				<p><img class="size-16" src="img/admin/printertypes.png" alt="Printer types"/><a class="ml-2 text-body" href="${context}/adminprintertypes">Printer types</a></p>
+				<p><img class="size-16" src="img/admin/printertypes.png" alt="Printer types"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminprintertypes"><u>Printer types</u></a></p>
 				<p class="mb-1 pt-3"><em>System</em></p>
-				<p class="mb-1"><img class="size-16" src="img/admin/help.png" alt="Manual page settings"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminmanualpage"><u>Manual page settings</u></a></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/help.png" alt="Manual page settings"/><a class="ml-2 text-body" href="${context}/adminmanualpage">Manual page settings</a></p>
 				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body" href="${context}/admininstallscript">Install Script page settings</a></p>
 			</div>
 			<div class="col-9 pl-4">
-				<h1 class="display-5 mr-4 mt-2 mb-4">Manual Page</h1>
-				<p><em>* Make changes to Manual page and press Save button.</em></p>
-				<div class="mb-3">
-					<form method="post" action="adminmanualpage">
-						<textarea name="adminmanual" id="adminmanualInput" rows="15" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">${helpmanual}</textarea>
-						<button name="savemanual_button" type="submit" class="btn btn-outline-primary mt-3">Save</button>
-					</form>
-					<c:if test = "${ManualPageSaved == true}">
-						<div class="alert alert-success mt-3" role="alert">Manual saved!</div>
-					</c:if>
-					<c:if test = "${ManualPageSaveError == true}">
-						<div class="alert alert-danger mt-3" role="alert">Manual not saved. Error!</div>
-					</c:if>
+				<h1 class="display-5 mr-4 mt-2 mb-4">Printer Types</h1>
+				<div class="d-flex align-items-center mb-3">
+					<a class="btn btn-outline-primary mr-2" data-toggle="collapse" href="#collapseAdminAdd" role="button" aria-expanded="false" aria-controls="collapseAdminAdd">Add</a>
 				</div>
+				<div class="collapse mb-4" id="collapseAdminAdd">
+					<div class="card card-body bg-light">
+					    <form method="post" action="adminprintertypes">
+							<div class="form-group">
+								<label for="inputPrinterTypeName">Printer type</label>
+								<input name="newprintertype" type="text" class="form-control" id="inputPrinterTypeName" aria-describedby="printerTypeNameHelp" required>
+								<small id="printerTypeNameHelp" class="form-text text-muted">Enter printer type here</small>
+							</div>
+							<button type="submit" name="button_createprintertype" class="btn btn-primary">Create</button>
+						</form>
+					</div>
+				</div>
+				<c:if test = "${ErrorTypeIDNotNumber == true}">
+					<div class="alert alert-danger mt-3 mb-3" role="alert">Printer type ID must be number!</div>
+				</c:if>
+				<c:if test = "${ErrorNoneTypeNotBeDeleted == true}">
+					<div class="alert alert-danger mt-3 mb-3" role="alert">Printer "None" type can not be deleted!</div>
+				</c:if>
+				<c:if test = "${PrinterTypeDeleted == true}">
+					<div class="alert alert-success mt-3 mb-3" role="alert">Printer type deleted!</div>
+				</c:if>
+				<c:if test = "${ErrorPrinterTypeDelete == true}">
+					<div class="alert alert-danger mt-3 mb-3" role="alert">Error printer type delete!</div>
+				</c:if>
+				<table class="table">
+					<thead>
+						<tr class="d-flex">
+							<th class="col-1"></th>
+							<th class="col-11">Printer type</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:choose>
+							<c:when test = "${printerstypes.size() > 0}">
+								<c:forEach begin="0" items="${printerstypes}" var="printerstype">
+									<tr class="d-flex">
+										<td class="col-1" scope="row">
+											<form method="post" action="adminprintertypes">
+												<button type="submit" name="button_printerstype" class="btn btn-link m-0 p-0" title="Delete printer type"><span class="oi oi-x"></span></button>
+												<input class="hidden" name="deleteprinterstypeid" value="${printerstype.GetId()}">
+											</form>
+										</td>
+										<td class="col-11">${printerstype.GetType()}</td>
+									</tr>
+								</c:forEach>
+							</c:when>
+							<c:otherwise>
+								<tr class="d-flex">
+									<td class="col-1" scope="row"></td>
+									<td class="col-11">(empty)</td>
+								</tr>
+							</c:otherwise>
+						</c:choose>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</body>
