@@ -13,7 +13,7 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 * Download from release page or directly [PrinterSetupSystem.war](https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/tree/master/deploy) file. 
 * Rename it to _ROOT.war_ file. 
 * Copy renamed WAR file to your tomcat installation _WEBAPPS_ folder
-* Run http://yourserver:port/install, specify DB server ip (127.0.0.1 or localhost if mysql installed on the same server), login and password and press install button to create required tables
+* Run http://yourserver:port/install, specify DB server ip (127.0.0.1 or localhost if mysql installed on the same server), login, password and press install button to create required tables
 
 ## Tasks which should be done:
 - [x] Create basic Home Page
