@@ -1,7 +1,6 @@
 package org.PrinterSetupSystem.controller;
 
 import org.PrinterSetupSystem.beans.PrinterType;
-import org.PrinterSetupSystem.dao.AdminAdminsDao;
 import org.PrinterSetupSystem.dao.AdminPrinterTypesDao;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
 

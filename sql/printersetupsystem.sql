@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 29, 2020 at 12:03 PM
+-- Generation Time: May 29, 2020 at 07:22 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.29
 
@@ -31,7 +31,7 @@ CREATE TABLE `branches` (
   `id` int(32) NOT NULL,
   `name` varchar(255) NOT NULL DEFAULT '',
   `description` text NOT NULL,
-  `image` varchar(255) NOT NULL DEFAULT '',
+  `image` mediumblob DEFAULT NULL,
   `createddate` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -54,7 +54,7 @@ CREATE TABLE `printers` (
   `id` int(255) NOT NULL,
   `name` text NOT NULL,
   `description` text NOT NULL DEFAULT '',
-  `image` varchar(255) NOT NULL DEFAULT '',
+  `image` mediumblob DEFAULT NULL,
   `branchid` int(32) NOT NULL DEFAULT 1,
   `ip` text NOT NULL DEFAULT '',
   `vendor` text NOT NULL DEFAULT '',
@@ -70,10 +70,10 @@ CREATE TABLE `printers` (
 --
 
 INSERT INTO `printers` (`id`, `name`, `description`, `image`, `branchid`, `ip`, `vendor`, `createddate`, `printertypeid`, `views`, `serversharename`, `location`) VALUES
-(1, 'HP LaserJet 4350  1st floor', 'Printer on the 1st floor', '', 2, '192.168.100.10', 'HP', '18.05.2020 00:00', 5, 68, '\\\\server01\\printer1', 'In the client support division'),
-(2, 'Xerox WorkCentre 5325 floor6', 'Xerox work centre printer which is located on 6th floor, near legal issues divison. This printer can print 1000 pages in 10 minutes.', '', 2, '192.168.16.16', 'Xerox', '19.05.2020 00:00', 3, 31, '\\\\server01\\printer2', 'At the top of HR department'),
-(3, 'HP Color Laserjet 1224 floor3', 'Color printer for all purposes which can print using A4, A3 and A5 type papers. ', '', 3, '192.168.67.67', 'HP', '19.05.2020 00:00', 7, 16, 'None', 'In the Copy room'),
-(4, 'SomePrinter 3456 floor7', 'Some printer on the 7th floor, which can printer 1000 pages per minute', '', 3, '192.168.99.99', 'Unknown', '20.05.2020 00:00', 1, 9, '\\\\printerserver02\\printer9', 'Near legal department');
+(1, 'HP LaserJet 4350  1st floor', 'Printer on the 1st floor', NULL, 2, '192.168.100.10', 'HP', '18.05.2020 00:00', 5, 76, '\\\\server01\\printer1', 'In the client support division'),
+(2, 'Xerox WorkCentre 5325 floor6', 'Xerox work centre printer which is located on 6th floor, near legal issues divison. This printer can print 1000 pages in 10 minutes.', NULL, 2, '192.168.16.16', 'Xerox', '19.05.2020 00:00', 3, 40, '\\\\server01\\printer2', 'At the top of HR department'),
+(3, 'HP Color Laserjet 1224 floor3', 'Color printer for all purposes which can print using A4, A3 and A5 type papers. ', NULL, 3, '192.168.67.67', 'HP', '19.05.2020 00:00', 7, 22, 'None', 'In the Copy room'),
+(4, 'SomePrinter 3456 floor7', 'Some printer on the 7th floor, which can printer 1000 pages per minute', NULL, 3, '192.168.99.99', 'Unknown', '20.05.2020 00:00', 1, 14, '\\\\printerserver02\\printer9', 'Near legal department');
 
 -- --------------------------------------------------------
 
@@ -123,7 +123,7 @@ CREATE TABLE `systemsettings` (
 INSERT INTO `systemsettings` (`id`, `parameter`, `value`) VALUES
 (1, 'installscript', '#SOME SCRIPT\r\n\r\nFUNCTION AAA()\r\n{\r\nint a = 0;\r\nint b = 1;\r\nreturn a+b;\r\n}\r\n\r\nAAA();'),
 (2, 'installscriptextension', 'bat'),
-(3, 'helpmanual', '<p>To be able to install printer please follow instructions below.</p><ul><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><p style=\"text-align: left;\">Thank you!&nbsp;</p><p style=\"text-align: left;\"><br></p><p style=\"text-align: left;\"></p>');
+(3, 'helpmanual', '<p>To be able to install printer please follow instructions below.</p><ul><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><p style=\"text-align: left;\">Thank you!</p><p style=\"text-align: left;\"><br></p><p style=\"text-align: left;\"></p>');
 
 -- --------------------------------------------------------
 
@@ -146,7 +146,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `fullname`, `lastlogindate`, `passwordsalt`, `session`) VALUES
-(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Administrator', '2020-05-29 13:26', '', '4b560f51a14e2d9454baae90c5b8b842b8d82e105f2a95b401ed01160069a0bb');
+(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Administrator', '2020-05-29 21:01', '', 'a0670f19b99a558267274a2351bc903c75922e98b9f1ad2accb7970d08a4912b');
 
 --
 -- Indexes for dumped tables

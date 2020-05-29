@@ -1,8 +1,12 @@
 package org.PrinterSetupSystem.dao;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Base64;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -39,10 +43,32 @@ public class PrinterDao implements IPrinterShow
             	printer.SetId(rs.getInt("id"));
             	printer.SetName(rs.getString("name"));
             	printer.SetDescription(rs.getString("description"));
-            	if(rs.getString("image") != "")
-            		printer.SetImage("uploads/" + rs.getString("image"));
+            	
+            	if(rs.getBlob("image") != null)
+            	{
+            		byte[] imgcheck = rs.getBytes("image");
+                	if(imgcheck.length != 0)
+                	{
+	            		Blob blob = rs.getBlob("image");
+	            		InputStream inputStream = blob.getBinaryStream();
+	            		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	            		byte[] buffer = new byte[4096];
+	            		int bytesRead = -1;
+	            		while ((bytesRead = inputStream.read(buffer)) != -1) {
+	            		    outputStream.write(buffer, 0, bytesRead);
+	            		}
+	            		byte[] imageBytes = outputStream.toByteArray();
+	            		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+	            		inputStream.close();
+	            		outputStream.close();
+	            		printer.SetImage(base64Image);
+                	}
+                	else
+                		printer.SetImage("img/no-image.png");
+            	}
             	else
             		printer.SetImage("img/no-image.png");
+            	
             	printer.SetBranchId(rs.getInt("branchid"));
             	printer.SetIp(rs.getString("ip"));
             	printer.SetVendor(rs.getString("vendor"));
@@ -108,7 +134,30 @@ public class PrinterDao implements IPrinterShow
             	printerbranch.SetId(rs.getInt("id"));
     			printerbranch.SetName(rs.getString("name"));
     			printerbranch.SetDescription(rs.getString("description"));
-    			printerbranch.SetImage(rs.getString("image"));
+    			if(rs.getBlob("image") != null)
+            	{
+            		byte[] imgcheck = rs.getBytes("image");
+                	if(imgcheck.length != 0)
+                	{
+	            		Blob blob = rs.getBlob("image");
+	            		InputStream inputStream = blob.getBinaryStream();
+	            		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	            		byte[] buffer = new byte[4096];
+	            		int bytesRead = -1;
+	            		while ((bytesRead = inputStream.read(buffer)) != -1) {
+	            		    outputStream.write(buffer, 0, bytesRead);
+	            		}
+	            		byte[] imageBytes = outputStream.toByteArray();
+	            		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+	            		inputStream.close();
+	            		outputStream.close();
+	            		printerbranch.SetImage(base64Image);
+                	}
+                	else
+                		printerbranch.SetImage("img/no-image.png");
+            	}
+            	else
+            		printerbranch.SetImage("img/no-image.png");
     			printerbranch.SetCreatedDate(rs.getString("createddate"));
             } 
            

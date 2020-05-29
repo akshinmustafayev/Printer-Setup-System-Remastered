@@ -1,11 +1,15 @@
 package org.PrinterSetupSystem.api;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -52,8 +56,28 @@ public class SearchPrinterByNameAll extends HttpServlet
                 	printer.SetName(rs.getString("name"));
                 	printer.SetDescription(rs.getString("description"));
                 	printer.SetBranchId(rs.getInt("branchid"));
-                	if(rs.getString("image") != "")
-                		printer.SetImage("uploads/" + rs.getString("image"));
+                	if(rs.getBlob("image") != null)
+                	{
+                		byte[] imgcheck = rs.getBytes("image");
+                    	if(imgcheck.length != 0)
+                    	{
+    	            		Blob blob = rs.getBlob("image");
+    	            		InputStream inputStream = blob.getBinaryStream();
+    	            		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    	            		byte[] buffer = new byte[4096];
+    	            		int bytesRead = -1;
+    	            		while ((bytesRead = inputStream.read(buffer)) != -1) {
+    	            		    outputStream.write(buffer, 0, bytesRead);
+    	            		}
+    	            		byte[] imageBytes = outputStream.toByteArray();
+    	            		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+    	            		inputStream.close();
+    	            		outputStream.close();
+    	            		printer.SetImage(base64Image);
+                    	}
+                    	else
+                    		printer.SetImage("img/no-image.png");
+                	}
                 	else
                 		printer.SetImage("img/no-image.png");
                 	printers.add(printer);
