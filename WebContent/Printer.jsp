@@ -83,7 +83,17 @@
 			<div class="card-body p-0">
 				<div class="row m-3">
 				    <div class="col">
-						<img class="img-fluid" src="${printer.GetImage()}" alt="Printer Image">
+				    	<c:choose>
+							<c:when test = "${printer.GetImage() == \"img/no-image.png\"}">
+								<img class="img-fluid width-100" src="img/no-image.png" alt="Printer Image">
+							</c:when>
+							<c:when test = "${printer.GetImage() == \"\"}">
+								<img class="img-fluid width-100" src="img/no-image.png" alt="Printer Image">
+							</c:when>
+							<c:otherwise>
+								<img class="img-fluid width-100" src="data:image/jpg;base64,${printer.GetImage()}" alt="Printer Image">
+							</c:otherwise>
+						</c:choose>
 				    </div>
 				    <div class="col">
 						<h3>${printer.GetName()} <span class="badge badge-secondary">${printertype.GetType()}</span></h3>

@@ -86,9 +86,12 @@
 				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body" href="${context}/admininstallscript">Install Script page settings</a></p>
 			</div>
 			<div class="col-9 pl-4">
-				<h1 class="display-5 mr-4 mt-2 mb-4">Branches</h1>
-				<div class="d-flex align-items-center mb-3">
-					<a class="btn btn-outline-primary mr-2" data-toggle="collapse" href="#collapseBranchAdd" role="button" aria-expanded="false" aria-controls="collapseBranchAdd">Add</a>
+				<div class="d-flex align-items-center border-bottom">
+					<img class="size-64 mr-2" src="img/admin/branches.png" alt="Branches"/>
+					<h1 class="display-5 mr-4 mt-2 mb-4">Branches</h1>
+				</div>
+				<div class="d-flex align-items-center mb-3 bg-light">
+					<a class="btn btn-outline-primary m-2" data-toggle="collapse" href="#collapseBranchAdd" role="button" aria-expanded="false" aria-controls="collapseBranchAdd">Add</a>
 				</div>
 				<div class="collapse mb-4" id="collapseBranchAdd">
 					<div class="card card-body bg-light">

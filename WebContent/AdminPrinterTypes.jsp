@@ -84,9 +84,12 @@
 				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body" href="${context}/admininstallscript">Install Script page settings</a></p>
 			</div>
 			<div class="col-9 pl-4">
-				<h1 class="display-5 mr-4 mt-2 mb-4">Printer Types</h1>
-				<div class="d-flex align-items-center mb-3">
-					<a class="btn btn-outline-primary mr-2" data-toggle="collapse" href="#collapseAdminAdd" role="button" aria-expanded="false" aria-controls="collapseAdminAdd">Add</a>
+				<div class="d-flex align-items-center border-bottom">
+					<img class="size-64 mr-2" src="img/admin/printertypes.png" alt="Printer types"/>
+					<h1 class="display-5 mr-4 mt-2 mb-4">Printer Types</h1>
+				</div>
+				<div class="d-flex align-items-center mb-3 bg-light">
+					<a class="btn btn-outline-primary m-2" data-toggle="collapse" href="#collapseAdminAdd" role="button" aria-expanded="false" aria-controls="collapseAdminAdd">Add</a>
 				</div>
 				<div class="collapse mb-4" id="collapseAdminAdd">
 					<div class="card card-body bg-light">

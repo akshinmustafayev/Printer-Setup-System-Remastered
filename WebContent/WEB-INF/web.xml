@@ -62,8 +62,16 @@
 	<servlet-class>org.PrinterSetupSystem.controller.AdminHomeController</servlet-class>
   </servlet>
   <servlet>
+	<servlet-name>AdminBranches</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminBranchesController</servlet-class>
+  </servlet>
+  <servlet>
 	<servlet-name>AdminAdmins</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.AdminAdminsController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>AdminPrinterTypes</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminPrinterTypesController</servlet-class>
   </servlet>
   <servlet>
 	<servlet-name>AdminManualPage</servlet-name>
@@ -104,10 +112,19 @@
   <servlet-mapping>
 	<servlet-name>AdminHome</servlet-name>
 	<url-pattern>/adminhome</url-pattern>
+	<url-pattern>/admin</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>AdminBranches</servlet-name>
+	<url-pattern>/adminbranches</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
 	<servlet-name>AdminAdmins</servlet-name>
 	<url-pattern>/adminadmins</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>AdminPrinterTypes</servlet-name>
+	<url-pattern>/adminprintertypes</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
 	<servlet-name>AdminManualPage</servlet-name>

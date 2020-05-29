@@ -85,7 +85,10 @@
 				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body" href="${context}/admininstallscript">Install Script page settings</a></p>
 			</div>
 			<div class="col-9 pl-4">
-				<h1 class="display-5 mr-4 mt-2 mb-4">Manual Page</h1>
+				<div class="d-flex align-items-center mb-3 border-bottom">
+					<img class="size-64 mr-2" src="img/admin/help.png" alt="Manual page settings"/>
+					<h1 class="display-5 mr-4 mt-2 mb-4">Manual Page</h1>
+				</div>
 				<p><em>* Make changes to Manual page and press Save button.</em></p>
 				<div class="mb-3">
 					<form method="post" action="adminmanualpage">

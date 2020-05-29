@@ -84,7 +84,10 @@
 				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body font-weight-bold" href="${context}/admininstallscript"><u>Install Script page settings</u></a></p>
 			</div>
 			<div class="col-9 pl-4">
-				<h1 class="display-5 mr-4 mt-2 mb-4">Install Script</h1>
+				<div class="d-flex align-items-center mb-3 border-bottom">
+					<img class="size-64 mr-2" src="img/admin/installscript.png" alt="Install Script"/>
+					<h1 class="display-5 mr-4 mt-2 mb-4">Install Script</h1>
+				</div>
 				<p><em>* Make changes to Install Script and press Save button. Variables listed below will be changed to the specified value:</em></p>
 				<ul class="mb-5">
 					<li class="mb-1"><kbd>%PRINTER_NAME%</kbd> - <em>Printer name</em></li>

@@ -111,7 +111,14 @@
 							<c:forEach begin="0" items="${branches}" var="branch">
 								<div class="col mb-4">
 									<div class="card position-relative">
-										<img src="${branch.GetImage()}" class="card-img-top" alt="Branch Image">
+										<c:choose>
+											<c:when test = "${branch.GetImage() == \"img/no-image.png\"}">
+												<img src="img/no-image.png" class="card-img-top" alt="Printer Image">
+											</c:when>
+											<c:otherwise>
+												<img src="data:image/jpg;base64,${branch.GetImage()}" class="card-img-top" alt="Printer Image">
+											</c:otherwise>
+										</c:choose>
 										<div class="card-body">
 											<h5 class="card-title">${branch.GetName()}</h5>
 											<p class="card-text">${branch.GetDescription()}</p>

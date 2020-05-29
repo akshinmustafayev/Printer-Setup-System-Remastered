@@ -109,7 +109,17 @@
 							<c:forEach begin="0" items="${printers}" var="printer">
 								<div class="col mb-4">
 									<div class="card position-relative">
-										<img src="${printer.GetImage()}" class="card-img-top" alt="Printer Image">
+										<c:choose>
+											<c:when test = "${printer.GetImage() == \"img/no-image.png\"}">
+												<img src="img/no-image.png" class="card-img-top" alt="Printer Image">
+											</c:when>
+											<c:when test = "${printer.GetImage() == \"\"}">
+												<img src="img/no-image.png" class="card-img-top" alt="Printer Image">
+											</c:when>
+											<c:otherwise>
+												<img src="data:image/jpg;base64,${printer.GetImage()}" class="card-img-top" alt="Printer Image">
+											</c:otherwise>
+										</c:choose>
 										<div class="card-body">
 											<h5 class="card-title">${printer.GetName()}</h5>
 											<p class="card-text">${printer.GetDescription()}</p>

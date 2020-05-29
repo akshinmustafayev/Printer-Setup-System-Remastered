@@ -42,7 +42,10 @@ function SearchBranchPrinter(pssbranchid, pssprintername, pssresult)
 				resultform.innerHTML = "";
 				for (var i = 0; i < result.printers.length; i++) 
 				{
-					printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"" + result.printers[i].printerimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
+					if(result.printers[i].printerimage == null || result.printers[i].printerimage == "" || result.printers[i].printerimage == "img/no-image.png")
+						printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"img/no-image.png\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
+					else
+						printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"data:image/jpg;base64," + result.printers[i].printerimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
 				}
 				
 				resultform.innerHTML = printersText;
@@ -79,7 +82,10 @@ function SearchPrinter(pssprintername, pssresult)
 				resultform.innerHTML = "";
 				for (var i = 0; i < result.printers.length; i++) 
 				{
-					printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"" + result.printers[i].printerimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
+					if(result.printers[i].printerimage == null || result.printers[i].printerimage == "" || result.printers[i].printerimage == "img/no-image.png")
+						printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"img/no-image.png\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
+					else
+						printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"data:image/jpg;base64," + result.printers[i].printerimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
 				}
 				
 				resultform.innerHTML = printersText;
@@ -118,7 +124,11 @@ function ResetBranchPrinter(pssbranchid, pssresult)
 				resultform.innerHTML = "";
 				for (var i = 0; i < result.printers.length; i++) 
 				{
-					printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"" + result.printers[i].printerimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
+					if(result.printers[i].printerimage == null || result.printers[i].printerimage == "" || result.printers[i].printerimage == "img/no-image.png")
+						printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"img/no-image.png\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
+					else
+						printersText = printersText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"data:image/jpg;base64," + result.printers[i].printerimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.printers[i].printername + "</h5><p class=\"card-text\">" + result.printers[i].printerdescription + "</p><a href=\"" + GetContextPath() + "/printer?id=" + result.printers[i].printerid + "\" class=\"stretched-link\"></a></div></div></div>"
+						
 				}
 				
 				resultform.innerHTML = printersText;
@@ -153,7 +163,10 @@ function BranchReset(pssresult)
 				resultform.innerHTML = "";
 				for (var i = 0; i < result.branches.length; i++) 
 				{
-					branchesText = branchesText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"" + result.branches[i].branchimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.branches[i].branchname + "</h5><p class=\"card-text\">" + result.branches[i].branchdescription + "</p><a href=\"" + GetContextPath() + "/branch?id=" + result.branches[i].branchid + "\" class=\"stretched-link\"></a></div></div></div>"
+					if(result.branches[i].branchimage == null || result.branches[i].branchimage == "" || result.branches[i].branchimage == "img/no-image.png")
+						branchesText = branchesText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"img/no-image.png\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.branches[i].branchname + "</h5><p class=\"card-text\">" + result.branches[i].branchdescription + "</p><a href=\"" + GetContextPath() + "/branch?id=" + result.branches[i].branchid + "\" class=\"stretched-link\"></a></div></div></div>"
+					else
+						branchesText = branchesText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"data:image/jpg;base64," + result.branches[i].branchimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.branches[i].branchname + "</h5><p class=\"card-text\">" + result.branches[i].branchdescription + "</p><a href=\"" + GetContextPath() + "/branch?id=" + result.branches[i].branchid + "\" class=\"stretched-link\"></a></div></div></div>"
 				}
 				
 				resultform.innerHTML = branchesText;
@@ -190,7 +203,10 @@ function BranchSearch(pssbranchname, pssresult)
 				resultform.innerHTML = "";
 				for (var i = 0; i < result.branches.length; i++) 
 				{
-					branchesText = branchesText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"" + result.branches[i].branchimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.branches[i].branchname + "</h5><p class=\"card-text\">" + result.branches[i].branchdescription + "</p><a href=\"" + GetContextPath() + "/branch?id=" + result.branches[i].branchid + "\" class=\"stretched-link\"></a></div></div></div>"
+					if(result.branches[i].branchimage == null || result.branches[i].branchimage == "" || result.branches[i].branchimage == "img/no-image.png")
+						branchesText = branchesText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"img/no-image.png\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.branches[i].branchname + "</h5><p class=\"card-text\">" + result.branches[i].branchdescription + "</p><a href=\"" + GetContextPath() + "/branch?id=" + result.branches[i].branchid + "\" class=\"stretched-link\"></a></div></div></div>"
+					else
+						branchesText = branchesText + "<div class=\"col mb-4\"><div class=\"card position-relative\"><img src=\"data:image/jpg;base64," + result.branches[i].branchimage + "\" class=\"card-img-top\" alt=\"Printer Image\"><div class=\"card-body\"><h5 class=\"card-title\">" + result.branches[i].branchname + "</h5><p class=\"card-text\">" + result.branches[i].branchdescription + "</p><a href=\"" + GetContextPath() + "/branch?id=" + result.branches[i].branchid + "\" class=\"stretched-link\"></a></div></div></div>"
 				}
 				
 				resultform.innerHTML = branchesText;
