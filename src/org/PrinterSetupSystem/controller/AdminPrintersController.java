@@ -1,7 +1,7 @@
 package org.PrinterSetupSystem.controller;
 
-import org.PrinterSetupSystem.beans.Branch;
-import org.PrinterSetupSystem.dao.AdminBranchesDao;
+import org.PrinterSetupSystem.beans.Printer;
+import org.PrinterSetupSystem.dao.AdminPrintersDao;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
 
 import java.io.IOException;
@@ -10,14 +10,11 @@ import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
-@MultipartConfig
-public class AdminBranchesController extends HttpServlet 
+public class AdminPrintersController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -32,14 +29,14 @@ public class AdminBranchesController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Admin Branches Controller");
+    	System.out.println("Enter doGet for Admin Printers Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
-    	ArrayList<Branch> branches = AdminBranchesDao.GetBranches();
-    	request.setAttribute("branches", branches);
+    	ArrayList<Printer> printers = AdminPrintersDao.GetPrinters();
+    	request.setAttribute("printers", printers);
     	
-        RequestDispatcher rd = request.getRequestDispatcher("/AdminBranches.jsp"); 
+        RequestDispatcher rd = request.getRequestDispatcher("/AdminPrinters.jsp"); 
         rd.include(request, response);
     }
 	
@@ -48,41 +45,35 @@ public class AdminBranchesController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Admin Branches Controller");
+    	System.out.println("Enter doPost for Admin Printers Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
     	
-    	if(request.getParameter("button_deletebranch") != null && request.getParameter("deletebranchid") != null)
+    	if(request.getParameter("button_deleteprinter") != null && request.getParameter("deleteprinterid") != null)
         {
-    		Integer branchid = 0;
+    		Integer printerid = 0;
         	try
         	{
-        		branchid = Integer.parseInt(request.getParameter("deletebranchid"));
+        		printerid = Integer.parseInt(request.getParameter("deleteprinterid"));
         	}
         	catch (NumberFormatException e) 
         	{
-        		request.setAttribute("ErrorBranchIDNotNumber", true); 
+        		request.setAttribute("ErrorPrinterIDNotNumber", true); 
         	}
 
-        	if(branchid == 1)
-        	{
-        		request.setAttribute("ErrorMainBranchCanNotBeDeleted", true);
-        	}
-        	else
-        	{
-	        	Boolean result = AdminBranchesDao.DeleteBranch(branchid);
-	        	if(result)
-	        	{
-	        		request.setAttribute("BranchDeleted", true); 
-	        	}
-	        	else
-	        	{
-	        		request.setAttribute("ErrorBranchDelete", true); 
-	        	}
-        	}
+        	Boolean result = AdminPrintersDao.DeletePrinter(printerid);
+	        if(result)
+	        {
+	        	request.setAttribute("PrinterDeleted", true); 
+	        }
+	        else
+	        {
+	        	request.setAttribute("ErrorPrinterDelete", true); 
+	        }
         }
     	
+    	/*
     	if(request.getParameter("button_createbranch") != null && request.getParameter("newbranchname") != null &&
     			request.getParameter("newbranchdescription") != null)
         {
@@ -100,11 +91,12 @@ public class AdminBranchesController extends HttpServlet
 	        	request.setAttribute("ErrorNewBranchCreate", true); 
 	        }
         }
+		*/
+    	
+    	ArrayList<Printer> printers = AdminPrintersDao.GetPrinters();
+    	request.setAttribute("printers", printers);
 
-    	ArrayList<Branch> branches = AdminBranchesDao.GetBranches();
-    	request.setAttribute("branches", branches);
-
-        RequestDispatcher rd = request.getRequestDispatcher("/AdminBranches.jsp"); 
+        RequestDispatcher rd = request.getRequestDispatcher("/AdminPrinters.jsp"); 
         rd.include(request, response);
     }
 }

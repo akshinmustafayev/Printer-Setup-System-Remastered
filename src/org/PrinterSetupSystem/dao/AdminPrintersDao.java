@@ -1,38 +1,35 @@
 package org.PrinterSetupSystem.dao;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import javax.servlet.http.Part;
-
-import org.PrinterSetupSystem.beans.Branch;
+import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
-import org.PrinterSetupSystem.misc.TimeUtil;
 
-public class AdminBranchesDao 
+public class AdminPrintersDao 
 {
-	public static ArrayList<Branch> GetBranches()
+	public static ArrayList<Printer> GetPrinters()
     {
-		ArrayList<Branch> branches = new ArrayList<Branch>();
+		ArrayList<Printer> printers = new ArrayList<Printer>();
 		
 		try
         {
         	Connection conn = ConnectionUtils.getConnection();
             PreparedStatement pstmt = null;
             
-            pstmt = conn.prepareStatement("select * from branches");
+            pstmt = conn.prepareStatement("select printers.id, printers.name, IFNULL(branches.name, \"Branch not found\") as printerbranch, printers.ip from printers left join branches on printers.branchid = branches.id");
             ResultSet rs = pstmt.executeQuery();
             
             while (rs.next())
             {
-            	Branch branch = new Branch();
-            	branch.SetId(rs.getInt("id"));
-            	branch.SetName(rs.getString("name"));
-            	branch.SetDescription(rs.getString("description"));
-            	branches.add(branch);
+            	Printer printer = new Printer();
+            	printer.SetId(rs.getInt("id"));
+            	printer.SetName(rs.getString("name"));
+            	printer.SetBranchName(rs.getString("printerbranch"));
+            	printer.SetIp(rs.getString("ip"));
+            	printers.add(printer);
             }
             
             rs.close();
@@ -44,13 +41,15 @@ public class AdminBranchesDao
             e.printStackTrace();
         }
 		
-		return branches;
+		return printers;
     }
+	
 	
 	/**
 	Function deletes branch from branches table.
 	*/
-	public static Boolean DeleteBranch(Integer branchid)
+	
+	public static Boolean DeletePrinter(Integer printerid)
     {
 		Boolean result = true;
 		
@@ -58,18 +57,12 @@ public class AdminBranchesDao
         {
         	Connection conn = ConnectionUtils.getConnection();
             PreparedStatement pstmt = null;
-            PreparedStatement pstmt2 = null;
             
-            pstmt = conn.prepareStatement("delete from branches where id=?");
-            pstmt.setInt(1, branchid);
+            pstmt = conn.prepareStatement("delete from printers where id=?");
+            pstmt.setInt(1, printerid);
             pstmt.executeUpdate();
-            
-            pstmt2 = conn.prepareStatement("update printers set branchid = 1 where branchid=?");
-            pstmt2.setInt(1, branchid);
-            pstmt2.executeUpdate();
 
             pstmt.close();
-            pstmt2.close();
             conn.close();
         }
 		catch(Exception e)
@@ -81,6 +74,7 @@ public class AdminBranchesDao
 		return result;
     }
 	
+	/*
 	public static Boolean CreateBranch(String newbranchname, String newbranchdescription, Part newbranchimage)
     {
 		Boolean result = true;
@@ -123,4 +117,5 @@ public class AdminBranchesDao
 		
 		return result;
     }
+    */
 }

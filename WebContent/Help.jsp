@@ -40,29 +40,25 @@
 					<li class="nav-item active">
 						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
-					<c:choose>
-						<c:when test = "${isAdminEntered == true}">
-							<li class="nav-item">
-								<a class="nav-link" href="${context}/adminhome">Admin</a>
-							</li>
-						</c:when>
-					</c:choose>
+					<c:if test = "${isAdminEntered == true}">
+						<li class="nav-item">
+							<a class="nav-link" href="${context}/adminhome">Admin</a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
-			<c:choose>
-				<c:when test = "${isAdminEntered == true}">
-					<ul class="navbar-nav ">
-				    	<li class="nav-item dropdown">
-				        	<a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("fullname")%> </a>
-				            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navDropDownLink">
-				                <a class="dropdown-item" href="${context}/usersettings">Preferences</a>
-				                <div class="dropdown-divider"></div>
-				             	<a class="dropdown-item" href="Logout.jsp">Logout</a>
-				       		</div>
-				    	</li>
-				    </ul>
-				</c:when>
-			</c:choose>
+			<c:if test = "${isAdminEntered == true}">
+				<ul class="navbar-nav ">
+				    <li class="nav-item dropdown">
+				        <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("fullname")%> </a>
+				        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navDropDownLink">
+				        	<a class="dropdown-item" href="${context}/usersettings">Preferences</a>
+				        	<div class="dropdown-divider"></div>
+				        	<a class="dropdown-item" href="Logout.jsp">Logout</a>
+						</div>
+					</li>
+				</ul>
+			</c:if>
 		</nav>
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">

@@ -31,11 +31,9 @@
 			<label for="inputPassword" class="sr-only">Password</label>
 			<input name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
 			<button name="login_button" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-			<c:choose>
-				<c:when test = "${ErrorWrongLoginOrPassword == true}">
-					<div class="alert alert-danger mt-2" role="alert">Login or Password is incorrect!</div>
-				</c:when>
-			</c:choose>
+			<c:if test = "${ErrorWrongLoginOrPassword == true}">
+				<div class="alert alert-danger mt-2" role="alert">Login or Password is incorrect!</div>
+			</c:if>
 			<p class="mt-5 mb-3 text-muted">© 2020</p>
 		</form>
 	</body>

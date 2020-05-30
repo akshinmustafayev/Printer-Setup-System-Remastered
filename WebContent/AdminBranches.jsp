@@ -47,29 +47,25 @@
 					<li class="nav-item">
 						<a class="nav-link" href="${context}/help">Help<span class="sr-only">(current)</span></a>
 					</li>
-					<c:choose>
-						<c:when test = "${isAdminEntered == true}">
-							<li class="nav-item active">
-								<a class="nav-link" href="${context}/adminhome">Admin</a>
-							</li>
-						</c:when>
-					</c:choose>
+					<c:if test = "${isAdminEntered == true}">
+						<li class="nav-item active">
+							<a class="nav-link" href="${context}/adminhome">Admin</a>
+						</li>
+					</c:if>
 				</ul>
 			</div>
-			<c:choose>
-				<c:when test = "${isAdminEntered == true}">
-					<ul class="navbar-nav ">
-				    	<li class="nav-item dropdown">
-				        	<a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("fullname")%> </a>
-				            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navDropDownLink">
-				                <a class="dropdown-item" href="${context}/usersettings">Preferences</a>
-				                <div class="dropdown-divider"></div>
-				             	<a class="dropdown-item" href="Logout.jsp">Logout</a>
-				       		</div>
-				    	</li>
-				    </ul>
-				</c:when>
-			</c:choose>
+			<c:if test = "${isAdminEntered == true}">
+				<ul class="navbar-nav ">
+				    <li class="nav-item dropdown">
+				        <a href="#" class="nav-link dropdown-toggle" id="navDropDownLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><%=session.getAttribute("fullname")%> </a>
+				        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navDropDownLink">
+				        	<a class="dropdown-item" href="${context}/usersettings">Preferences</a>
+				        	<div class="dropdown-divider"></div>
+				        	<a class="dropdown-item" href="Logout.jsp">Logout</a>
+						</div>
+					</li>
+				</ul>
+			</c:if>
 		</nav>
 		<div class="row ml-4 mr-4 mt-3 mb-4">
 			<div class="col-3 p-4 border-right">
@@ -95,7 +91,7 @@
 				</div>
 				<div class="collapse mb-4" id="collapseBranchAdd">
 					<div class="card card-body bg-light">
-					    <form method="post" action="adminbranches">
+					    <form method="post" action="adminbranches" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="inputBranchName">Name</label>
 								<input name="newbranchname" type="text" class="form-control" id="inputBranchName" aria-describedby="branchNameHelp" required>
@@ -103,8 +99,12 @@
 							</div>
 							<div class="form-group">
 								<label for="inputBranchDescription">Description</label>
-								<input name="newbranchname" type="text" class="form-control" id="inputBranchDescription" aria-describedby="branchDescriptionHelp" required>
+								<input name="newbranchdescription" type="text" class="form-control" id="inputBranchDescription" aria-describedby="branchDescriptionHelp" required>
 								<small id="branchDescriptionHelp" class="form-text text-muted">Input description of the branch</small>
+							</div>
+							<div class="form-group">
+						  		<label for="inputBranchImage">Image</label>
+						  		<input name="newbranchimage" type="file" class="form-control-file" id="inputBranchImage">
 							</div>
 							<button type="submit" name="button_createbranch" class="btn btn-primary">Create</button>
 						</form>

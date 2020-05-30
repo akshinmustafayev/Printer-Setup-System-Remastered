@@ -14,6 +14,8 @@ public class Printer
 	private String serversharename;
 	private String location;
 	
+	private String branchname;
+	
 	public Printer() { }
 	
 	public Integer GetId() {
@@ -108,5 +110,14 @@ public class Printer
 	
 	public void SetLocation(String location) {
 		this.location = location;
+	}
+	
+
+	public String GetBranchName() {
+		return branchname;
+	}
+	
+	public void SetBranchName(String branchname) {
+		this.branchname = branchname;
 	}
 }
