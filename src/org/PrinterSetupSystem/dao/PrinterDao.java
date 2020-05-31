@@ -221,6 +221,10 @@ public class PrinterDao implements IPrinterShow
 		{
 			vendorlogo = "<img src=\"img/vendors/canon.png\" style=\"margin-right:5px;height:18px;\">";
 		}
+		else if(_printer.GetVendor().toLowerCase().contains("undefined"))
+		{
+			vendorlogo = "<img src=\"img/vendors/undefined.png\" style=\"margin-right:5px;height:18px;\">";
+		}
 		
 		return vendorlogo;
 	}

@@ -59,21 +59,27 @@ public class SearchPrinterByName extends HttpServlet
                 	printer.SetName(rs.getString("name"));
                 	printer.SetDescription(rs.getString("description"));
                 	
-                	if(rs.getString("image") != null || rs.getString("image") != "")
+                	if(rs.getBlob("image") != null)
                 	{
-                		Blob blob = rs.getBlob("image");
-                		InputStream inputStream = blob.getBinaryStream();
-                		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                		byte[] buffer = new byte[4096];
-                		int bytesRead = -1;
-                		while ((bytesRead = inputStream.read(buffer)) != -1) {
-                		    outputStream.write(buffer, 0, bytesRead);
-                		}
-                		byte[] imageBytes = outputStream.toByteArray();
-                		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-                		inputStream.close();
-                		outputStream.close();
-                		printer.SetImage(base64Image);
+                		byte[] imgcheck = rs.getBytes("image");
+                    	if(imgcheck.length != 0)
+                    	{
+    	            		Blob blob = rs.getBlob("image");
+    	            		InputStream inputStream = blob.getBinaryStream();
+    	            		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    	            		byte[] buffer = new byte[4096];
+    	            		int bytesRead = -1;
+    	            		while ((bytesRead = inputStream.read(buffer)) != -1) {
+    	            		    outputStream.write(buffer, 0, bytesRead);
+    	            		}
+    	            		byte[] imageBytes = outputStream.toByteArray();
+    	            		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+    	            		inputStream.close();
+    	            		outputStream.close();
+    	            		printer.SetImage(base64Image);
+                    	}
+                    	else
+                    		printer.SetImage("img/no-image.png");
                 	}
                 	else
                 		printer.SetImage("img/no-image.png");

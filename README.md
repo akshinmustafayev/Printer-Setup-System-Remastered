@@ -25,6 +25,7 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 - [x] Create basic Admin Home page
 - [x] Create basic Admin Branches page
 - [x] Create basic Admin Printers page
+- [x] Create basic Admin Create Printer page
 - [x] Create basic Admin Administrators page
 - [x] Create basic Admin Printer types
 - [x] Create basic Admin Manual Page 

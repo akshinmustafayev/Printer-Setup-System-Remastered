@@ -10,6 +10,7 @@ public class Printer
 	private String ip;
 	private String vendor;
 	private String createddate;
+	private Integer printertypeid;
 	private Integer views;
 	private String serversharename;
 	private String location;
@@ -80,6 +81,14 @@ public class Printer
 	
 	public void SetCreatedDate(String createddate) {
 		this.createddate = createddate;
+	}
+	
+	public Integer GetPrinterTypeId() {
+		return printertypeid;
+	}
+	
+	public void SetPrinterTypeId(Integer printertypeid) {
+		this.printertypeid = printertypeid;
 	}
 	
 	public Integer GetViews() {
