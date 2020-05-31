@@ -125,7 +125,7 @@
 							</tbody>
 						</table>
 						<h6 class="pt-3 pb-2">Printer Installation</h6>
-						<a class="btn btn-primary" href="">Install</a>
+						<a class="btn btn-primary" href="${context}/download?printerid=${printer.GetId()}" target="_blank">Install</a>
 				    </div>
 				</div>
 			</div>

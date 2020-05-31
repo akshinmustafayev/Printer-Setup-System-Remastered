@@ -93,17 +93,17 @@
 					<div class="card card-body bg-light">
 					    <form method="post" action="adminadmins">
 							<div class="form-group">
-								<label for="inputLogin">Login</label>
+								<label for="inputLogin" class="required">Login</label>
 								<input name="newadminlogin" type="text" class="form-control" id="inputLogin" aria-describedby="loginHelp" required>
 								<small id="loginHelp" class="form-text text-muted">Input full name of the administrator</small>
 							</div>
 							<div class="form-group">
-								<label for="inputFullName">Full name</label>
+								<label for="inputFullName" class="required">Full name</label>
 								<input name="newadminfullname" type="text" class="form-control" id="inputFullName" aria-describedby="fullNameHelp" required>
 								<small id="fullNameHelp" class="form-text text-muted">Input login here</small>
 							</div>
 							<div class="form-group">
-								<label for="inputPassword">Password</label>
+								<label for="inputPassword" class="required">Password</label>
 								<input name="newadminpassword" type="text" class="form-control" id="inputPassword" aria-describedby="passwordHelp" required>
 								<small id="passwordHelp" class="form-text text-muted">Enter password here. Make sure that password is strong</small>
 							</div>

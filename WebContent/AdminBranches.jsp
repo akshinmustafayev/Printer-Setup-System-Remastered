@@ -93,17 +93,17 @@
 					<div class="card card-body bg-light">
 					    <form method="post" action="adminbranches" enctype="multipart/form-data">
 							<div class="form-group">
-								<label for="inputBranchName">Name</label>
+								<label for="inputBranchName" class="required">Name</label>
 								<input name="newbranchname" type="text" class="form-control" id="inputBranchName" aria-describedby="branchNameHelp" required>
 								<small id="branchNameHelp" class="form-text text-muted">Input full name of the branch</small>
 							</div>
 							<div class="form-group">
-								<label for="inputBranchDescription">Description</label>
+								<label for="inputBranchDescription" class="required">Description</label>
 								<input name="newbranchdescription" type="text" class="form-control" id="inputBranchDescription" aria-describedby="branchDescriptionHelp" required>
 								<small id="branchDescriptionHelp" class="form-text text-muted">Input description of the branch</small>
 							</div>
 							<div class="form-group">
-						  		<label for="inputBranchImage">Image</label>
+						  		<label for="inputBranchImage" class="required">Image</label>
 						  		<input name="newbranchimage" type="file" class="form-control-file" id="inputBranchImage">
 							</div>
 							<button type="submit" name="button_createbranch" class="btn btn-primary">Create</button>

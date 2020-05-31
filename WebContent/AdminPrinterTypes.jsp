@@ -91,7 +91,7 @@
 					<div class="card card-body bg-light">
 					    <form method="post" action="adminprintertypes">
 							<div class="form-group">
-								<label for="inputPrinterTypeName">Printer type</label>
+								<label for="inputPrinterTypeName" class="required">Printer type</label>
 								<input name="newprintertype" type="text" class="form-control" id="inputPrinterTypeName" aria-describedby="printerTypeNameHelp" required>
 								<small id="printerTypeNameHelp" class="form-text text-muted">Enter printer type here</small>
 							</div>

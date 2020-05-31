@@ -58,12 +58,20 @@
 	<servlet-class>org.PrinterSetupSystem.controller.LoginController</servlet-class>
   </servlet>
   <servlet>
+	<servlet-name>DownloadScript</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.DownloadScriptController</servlet-class>
+  </servlet>
+  <servlet>
 	<servlet-name>AdminHome</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.AdminHomeController</servlet-class>
   </servlet>
   <servlet>
 	<servlet-name>AdminPrinters</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.AdminPrintersController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>AdminPrintersCreate</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminPrintersCreateController</servlet-class>
   </servlet>
   <servlet>
 	<servlet-name>AdminBranches</servlet-name>
@@ -114,6 +122,10 @@
 	<url-pattern>/login</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+	<servlet-name>DownloadScript</servlet-name>
+	<url-pattern>/download</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
 	<servlet-name>AdminHome</servlet-name>
 	<url-pattern>/adminhome</url-pattern>
 	<url-pattern>/admin</url-pattern>
@@ -121,6 +133,10 @@
   <servlet-mapping>
 	<servlet-name>AdminPrinters</servlet-name>
 	<url-pattern>/adminprinters</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>AdminPrintersCreate</servlet-name>
+	<url-pattern>/adminprinterscreate</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
 	<servlet-name>AdminBranches</servlet-name>

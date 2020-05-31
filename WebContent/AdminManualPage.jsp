@@ -85,18 +85,18 @@
 					<img class="size-64 mr-2" src="img/admin/help.png" alt="Manual page settings"/>
 					<h1 class="display-5 mr-4 mt-2 mb-4">Manual Page</h1>
 				</div>
+				<c:if test = "${ManualPageSaved == true}">
+					<div class="alert alert-success mt-3" role="alert">Manual saved!</div>
+				</c:if>
+				<c:if test = "${ManualPageSaveError == true}">
+					<div class="alert alert-danger mt-3" role="alert">Manual not saved. Error!</div>
+				</c:if>
 				<p><em>* Make changes to Manual page and press Save button.</em></p>
 				<div class="mb-3">
 					<form method="post" action="adminmanualpage">
 						<textarea name="adminmanual" id="adminmanualInput" rows="15" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">${helpmanual}</textarea>
 						<button name="savemanual_button" type="submit" class="btn btn-outline-primary mt-3">Save</button>
 					</form>
-					<c:if test = "${ManualPageSaved == true}">
-						<div class="alert alert-success mt-3" role="alert">Manual saved!</div>
-					</c:if>
-					<c:if test = "${ManualPageSaveError == true}">
-						<div class="alert alert-danger mt-3" role="alert">Manual not saved. Error!</div>
-					</c:if>
 				</div>
 			</div>
 		</div>
