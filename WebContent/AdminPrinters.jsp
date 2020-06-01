@@ -11,6 +11,8 @@
 <c:set var="ErrorPrinterDelete" value='${requestScope["ErrorPrinterDelete"]}'/>
 <c:set var="NewPrinterCreateSuccess" value='${requestScope["NewPrinterCreateSuccess"]}'/>
 <c:set var="ErrorNewPrinterCreate" value='${requestScope["ErrorNewPrinterCreate"]}'/>
+<c:set var="ErrorPrinterNotNumber" value='${requestScope["ErrorPrinterNotNumber"]}'/>
+<c:set var="ErrorPrinterNotFound" value='${requestScope["ErrorPrinterNotFound"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -103,6 +105,12 @@
 				<c:if test = "${ErrorNewPrinterCreate == true}">
 					<div class="alert alert-danger mt-3 mb-3" role="alert">Printer creation error!</div>
 				</c:if>
+				<c:if test = "${ErrorPrinterNotNumber == true}">
+					<div class="alert alert-danger mt-3 mb-3" role="alert">Printer ID is not number!</div>
+				</c:if>
+				<c:if test = "${ErrorPrinterNotFound == true}">
+					<div class="alert alert-danger mt-3 mb-3" role="alert">Printer not found!</div>
+				</c:if>
 				<table class="table">
 					<thead>
 						<tr class="d-flex">
@@ -125,10 +133,9 @@
 											</form>
 										</td>
 										<td class="col-1">
-											<form method="post" action="adminprinters">
+											<a href="${context}/adminprintersedit?printerid=${printer.GetId()}">
 												<button type="submit" name="button_editprinter" class="btn btn-link m-0 p-0" title="Edit printer"><span class="oi oi-wrench"></span></button>
-												<input class="hidden" name="editprinterid" value="${printer.GetId()}">
-											</form>
+											</a>
 										</td>
 										<td class="col-4 table-overflow">${printer.GetName()}</td>
 										<td class="col-3 table-overflow">${printer.GetBranchName()}</td>
