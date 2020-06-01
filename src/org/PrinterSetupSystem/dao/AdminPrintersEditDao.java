@@ -1,10 +1,13 @@
 package org.PrinterSetupSystem.dao;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Base64;
 
 import javax.servlet.http.Part;
 
@@ -14,7 +17,7 @@ import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.TimeUtil;
 
-public class AdminPrintersCreateDao 
+public class AdminPrintersEditDao 
 {
 	public static ArrayList<Branch> GetBranches()
     {
@@ -80,7 +83,74 @@ public class AdminPrintersCreateDao
 		return printerstypes;
     }
 	
-	public static Boolean CreatePrinter(Printer printer, Part newprinterimage)
+	public static Printer GetPrinter(Integer printerid)
+    {
+		Printer printer = null;
+		
+		try
+        {
+        	Connection conn = ConnectionUtils.getConnection();
+            PreparedStatement pstmt = null;
+            
+            pstmt = conn.prepareStatement("select * from printers where id=?");
+            pstmt.setInt(1, printerid);
+            ResultSet rs = pstmt.executeQuery();
+            while(rs.next())
+            {
+            	printer = new Printer();
+            	printer.SetId(rs.getInt("id"));
+            	printer.SetName(rs.getString("name"));
+            	printer.SetDescription(rs.getString("description"));
+            	if(rs.getBlob("image") != null)
+            	{
+            		byte[] imgcheck = rs.getBytes("image");
+                	if(imgcheck.length != 0)
+                	{
+	            		Blob blob = rs.getBlob("image");
+	            		InputStream inputStream = blob.getBinaryStream();
+	            		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+	            		byte[] buffer = new byte[4096];
+	            		int bytesRead = -1;
+	            		while ((bytesRead = inputStream.read(buffer)) != -1) {
+	            		    outputStream.write(buffer, 0, bytesRead);
+	            		}
+	            		byte[] imageBytes = outputStream.toByteArray();
+	            		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+	            		inputStream.close();
+	            		outputStream.close();
+	            		printer.SetImage(base64Image);
+                	}
+                	else
+                		printer.SetImage("img/no-image.png");
+            	}
+            	else
+            		printer.SetImage("img/no-image.png");
+            	
+            	printer.SetBranchId(rs.getInt("branchid"));
+            	printer.SetIp(rs.getString("ip"));
+            	printer.SetVendor(rs.getString("vendor"));
+            	printer.SetCreatedDate(rs.getString("createddate"));
+            	printer.SetViews(rs.getInt("views"));
+            	printer.SetPrinterTypeId(rs.getInt("printertypeid"));
+            	printer.SetServerShareName(rs.getString("serversharename"));
+            	printer.SetLocation(rs.getString("location"));
+            	
+            }
+            
+            rs.close();
+            pstmt.close();
+            conn.close();
+        }
+		catch(Exception e)
+        {
+			printer = null;
+            e.printStackTrace();
+        }
+		
+		return printer;
+    }
+	
+	public static Boolean SavePrinter(Printer printer, Part newprinterimage)
     {
 		Boolean result = true;
 		String createddate = TimeUtil.GetTimeNow();

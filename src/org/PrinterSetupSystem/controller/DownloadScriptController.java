@@ -46,17 +46,26 @@ public class DownloadScriptController extends HttpServlet
 	    		scriptextension = DownloadScriptDao.GetInstallScriptExtension();
 	    		scriptname = printer.GetName().trim();
 	    		
+	    		script = script.replace("%PRINTER_NAME%", printer.GetName());
+	    		script = script.replace("%PRINTER_DESCRIPTION%", printer.GetDescription());
+	    		script = script.replace("%PRINTER_SHARE_NAME%", printer.GetServerShareName());
+	    		script = script.replace("%PRINTER_ID%", printer.GetId().toString());
+	    		script = script.replace("%PRINTER_BRANCH_ID%", printer.GetBranchId().toString());
+	    		script = script.replace("%PRINTER_IP%", printer.GetIp());
+	    		script = script.replace("%PRINTER_VENDOR%", printer.GetVendor());
+	    		script = script.replace("%PRINTER_TYPE%", printer.GetPrinterTypeId().toString());
+	    		
 	    		response.setContentType("application/octet-stream");
 	    		response.setHeader("Content-Disposition", "attachment;filename=" + scriptname + "." + scriptextension);
 	    		
 	    		StringBuffer sb = new StringBuffer(script);
 	    		InputStream in = new ByteArrayInputStream(sb.toString().getBytes("UTF-8"));
 	    		ServletOutputStream out = response.getOutputStream();
-	
-	    		byte[] outputByte = new byte[4096];
-	    		while(in.read(outputByte, 0, 4096) != -1)
+	    		
+	    		byte[] outputByte = new byte[2];
+	    		while(in.read(outputByte, 0, 2) != -1)
 	    		{
-	    			out.write(outputByte, 0, 4096);
+	    			out.write(outputByte, 0, 2);
 	    		}
 	    		in.close();
 	    		out.flush();
