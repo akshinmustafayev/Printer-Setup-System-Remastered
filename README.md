@@ -36,9 +36,6 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 - [x] Refactor code
 - [x] Implement additional features
 
-## Known bugs:
-- [ ] Send printer link via Email not working
-
 ## Features for future implementation:
 - [ ] List of paper types which printer can print
 - [ ] Create basic Admin Printer paper types page
