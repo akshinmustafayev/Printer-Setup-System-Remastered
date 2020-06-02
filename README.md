@@ -51,3 +51,27 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 - [ ] Refactor Printer.jsp page logic
 
 Images:
+
+1) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/1.PNG" alt="alt text" width="600" height="293">
+
+2) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/2.PNG" alt="alt text" width="600" height="293">
+
+3) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/3.PNG" alt="alt text" width="600" height="293">
+
+4) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/4.PNG" alt="alt text" width="600" height="293">
+
+5) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/5.PNG" alt="alt text" width="600" height="293">
+
+6) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/6.PNG" alt="alt text" width="600" height="293">
+
+7) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/7.PNG" alt="alt text" width="600" height="293">
+
+8) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/8.PNG" alt="alt text" width="600" height="293">
+
+9) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/9.PNG" alt="alt text" width="600" height="293">
+
+10) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/10.PNG" alt="alt text" width="600" height="293">
+
+11) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/11.PNG" alt="alt text" width="600" height="293">
+
+12) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/12.PNG" alt="alt text" width="600" height="293">
