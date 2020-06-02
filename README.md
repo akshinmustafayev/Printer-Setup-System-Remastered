@@ -56,7 +56,7 @@ Images:
 
 2) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/2.PNG" alt="alt text" width="600" height="293">
 
-3) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/3.PNG" alt="alt text" width="600" height="293">
+3) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/3.png" alt="alt text" width="600" height="293">
 
 4) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/4.PNG" alt="alt text" width="600" height="293">
 
