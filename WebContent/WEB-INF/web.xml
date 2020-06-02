@@ -82,6 +82,10 @@
 	<servlet-class>org.PrinterSetupSystem.controller.AdminBranchesController</servlet-class>
   </servlet>
   <servlet>
+	<servlet-name>AdminBranchesEdit</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminBranchesEditController</servlet-class>
+  </servlet>
+  <servlet>
 	<servlet-name>AdminAdmins</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.AdminAdminsController</servlet-class>
   </servlet>
@@ -149,6 +153,10 @@
   <servlet-mapping>
 	<servlet-name>AdminBranches</servlet-name>
 	<url-pattern>/adminbranches</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>AdminBranchesEdit</servlet-name>
+	<url-pattern>/adminbranchesedit</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
 	<servlet-name>AdminAdmins</servlet-name>

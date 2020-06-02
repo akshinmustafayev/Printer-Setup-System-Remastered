@@ -134,7 +134,7 @@
 										</td>
 										<td class="col-1">
 											<a href="${context}/adminprintersedit?printerid=${printer.GetId()}">
-												<button type="submit" name="button_editprinter" class="btn btn-link m-0 p-0" title="Edit printer"><span class="oi oi-wrench"></span></button>
+												<button class="btn btn-link m-0 p-0" title="Edit printer"><span class="oi oi-wrench"></span></button>
 											</a>
 										</td>
 										<td class="col-4 table-overflow">${printer.GetName()}</td>

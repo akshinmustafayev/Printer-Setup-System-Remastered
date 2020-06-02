@@ -88,11 +88,11 @@
 					<div class="form-group">
 						<label for="inputPrinterName" class="required">Name</label>
 						<c:choose>
-							<c:when test = "${newprintername == null}">
+							<c:when test = "${printer.GetName() == null}">
 								<input name="newprintername" type="text" class="form-control" id="inputPrinterName" aria-describedby="printerNameHelp" required>
 							</c:when>
 							<c:otherwise>
-								<input name="newprintername" type="text" class="form-control" id="inputPrinterName" aria-describedby="printerNameHelp" value="${newprintername}" required>
+								<input name="newprintername" type="text" class="form-control" id="inputPrinterName" aria-describedby="printerNameHelp" value="${printer.GetName()}" required>
 							</c:otherwise>
 						</c:choose>
 						<small id="printerNameHelp" class="form-text text-muted">Input full name of the printer</small>
@@ -100,11 +100,11 @@
 					<div class="form-group">
 						<label for="inputPrinterDescription">Description</label>
 						<c:choose>
-							<c:when test = "${newprinterdescription == null}">
+							<c:when test = "${printer.GetDescription() == null}">
 								<textarea name="newprinterdescription" class="form-control" id="inputPrinterDescription" aria-describedby="printerDescriptionHelp" rows="4"></textarea>
 							</c:when>
 							<c:otherwise>
-								<textarea name="newprinterdescription" class="form-control" id="inputPrinterDescription" aria-describedby="printerDescriptionHelp" rows="4">${newprinterdescription}</textarea>
+								<textarea name="newprinterdescription" class="form-control" id="inputPrinterDescription" aria-describedby="printerDescriptionHelp" rows="4">${printer.GetDescription()}</textarea>
 							</c:otherwise>
 						</c:choose>
 						<small id="printerDescriptionHelp" class="form-text text-muted">Input description of the printer</small>
@@ -127,11 +127,11 @@
 					<div class="form-group">
 						<label for="inputPrinterIP">IP address</label>
 						<c:choose>
-							<c:when test = "${newprinterip == null}">
+							<c:when test = "${printer.GetIp() == null}">
 								<input name="newprinterip" type="text" class="form-control" id="inputPrinterIP" aria-describedby="printerIPHelp">
 							</c:when>
 							<c:otherwise>
-								<input name="newprinterip" type="text" class="form-control" id="inputPrinterIP" aria-describedby="printerIPHelp" value="${newprinterip}">
+								<input name="newprinterip" type="text" class="form-control" id="inputPrinterIP" aria-describedby="printerIPHelp" value="${printer.GetIp()}">
 							</c:otherwise>
 						</c:choose>
 						<small id="printerIPHelp" class="form-text text-muted">Input IP address of the printer</small>
@@ -139,11 +139,11 @@
 					<div class="form-group">
 						<label for="inputPrinterVendor">Vendor</label>
 						<c:choose>
-							<c:when test = "${newprinterip == null}">
+							<c:when test = "${printer.GetVendor() == null}">
 								<input name="newprintervendor" type="text" class="form-control" id="inputPrinterVendor" aria-describedby="printerVendorHelp">
 							</c:when>
 							<c:otherwise>
-								<input name="newprintervendor" type="text" class="form-control" id="inputPrinterVendor" aria-describedby="printerVendorHelp" value="${newprintervendor}">
+								<input name="newprintervendor" type="text" class="form-control" id="inputPrinterVendor" aria-describedby="printerVendorHelp" value="${printer.GetVendor()}">
 							</c:otherwise>
 						</c:choose>
 						<small id="printerVendorHelp" class="form-text text-muted">Input vendor of the printer. For example: HP, Xerox, Canon and etc.</small>
@@ -166,11 +166,11 @@
 					<div class="form-group">
 						<label for="inputPrinterServerSharedName">Server shared name</label>
 						<c:choose>
-							<c:when test = "${newprinterip == null}">
+							<c:when test = "${printer.GetServerShareName() == null}">
 								<input name="newprintersharename" type="text" class="form-control" id="inputPrinterServerSharedName" aria-describedby="printerServerShareNameHelp">
 							</c:when>
 							<c:otherwise>
-								<input name="newprintersharename" type="text" class="form-control" id="inputPrinterServerSharedName" aria-describedby="printerServerShareNameHelp" value="${newprintersharename}">
+								<input name="newprintersharename" type="text" class="form-control" id="inputPrinterServerSharedName" aria-describedby="printerServerShareNameHelp" value="${printer.GetServerShareName()}">
 							</c:otherwise>
 						</c:choose>
 						<small id="printerServerShareNameHelp" class="form-text text-muted">Input server shared name of the printer. For example: \\server01\Printer1</small>
@@ -178,11 +178,11 @@
 					<div class="form-group">
 						<label for="inputPrinterLocation">Location</label>
 						<c:choose>
-							<c:when test = "${newprinterip == null}">
+							<c:when test = "${printer.GetLocation() == null}">
 								<input name="newprinterlocation" type="text" class="form-control" id="inputPrinterLocation" aria-describedby="printerLocationHelp">
 							</c:when>
 							<c:otherwise>
-								<input name="newprinterlocation" type="text" class="form-control" id="inputPrinterLocation" aria-describedby="printerLocationHelp" value="${newprinterlocation}">
+								<input name="newprinterlocation" type="text" class="form-control" id="inputPrinterLocation" aria-describedby="printerLocationHelp" value="${printer.GetLocation()}">
 							</c:otherwise>
 						</c:choose>
 						<small id="printerLocationHelp" class="form-text text-muted">Input location of the printer</small>

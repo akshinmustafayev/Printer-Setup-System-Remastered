@@ -8,10 +8,12 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="ErrorBranchIDNotNumber" value='${requestScope["ErrorBranchIDNotNumber"]}'/>
 <c:set var="ErrorMainBranchCanNotBeDeleted" value='${requestScope["ErrorMainBranchCanNotBeDeleted"]}'/>
+<c:set var="ErrorMainBranchCanNotEdited" value='${requestScope["ErrorMainBranchCanNotEdited"]}'/>
 <c:set var="BranchDeleted" value='${requestScope["BranchDeleted"]}'/>
 <c:set var="ErrorBranchDelete" value='${requestScope["ErrorBranchDelete"]}'/>
 <c:set var="NewBranchCreateSuccess" value='${requestScope["NewBranchCreateSuccess"]}'/>
 <c:set var="ErrorNewBranchCreate" value='${requestScope["ErrorNewBranchCreate"]}'/>
+<c:set var="ErrorBranchNotFound" value='${requestScope["ErrorBranchNotFound"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -128,6 +130,12 @@
 				<c:if test = "${ErrorNewBranchCreate == true}">
 					<div class="alert alert-danger mt-3 mb-3" role="alert">Branch creation error!</div>
 				</c:if>
+				<c:if test = "${ErrorBranchNotFound == true}">
+					<div class="alert alert-danger mt-3 mb-3" role="alert">Branch not found!</div>
+				</c:if>
+				<c:if test = "${ErrorMainBranchCanNotEdited == true}">
+					<div class="alert alert-danger mt-3 mb-3" role="alert">You can not edit None type branch!</div>
+				</c:if>
 				<table class="table">
 					<thead>
 						<tr class="d-flex">
@@ -141,22 +149,23 @@
 						<c:choose>
 							<c:when test = "${branches.size() > 0}">
 								<c:forEach begin="0" items="${branches}" var="branch">
-									<tr class="d-flex">
-										<td class="col-1" scope="row">
-											<form method="post" action="adminbranches">
-												<button type="submit" name="button_deletebranch" class="btn btn-link m-0 p-0" title="Delete branch"><span class="oi oi-x"></span></button>
-												<input class="hidden" name="deletebranchid" value="${branch.GetId()}">
-											</form>
-										</td>
-										<td class="col-1">
-											<form method="post" action="adminbranches">
-												<button type="submit" name="button_editadmin" class="btn btn-link m-0 p-0" title="Edit branch"><span class="oi oi-wrench"></span></button>
-												<input class="hidden" name="editbranchid" value="${branch.GetId()}">
-											</form>
-										</td>
-										<td class="col-5">${branch.GetName()}</td>
-										<td class="col-5 table-overflow">${branch.GetDescription()}</td>
-									</tr>
+									<c:if test = "${branch.GetId() != 1}">
+										<tr class="d-flex">
+											<td class="col-1" scope="row">
+												<form method="post" action="adminbranches">
+													<button type="submit" name="button_deletebranch" class="btn btn-link m-0 p-0" title="Delete branch"><span class="oi oi-x"></span></button>
+													<input class="hidden" name="deletebranchid" value="${branch.GetId()}">
+												</form>
+											</td>
+											<td class="col-1">
+												<a href="${context}/adminbranchesedit?branchid=${branch.GetId()}">
+													<button class="btn btn-link m-0 p-0" title="Edit branch"><span class="oi oi-wrench"></span></button>
+												</a>
+											</td>
+											<td class="col-5">${branch.GetName()}</td>
+											<td class="col-5 table-overflow">${branch.GetDescription()}</td>
+										</tr>
+									</c:if>
 								</c:forEach>
 							</c:when>
 							<c:otherwise>

@@ -7,6 +7,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="ErrorEditPrinterSave" value='${requestScope["ErrorEditPrinterSave"]}'/>
+<c:set var="PrinterSaved" value='${requestScope["PrinterSaved"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -67,7 +68,7 @@
 				<p class="mb-2"><em>Home</em></p>
 				<p class="mb-1"><img class="size-16" src="img/admin/home.png" alt="Home page"/><a class="ml-2 text-body" href="${context}/adminhome">Home page</a></p>
 				<p class="mb-2 pt-3"><em>Details</em></p>
-				<p class="mb-1"><img class="size-16" src="img/admin/printers.png" alt="Printers"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminprinters"><u>Printers</u></a> -><a class="ml-2 text-body font-weight-bold" href="${context}/adminprintersedit?printerid=${printer.GetId()}"><u>Edit Printer</u></a></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/printers.png" alt="Printers"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminprinters"><u>Printers</u></a> -><img class="size-16" src="img/admin/edit.png" alt="Printer Edit"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminprintersedit?printerid=${printer.GetId()}"><u>Edit Printer</u></a></p>
 				<p class="mb-1"><img class="size-16" src="img/admin/branches.png" alt="Branches"/><a class="ml-2 text-body" href="${context}/adminbranches">Branches</a></p>
 				<p><img class="size-16" src="img/admin/administrators.png" alt="Administrators"/><a class="ml-2 text-body" href="${context}/adminadmins">Administrators</a></p>
 				<p class="mb-1 pt-3"><em>Types</em></p>
@@ -83,6 +84,9 @@
 				</div>
 				<c:if test = "${ErrorEditPrinterSave == true}">
 					<div class="alert alert-danger mt-3 mb-3" role="alert">Printer save error!</div>
+				</c:if>
+				<c:if test = "${PrinterSaved == true}">
+					<div class="alert alert-success mt-3 mb-3" role="alert">Printer saved!</div>
 				</c:if>
 				<form class="mt-2" method="post" action="adminprintersedit" enctype="multipart/form-data">
 					<div class="form-group">
@@ -161,19 +165,23 @@
 						<small id="printerLocationHelp" class="form-text text-muted">Input location of the printer</small>
 					</div>
 					<div class="form-group">
-				  		<label for="inputBranchImage">Image</label>
+				  		<label for="inputPrinterImage">Image</label>
 				  		<input name="editprinterimage" type="file" class="form-control-file" id="inputPrinterImage">
-				  		<c:choose>
-							<c:when test = "${printer.GetImage() == \"img/no-image.png\"}">
-								<img class="rounded size-64 mt-2" src="img/no-image.png" alt="Printer Image">
-							</c:when>
-							<c:when test = "${printer.GetImage() == \"\"}">
-								<img class="rounded size-64 mt-2" src="img/no-image.png" alt="Printer Image">
-							</c:when>
-							<c:otherwise>
-								<img class="rounded size-64 mt-2" src="data:image/jpg;base64,${printer.GetImage()}" alt="Printer Image">
-							</c:otherwise>
-						</c:choose>
+					</div>
+					<c:choose>
+						<c:when test = "${printer.GetImage() == \"img/no-image.png\"}">
+							<img class="rounded size-64 mb-1" src="img/no-image.png" alt="Printer Image">
+						</c:when>
+						<c:when test = "${printer.GetImage() == \"\"}">
+							<img class="rounded size-64 mb-1" src="img/no-image.png" alt="Printer Image">
+						</c:when>
+						<c:otherwise>
+							<img class="rounded size-64 mb-1" src="data:image/jpg;base64,${printer.GetImage()}" alt="Printer Image">
+						</c:otherwise>
+					</c:choose>
+					<div class="form-group">
+						<label for="inputPrinterImageNull">Delete image</label>
+						<input name="editprinterimagenull" type="checkbox" class="form-check-input ml-2" id="inputPrinterImageNull">
 					</div>
 					<div class="form-group hidden">
 				  		<input name="editprinterid" type="text" class="form-control hidden" value="${printer.GetId()}">
