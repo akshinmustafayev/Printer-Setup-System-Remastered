@@ -67,7 +67,7 @@
 				<p class="mb-2"><em>Home</em></p>
 				<p class="mb-1"><img class="size-16" src="img/admin/home.png" alt="Home page"/><a class="ml-2 text-body" href="${context}/adminhome">Home page</a></p>
 				<p class="mb-2 pt-3"><em>Details</em></p>
-				<p class="mb-1"><img class="size-16" src="img/admin/printers.png" alt="Printers"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminprinters"><u>Printers</u></a> -><a class="ml-2 text-body font-weight-bold" href="${context}/adminprinterscreate"><u>Create Printer</u></a></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/printers.png" alt="Printers"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminprinters"><u>Printers</u></a> -><img class="size-16" src="img/admin/create.png" alt="Create Printer"/><a class="ml-2 text-body font-weight-bold" href="${context}/adminprinterscreate"><u>Create Printer</u></a></p>
 				<p class="mb-1"><img class="size-16" src="img/admin/branches.png" alt="Branches"/><a class="ml-2 text-body" href="${context}/adminbranches">Branches</a></p>
 				<p><img class="size-16" src="img/admin/administrators.png" alt="Administrators"/><a class="ml-2 text-body" href="${context}/adminadmins">Administrators</a></p>
 				<p class="mb-1 pt-3"><em>Types</em></p>

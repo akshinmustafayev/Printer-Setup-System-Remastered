@@ -7,9 +7,19 @@
   <session-config>
     <session-timeout>21600</session-timeout>
   </session-config>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/error404</location>
+  </error-page>
   
   <!-- ****************************************************************** -->
   <!-- SERVLET CONFIGS -->
+  <!-- ERRORs -->
+  <servlet>
+	<servlet-name>Error404</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.Error404Controller</servlet-class>
+  </servlet>
+  
   <!-- APIs -->
   <servlet>
 	<servlet-name>ApiSearchPrinterByName</servlet-name>
@@ -90,6 +100,10 @@
 	<servlet-class>org.PrinterSetupSystem.controller.AdminAdminsController</servlet-class>
   </servlet>
   <servlet>
+	<servlet-name>AdminAdminsEdit</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.AdminAdminsEditController</servlet-class>
+  </servlet>
+  <servlet>
 	<servlet-name>AdminPrinterTypes</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.AdminPrinterTypesController</servlet-class>
   </servlet>
@@ -100,6 +114,10 @@
   <servlet>
 	<servlet-name>AdminInstallScript</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.AdminInstallScriptController</servlet-class>
+  </servlet>
+  <servlet>
+	<servlet-name>UserSettings</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.UserSettingsController</servlet-class>
   </servlet>
   
   <!-- ****************************************************************** -->
@@ -163,6 +181,10 @@
 	<url-pattern>/adminadmins</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+	<servlet-name>AdminAdminsEdit</servlet-name>
+	<url-pattern>/adminadminsedit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
 	<servlet-name>AdminPrinterTypes</servlet-name>
 	<url-pattern>/adminprintertypes</url-pattern>
   </servlet-mapping>
@@ -173,6 +195,10 @@
   <servlet-mapping>
 	<servlet-name>AdminInstallScript</servlet-name>
 	<url-pattern>/admininstallscript</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>UserSettings</servlet-name>
+	<url-pattern>/usersettings</url-pattern>
   </servlet-mapping>
   
   <!-- APIs mapping -->
@@ -195,5 +221,11 @@
   <servlet-mapping>
 	<servlet-name>ApiGetAllBranches</servlet-name>
 	<url-pattern>/api/GetAllBranches</url-pattern>
+  </servlet-mapping>
+  
+  <!-- ERRORS mapping -->
+  <servlet-mapping>
+	<servlet-name>Error404</servlet-name>
+	<url-pattern>/error404</url-pattern>
   </servlet-mapping>
 </web-app>

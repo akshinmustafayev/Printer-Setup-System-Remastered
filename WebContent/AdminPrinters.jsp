@@ -29,7 +29,7 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
-		<title>PrintDesk - Admin Printers configuration Page</title>
+		<title>PrintDesk - Admin Printers configuration</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-expand navbar-light bg-light">

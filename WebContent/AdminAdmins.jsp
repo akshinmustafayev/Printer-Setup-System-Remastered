@@ -8,6 +8,7 @@
 <c:set var="context" value="${pageContext.request.contextPath}" />
 <c:set var="ErrorAdminIDNotNumber" value='${requestScope["ErrorAdminIDNotNumber"]}'/>
 <c:set var="ErrorMainAdminCanNotBeDeleted" value='${requestScope["ErrorMainAdminCanNotBeDeleted"]}'/>
+<c:set var="ErrorMainAdminCanNotBeEdited" value='${requestScope["ErrorMainAdminCanNotBeEdited"]}'/>
 <c:set var="AdminDeleted" value='${requestScope["AdminDeleted"]}'/>
 <c:set var="ErrorAdminDelete" value='${requestScope["ErrorAdminDelete"]}'/>
 <c:set var="NewAdminCreateSuccess" value='${requestScope["NewAdminCreateSuccess"]}'/>
@@ -150,10 +151,9 @@
 											</form>
 										</td>
 										<td class="col-1">
-											<form method="post" action="adminadmins">
-												<button type="submit" name="button_editadmin" class="btn btn-link m-0 p-0" title="Edit administrator"><span class="oi oi-wrench"></span></button>
-												<input class="hidden" name="editadminid" value="${administrator.GetId()}">
-											</form>
+											<a href="${context}/adminadminsedit?adminid=${administrator.GetId()}">
+												<button class="btn btn-link m-0 p-0" title="Edit administrator"><span class="oi oi-wrench"></span></button>
+											</a>
 										</td>
 										<td class="col-5">${administrator.GetLogin()}</td>
 										<td class="col-5">${administrator.GetFullName()}</td>
