@@ -7,9 +7,6 @@ import java.sql.ResultSet;
 import java.util.Base64;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -18,6 +15,7 @@ import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.interfaces.IPrinterShow;
+import org.PrinterSetupSystem.misc.EncodingUtil;
 
 public class PrinterDao implements IPrinterShow
 {
@@ -232,18 +230,14 @@ public class PrinterDao implements IPrinterShow
 	public static String GetPrinterEmailLink(Printer _printer, HttpServletRequest request)
 	{
 		String emaillink = "";
-		String mailto = "mail@organization.local";
+		String mailto = "mail";
 		String printername = _printer.GetName().toString();
 		String printerlink = request.getRequestURL().toString();
 		
-		emaillink = "mailto:" + mailto + "?subject=" + printername + "&body=Link%20for%20the%20printer%20is%3A%0D%0A" + printerlink;
+		printername = EncodingUtil.EncodeURIComponent(printername);
+		printerlink = EncodingUtil.EncodeURIComponent(printerlink);
 		
-		try {
-			URLEncoder.encode(emaillink, StandardCharsets.UTF_8.toString());
-		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		emaillink = mailto + "?subject=" + printername + " - Printer Install Link&body=Link%20for%20the%20printer%20is%3A%0D%0A" + printerlink + "?id=" + _printer.GetId().toString();
 		
 		return emaillink;
 	}
