@@ -120,7 +120,7 @@
 								</tr>
 								<tr>
 									<td>Send printer link by email</td>
-									<td><em><a href="${printeremaillink}">Send email</a></em></td>
+									<td><em><a href="mailto:${printeremaillink}">Send email</a></em></td>
 								</tr>
 							</tbody>
 						</table>
