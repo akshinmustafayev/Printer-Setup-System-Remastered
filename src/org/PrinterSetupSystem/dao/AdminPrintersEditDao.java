@@ -15,7 +15,6 @@ import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
-import org.PrinterSetupSystem.misc.TimeUtil;
 
 public class AdminPrintersEditDao 
 {
@@ -150,30 +149,44 @@ public class AdminPrintersEditDao
 		return printer;
     }
 	
-	public static Boolean SavePrinter(Printer printer, Part newprinterimage)
+	public static Boolean SavePrinter(Printer printer, Part editprinterimage, String editprinterimagenull)
     {
 		Boolean result = true;
-		String createddate = TimeUtil.GetTimeNow();
 		
 		try
         {
         	Connection conn = ConnectionUtils.getConnection();
             PreparedStatement pstmt = null;
     		InputStream imagestream = null;
-    		if(newprinterimage != null)
-    			imagestream = newprinterimage.getInputStream();
+    		if(editprinterimage.getSize() > 0 || editprinterimagenull != null)
+    		{
+    			imagestream = editprinterimage.getInputStream();
+    			pstmt = conn.prepareStatement("update printers set name = ?, description = ?, image = ?, branchid = ?, ip = ?, vendor = ?, printertypeid = ?, serversharename = ?, location = ? where id=?");
+    			pstmt.setString(1, printer.GetName());
+                pstmt.setString(2, printer.GetDescription());
+                pstmt.setBlob(3, imagestream);
+                pstmt.setInt(4, printer.GetBranchId());
+                pstmt.setString(5, printer.GetIp());
+                pstmt.setString(6, printer.GetVendor());
+                pstmt.setInt(7, printer.GetPrinterTypeId());
+                pstmt.setString(8, printer.GetServerShareName());
+                pstmt.setString(9, printer.GetLocation());
+                pstmt.setInt(10, printer.GetId());
+    		}
+    		else
+    		{
+    			pstmt = conn.prepareStatement("update printers set name = ?, description = ?, branchid = ?, ip = ?, vendor = ?, printertypeid = ?, serversharename = ?, location = ? where id=?");
+    			pstmt.setString(1, printer.GetName());
+                pstmt.setString(2, printer.GetDescription());
+                pstmt.setInt(3, printer.GetBranchId());
+                pstmt.setString(4, printer.GetIp());
+                pstmt.setString(5, printer.GetVendor());
+                pstmt.setInt(6, printer.GetPrinterTypeId());
+                pstmt.setString(7, printer.GetServerShareName());
+                pstmt.setString(8, printer.GetLocation());
+                pstmt.setInt(9, printer.GetId());
+    		}
             
-            pstmt = conn.prepareStatement("insert into printers (name, description, image, branchid, ip, vendor, createddate, printertypeid, serversharename, location) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            pstmt.setString(1, printer.GetName());
-            pstmt.setString(2, printer.GetDescription());
-            pstmt.setBlob(3, imagestream);
-            pstmt.setInt(4, printer.GetBranchId());
-            pstmt.setString(5, printer.GetIp());
-            pstmt.setString(6, printer.GetVendor());
-            pstmt.setString(7, createddate);
-            pstmt.setInt(8, printer.GetPrinterTypeId());
-            pstmt.setString(9, printer.GetServerShareName());
-            pstmt.setString(10, printer.GetLocation());
             pstmt.executeUpdate();
 
             pstmt.close();

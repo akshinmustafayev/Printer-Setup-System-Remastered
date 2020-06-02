@@ -95,6 +95,7 @@ public class AdminPrintersCreateController extends HttpServlet
     		Boolean result = AdminPrintersCreateDao.CreatePrinter(printer, newprinterimage);
 	        if(result)
 	        {
+	        	request.setAttribute("NewPrinterCreateSuccess", true);
 	        	response.sendRedirect(request.getContextPath() + "/adminprinters");
 	        }
 	        else
@@ -103,12 +104,7 @@ public class AdminPrintersCreateController extends HttpServlet
 	        	ArrayList<PrinterType> printerstypes = AdminPrintersCreateDao.GetPrinterTypes();
 	        	request.setAttribute("branches", branches);
 	        	request.setAttribute("printerstypes", printerstypes);
-	        	request.setAttribute("newprintername", newprintername);
-	        	request.setAttribute("newprinterdescription", newprinterdescription);
-	        	request.setAttribute("newprinterip", newprinterip);
-	        	request.setAttribute("newprintervendor", newprintervendor);
-	        	request.setAttribute("newprintersharename", newprintersharename);
-	        	request.setAttribute("newprinterlocation", newprinterlocation);
+	        	request.setAttribute("printer", printer);
 	        	request.setAttribute("ErrorNewPrinterCreate", true);
 	        	
 	        	RequestDispatcher rd = request.getRequestDispatcher("/AdminPrintersCreate.jsp"); 

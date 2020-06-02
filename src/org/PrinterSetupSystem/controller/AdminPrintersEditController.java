@@ -60,6 +60,9 @@ public class AdminPrintersEditController extends HttpServlet
     	    	request.setAttribute("branches", branches);
     	    	request.setAttribute("printerstypes", printerstypes);
     	    	request.setAttribute("printer", printer);
+    	    	
+    	    	RequestDispatcher rd = request.getRequestDispatcher("/AdminPrintersEdit.jsp"); 
+    	        rd.include(request, response);
         	}
         	else
         	{
@@ -67,9 +70,11 @@ public class AdminPrintersEditController extends HttpServlet
             	request.getRequestDispatcher("/adminprinters").forward(request, response);
         	}
         }
-    	
-        RequestDispatcher rd = request.getRequestDispatcher("/AdminPrintersEdit.jsp"); 
-        rd.include(request, response);
+    	else
+    	{
+    		request.setAttribute("ErrorPrinterNotNumber", true); 
+        	request.getRequestDispatcher("/adminprinters").forward(request, response);
+    	}
     }
 	
     @Override
@@ -95,6 +100,7 @@ public class AdminPrintersEditController extends HttpServlet
     		String editprintervendor = "Undefined";
     		String editprintersharename = "None";
     		String editprinterlocation = "None";
+    		String editprinterimagenull = request.getParameter("editprinterimagenull");
     		Part editprinterimage = request.getPart("editprinterimage");
     		
     		if(request.getParameter("editprinterdescription") != null)
@@ -109,6 +115,7 @@ public class AdminPrintersEditController extends HttpServlet
     			editprinterlocation = request.getParameter("editprinterlocation");
     		
     		Printer printer = new Printer();
+    		printer.SetId(editprinterid);
     		printer.SetName(editprintername);
     		printer.SetBranchId(editprinterbranch);
     		printer.SetPrinterTypeId(editprintertype);
@@ -118,38 +125,38 @@ public class AdminPrintersEditController extends HttpServlet
     		printer.SetServerShareName(editprintersharename);
     		printer.SetLocation(editprinterlocation);
     		
-    		Boolean result = AdminPrintersEditDao.SavePrinter(printer, editprinterimage);
+    		Boolean result = AdminPrintersEditDao.SavePrinter(printer, editprinterimage, editprinterimagenull);
 	        if(result)
 	        {
+	        	request.setAttribute("PrinterSaved", true); 
 	        	response.sendRedirect(request.getContextPath() + "/adminprintersedit?printerid=" + editprinterid);
 	        }
 	        else
 	        {
-	        	ArrayList<Branch> branches = AdminPrintersEditDao.GetBranches();
-	        	ArrayList<PrinterType> printerstypes = AdminPrintersEditDao.GetPrinterTypes();
-	        	request.setAttribute("branches", branches);
-	        	request.setAttribute("printerstypes", printerstypes);
-	        	request.setAttribute("newprintername", editprintername);
-	        	request.setAttribute("newprinterdescription", editprinterdescription);
-	        	request.setAttribute("newprinterip", editprinterip);
-	        	request.setAttribute("newprintervendor", editprintervendor);
-	        	request.setAttribute("newprintersharename", editprintersharename);
-	        	request.setAttribute("newprinterlocation", editprinterlocation);
-	        	request.setAttribute("ErrorEditPrinterSave", true);
-	        	
-	        	RequestDispatcher rd = request.getRequestDispatcher("/AdminPrintersEdit.jsp"); 
-		        rd.include(request, response);
+	        	Printer _printer = AdminPrintersEditDao.GetPrinter(editprinterid);
+	        	if(_printer != null)
+	        	{
+	        		ArrayList<Branch> branches = AdminPrintersEditDao.GetBranches();
+	    	    	ArrayList<PrinterType> printerstypes = AdminPrintersEditDao.GetPrinterTypes();
+	    	    	request.setAttribute("branches", branches);
+	    	    	request.setAttribute("printerstypes", printerstypes);
+	    	    	request.setAttribute("printer", _printer);
+	    	    	request.setAttribute("ErrorEditPrinterSave", true); 
+	        	}
+	        	else
+	        	{
+	        		request.setAttribute("ErrorPrinterNotFound", true); 
+	            	request.getRequestDispatcher("/adminprinters").forward(request, response);
+	        	}
 	        }
+
+	    	RequestDispatcher rd = request.getRequestDispatcher("/AdminPrintersEdit.jsp"); 
+	        rd.include(request, response);
 		}
     	else
     	{
-    		ArrayList<Branch> branches = AdminPrintersCreateDao.GetBranches();
-        	ArrayList<PrinterType> printerstypes = AdminPrintersCreateDao.GetPrinterTypes();
-        	request.setAttribute("branches", branches);
-        	request.setAttribute("printerstypes", printerstypes);
-        	
-	        RequestDispatcher rd = request.getRequestDispatcher("/AdminPrintersEdit.jsp"); 
-	        rd.include(request, response);
+    		request.setAttribute("ErrorPrinterNotNumber", true); 
+        	request.getRequestDispatcher("/adminprinters").forward(request, response);
     	}
     }
 }
