@@ -29,11 +29,12 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 - [x] Create basic Admin Create Printer page
 - [x] Create basic Admin Edit Printer page
 - [x] Create basic Admin Administrators page
+- [x] Create basic Admin Edit Administrators page
 - [x] Create basic Admin Printer types
 - [x] Create basic Admin Manual Page 
 - [x] Create basic Install Script Page 
-- [ ] Refactor code
-- [ ] Implement additional features
+- [x] Refactor code
+- [x] Implement additional features
 
 ## Known bugs:
 - [ ] Send printer link via Email not working
