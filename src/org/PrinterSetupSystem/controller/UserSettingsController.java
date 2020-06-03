@@ -28,7 +28,6 @@ public class UserSettingsController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for User Settings Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -41,7 +40,6 @@ public class UserSettingsController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for User Settings Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	

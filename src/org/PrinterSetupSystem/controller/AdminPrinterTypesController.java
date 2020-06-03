@@ -29,7 +29,6 @@ public class AdminPrinterTypesController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Admin Printer Types Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -45,7 +44,6 @@ public class AdminPrinterTypesController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Admin Printer Types Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -78,7 +76,6 @@ public class AdminPrinterTypesController extends HttpServlet
 	        	}
         	}
         }
-    	
     	if(request.getParameter("button_createprintertype") != null && request.getParameter("newprintertype") != null)
         {
     		String newprintertype = request.getParameter("newprintertype");

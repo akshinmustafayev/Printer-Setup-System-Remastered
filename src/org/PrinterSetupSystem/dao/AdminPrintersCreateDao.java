@@ -93,7 +93,7 @@ public class AdminPrintersCreateDao
     		if(newprinterimage != null)
     			imagestream = newprinterimage.getInputStream();
             
-            pstmt = conn.prepareStatement("insert into printers (name, description, image, branchid, ip, vendor, createddate, printertypeid, serversharename, location) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            pstmt = conn.prepareStatement("insert into printers (name, description, image, branchid, ip, vendor, createddate, printertypeid, serversharename, location, customfield1) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             pstmt.setString(1, printer.GetName());
             pstmt.setString(2, printer.GetDescription());
             pstmt.setBlob(3, imagestream);
@@ -104,6 +104,7 @@ public class AdminPrintersCreateDao
             pstmt.setInt(8, printer.GetPrinterTypeId());
             pstmt.setString(9, printer.GetServerShareName());
             pstmt.setString(10, printer.GetLocation());
+            pstmt.setString(11, printer.GetCustomField1());
             pstmt.executeUpdate();
 
             pstmt.close();

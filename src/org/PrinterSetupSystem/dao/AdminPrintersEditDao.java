@@ -133,7 +133,7 @@ public class AdminPrintersEditDao
             	printer.SetPrinterTypeId(rs.getInt("printertypeid"));
             	printer.SetServerShareName(rs.getString("serversharename"));
             	printer.SetLocation(rs.getString("location"));
-            	
+            	printer.SetCustomField1(rs.getString("customfield1"));
             }
             
             rs.close();
@@ -161,7 +161,7 @@ public class AdminPrintersEditDao
     		if(editprinterimage.getSize() > 0 || editprinterimagenull != null)
     		{
     			imagestream = editprinterimage.getInputStream();
-    			pstmt = conn.prepareStatement("update printers set name = ?, description = ?, image = ?, branchid = ?, ip = ?, vendor = ?, printertypeid = ?, serversharename = ?, location = ? where id=?");
+    			pstmt = conn.prepareStatement("update printers set name = ?, description = ?, image = ?, branchid = ?, ip = ?, vendor = ?, printertypeid = ?, serversharename = ?, location = ?, customfield1 = ? where id=?");
     			pstmt.setString(1, printer.GetName());
                 pstmt.setString(2, printer.GetDescription());
                 pstmt.setBlob(3, imagestream);
@@ -171,11 +171,12 @@ public class AdminPrintersEditDao
                 pstmt.setInt(7, printer.GetPrinterTypeId());
                 pstmt.setString(8, printer.GetServerShareName());
                 pstmt.setString(9, printer.GetLocation());
-                pstmt.setInt(10, printer.GetId());
+                pstmt.setString(10, printer.GetCustomField1());
+                pstmt.setInt(11, printer.GetId());
     		}
     		else
     		{
-    			pstmt = conn.prepareStatement("update printers set name = ?, description = ?, branchid = ?, ip = ?, vendor = ?, printertypeid = ?, serversharename = ?, location = ? where id=?");
+    			pstmt = conn.prepareStatement("update printers set name = ?, description = ?, branchid = ?, ip = ?, vendor = ?, printertypeid = ?, serversharename = ?, location = ?, customfield1 = ? where id=?");
     			pstmt.setString(1, printer.GetName());
                 pstmt.setString(2, printer.GetDescription());
                 pstmt.setInt(3, printer.GetBranchId());
@@ -184,7 +185,8 @@ public class AdminPrintersEditDao
                 pstmt.setInt(6, printer.GetPrinterTypeId());
                 pstmt.setString(7, printer.GetServerShareName());
                 pstmt.setString(8, printer.GetLocation());
-                pstmt.setInt(9, printer.GetId());
+                pstmt.setString(9, printer.GetCustomField1());
+                pstmt.setInt(10, printer.GetId());
     		}
             
             pstmt.executeUpdate();

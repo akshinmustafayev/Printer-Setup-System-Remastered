@@ -26,7 +26,6 @@ public class Error404Controller extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Error404 Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	
         RequestDispatcher rd = request.getRequestDispatcher("/Error404.jsp"); 
@@ -38,7 +37,6 @@ public class Error404Controller extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Error404 Controller");
     	
     	RequestDispatcher rd = request.getRequestDispatcher("/Error404.jsp"); 
         rd.include(request, response);

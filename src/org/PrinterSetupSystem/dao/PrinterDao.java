@@ -10,7 +10,6 @@ import java.io.InputStream;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
@@ -21,7 +20,6 @@ public class PrinterDao implements IPrinterShow
 {
 	private Printer printer = null;
 	private PrinterType printertype = null;
-	private Branch printerbranch = null;
 	
 	@Override
 	public Printer GetPrinter(Integer printerid)
@@ -31,7 +29,7 @@ public class PrinterDao implements IPrinterShow
         	Connection conn = ConnectionUtils.getConnection();
             PreparedStatement pstmt = null;
             
-            pstmt = conn.prepareStatement("select printers.*, IFNULL(printerstype.type, \"Type not found\") as printertype, printerstype.createddate as printertypedate from printers left join printerstype on printers.printertypeid = printerstype.id where printers.id = ?"); 
+            pstmt = conn.prepareStatement("select printers.*, IFNULL(printerstype.type, \"Type not found\") as printertype, printerstype.createddate as printertypedate, IFNULL(branches.name, \"Branch not found\") as branchname from printers left join printerstype on printers.printertypeid = printerstype.id left join branches on printers.branchid = branches.id where printers.id = ?"); 
             pstmt.setInt(1, printerid);
             ResultSet rs = pstmt.executeQuery();
             
@@ -68,13 +66,11 @@ public class PrinterDao implements IPrinterShow
             		printer.SetImage("img/no-image.png");
             	
             	printer.SetBranchId(rs.getInt("branchid"));
+            	printer.SetBranchName(rs.getString("branchname"));
             	printer.SetIp(rs.getString("ip"));
             	printer.SetVendor(rs.getString("vendor"));
             	printer.SetCreatedDate(rs.getString("createddate"));
-            	
-            	_AddViewsCountToPrinter(printer);
             	printer.SetViews(rs.getInt("views"));
-            	
             	printer.SetServerShareName(rs.getString("serversharename"));
             	printer.SetLocation(rs.getString("location"));
             	
@@ -82,7 +78,7 @@ public class PrinterDao implements IPrinterShow
             	printertype.SetType(rs.getString("printertype"));
             	printertype.SetCreatedDate(rs.getString("printertypedate"));
             	
-            	printerbranch = _GetPrinterBranch();
+            	_AddViewsCountToPrinter(printer);
             } 
            
             pstmt.close();
@@ -107,77 +103,6 @@ public class PrinterDao implements IPrinterShow
 		}
 			 
 		return printertype;
-	}
-	
-	@Override
-	public Branch GetPrinterBranch()
-	{
-		return printerbranch;
-	}
-	
-	private Branch _GetPrinterBranch()
-	{
-		try
-        {
-        	Connection conn = ConnectionUtils.getConnection();
-            PreparedStatement pstmt = null;
-            
-            pstmt = conn.prepareStatement("select * from branches where id=?"); 
-            pstmt.setInt(1, printer.GetBranchId());
-            ResultSet rs = pstmt.executeQuery();
-            
-            while(rs.next())
-            {
-            	printerbranch = new Branch();
-            	printerbranch.SetId(rs.getInt("id"));
-    			printerbranch.SetName(rs.getString("name"));
-    			printerbranch.SetDescription(rs.getString("description"));
-    			if(rs.getBlob("image") != null)
-            	{
-            		byte[] imgcheck = rs.getBytes("image");
-                	if(imgcheck.length != 0)
-                	{
-	            		Blob blob = rs.getBlob("image");
-	            		InputStream inputStream = blob.getBinaryStream();
-	            		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-	            		byte[] buffer = new byte[4096];
-	            		int bytesRead = -1;
-	            		while ((bytesRead = inputStream.read(buffer)) != -1) {
-	            		    outputStream.write(buffer, 0, bytesRead);
-	            		}
-	            		byte[] imageBytes = outputStream.toByteArray();
-	            		String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-	            		inputStream.close();
-	            		outputStream.close();
-	            		printerbranch.SetImage(base64Image);
-                	}
-                	else
-                		printerbranch.SetImage("img/no-image.png");
-            	}
-            	else
-            		printerbranch.SetImage("img/no-image.png");
-    			printerbranch.SetCreatedDate(rs.getString("createddate"));
-            } 
-           
-            pstmt.close();
-            conn.close();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-		
-		if(printerbranch == null)
-		{
-			printerbranch = new Branch();
-			printerbranch.SetId(-1);
-			printerbranch.SetName("Null");
-			printerbranch.SetDescription("Null");
-			printerbranch.SetImage("");
-			printerbranch.SetCreatedDate("");
-		}
-			 
-		return printerbranch;
 	}
 	
 	private void _AddViewsCountToPrinter(Printer _printer)

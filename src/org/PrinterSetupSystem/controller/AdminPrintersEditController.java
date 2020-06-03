@@ -34,7 +34,6 @@ public class AdminPrintersEditController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Admin Printers Edit Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -82,7 +81,6 @@ public class AdminPrintersEditController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Admin Printers Edit Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -101,6 +99,7 @@ public class AdminPrintersEditController extends HttpServlet
     		String editprintersharename = "None";
     		String editprinterlocation = "None";
     		String editprinterimagenull = request.getParameter("editprinterimagenull");
+    		String editprintercustomfield1 = "None";
     		Part editprinterimage = request.getPart("editprinterimage");
     		
     		if(request.getParameter("editprinterdescription") != null)
@@ -113,6 +112,8 @@ public class AdminPrintersEditController extends HttpServlet
     			editprintersharename = request.getParameter("editprintersharename");
     		if(request.getParameter("editprinterlocation") != null)
     			editprinterlocation = request.getParameter("editprinterlocation");
+    		if(request.getParameter("editprintercustomfield1") != null)
+    			editprintercustomfield1 = request.getParameter("editprintercustomfield1");
     		
     		Printer printer = new Printer();
     		printer.SetId(editprinterid);
@@ -124,6 +125,7 @@ public class AdminPrintersEditController extends HttpServlet
     		printer.SetVendor(editprintervendor);
     		printer.SetServerShareName(editprintersharename);
     		printer.SetLocation(editprinterlocation);
+    		printer.SetCustomField1(editprintercustomfield1);
     		
     		Boolean result = AdminPrintersEditDao.SavePrinter(printer, editprinterimage, editprinterimagenull);
 	        if(result)

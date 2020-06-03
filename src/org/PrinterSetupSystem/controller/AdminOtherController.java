@@ -1,11 +1,8 @@
 package org.PrinterSetupSystem.controller;
 
-import org.PrinterSetupSystem.beans.Branch;
-import org.PrinterSetupSystem.dao.HomeDao;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
@@ -14,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class HomeController extends HttpServlet 
+public class AdminOtherController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -30,11 +27,9 @@ public class HomeController extends HttpServlet
     {
     	AuthorizeUtil.FixUtf8(response);
     	AuthorizeUtil.SetAdminAuthorized(request, response);
+    	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
-    	ArrayList<Branch> branches = HomeDao.GetBranches();
-    	request.setAttribute("branches", branches);
-    	
-        RequestDispatcher rd = request.getRequestDispatcher("/Home.jsp"); 
+        RequestDispatcher rd = request.getRequestDispatcher("/AdminOther.jsp"); 
         rd.include(request, response);
     }
 	
@@ -43,8 +38,10 @@ public class HomeController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
+    	AuthorizeUtil.SetAdminAuthorized(request, response);
+    	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
-        RequestDispatcher rd = request.getRequestDispatcher("/Home.jsp"); 
+        RequestDispatcher rd = request.getRequestDispatcher("/AdminOther.jsp"); 
         rd.include(request, response);
     }
 }

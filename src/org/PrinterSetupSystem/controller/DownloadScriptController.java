@@ -8,6 +8,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+//import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
@@ -30,8 +31,10 @@ public class DownloadScriptController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Branch Controller");
     	
+    	//RequestDispatcher rd = request.getRequestDispatcher("/Download.jsp"); 
+        //rd.include(request, response);
+        
     	if(request.getParameter("printerid") != null)
         {
     		Integer printerid = Integer.parseInt(request.getParameter("printerid"));
@@ -54,6 +57,9 @@ public class DownloadScriptController extends HttpServlet
 	    		script = script.replace("%PRINTER_IP%", printer.GetIp());
 	    		script = script.replace("%PRINTER_VENDOR%", printer.GetVendor());
 	    		script = script.replace("%PRINTER_TYPE%", printer.GetPrinterTypeId().toString());
+	    		script = script.replace("%PRINTER_CUSTOM_FIELD1%", printer.GetCustomField1());
+	    		
+	    		request.setAttribute("printer", printer); 
 	    		
 	    		response.setContentType("application/octet-stream");
 	    		response.setHeader("Content-Disposition", "attachment;filename=" + scriptname + "." + scriptextension);
@@ -62,15 +68,19 @@ public class DownloadScriptController extends HttpServlet
 	    		InputStream in = new ByteArrayInputStream(sb.toString().getBytes("UTF-8"));
 	    		ServletOutputStream out = response.getOutputStream();
 	    		
-	    		byte[] outputByte = new byte[2];
-	    		while(in.read(outputByte, 0, 2) != -1)
+	    		byte[] outputByte = new byte[1];
+	    		while(in.read(outputByte, 0, 1) != -1)
 	    		{
-	    			out.write(outputByte, 0, 2);
+	    			out.write(outputByte, 0, 1);
 	    		}
 	    		in.close();
 	    		out.flush();
 	    		out.close();
     		}
         }
+    	else
+    	{
+    		request.getRequestDispatcher("/home").forward(request, response);
+    	}
     }
 }

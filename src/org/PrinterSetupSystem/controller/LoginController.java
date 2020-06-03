@@ -30,7 +30,6 @@ public class LoginController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Login Controller");
     	AuthorizeUtil.AuthorizedRedirectLogin(request, response);
     	
         RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp"); 
@@ -42,7 +41,6 @@ public class LoginController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Home Controller");
     	
     	if(request.getParameter("login_button") != null && 
 				request.getParameter("login") != null && 

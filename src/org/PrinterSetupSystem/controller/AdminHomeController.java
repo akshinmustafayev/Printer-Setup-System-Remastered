@@ -26,10 +26,8 @@ public class AdminHomeController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Admin Home Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
-    	
     	
         RequestDispatcher rd = request.getRequestDispatcher("/AdminHome.jsp"); 
         rd.include(request, response);
@@ -40,7 +38,9 @@ public class AdminHomeController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Admin Home Controller");
     	AuthorizeUtil.AuthorizedRedirect(request, response);
+    	
+        RequestDispatcher rd = request.getRequestDispatcher("/AdminHome.jsp"); 
+        rd.include(request, response);
     }
 }

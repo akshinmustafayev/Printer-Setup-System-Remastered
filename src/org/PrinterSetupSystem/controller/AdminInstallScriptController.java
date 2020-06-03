@@ -27,13 +27,11 @@ public class AdminInstallScriptController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Admin Install Script Page Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
     	String installscript = AdminInstallScriptDao.GetInstallScript();
     	request.setAttribute("installscript", installscript);
-    	
     	String scriptextension = AdminInstallScriptDao.GetScriptExtension();
     	request.setAttribute("scriptextension", scriptextension);
     	
@@ -46,7 +44,6 @@ public class AdminInstallScriptController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Admin Install Script Page Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -79,7 +76,6 @@ public class AdminInstallScriptController extends HttpServlet
     	
     	String installscript = AdminInstallScriptDao.GetInstallScript();
     	request.setAttribute("installscript", installscript);
-    	
     	String scriptextension = AdminInstallScriptDao.GetScriptExtension();
     	request.setAttribute("scriptextension", scriptextension);
     	

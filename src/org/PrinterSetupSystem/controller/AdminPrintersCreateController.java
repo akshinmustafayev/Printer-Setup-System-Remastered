@@ -34,7 +34,6 @@ public class AdminPrintersCreateController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Admin Printers Create Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -52,7 +51,6 @@ public class AdminPrintersCreateController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Admin Printers Create Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -69,6 +67,7 @@ public class AdminPrintersCreateController extends HttpServlet
     		String newprintervendor = "Undefined";
     		String newprintersharename = "None";
     		String newprinterlocation = "None";
+    		String newprintercustomfield1 = "None";
     		Part newprinterimage = request.getPart("newprinterimage");
     		
     		if(request.getParameter("newprinterdescription") != null)
@@ -81,6 +80,8 @@ public class AdminPrintersCreateController extends HttpServlet
     			newprintersharename = request.getParameter("newprintersharename");
     		if(request.getParameter("newprinterlocation") != null)
     			newprinterlocation = request.getParameter("newprinterlocation");
+    		if(request.getParameter("newprintercustomfield1") != null)
+    			newprintercustomfield1 = request.getParameter("newprintercustomfield1");
     		
     		Printer printer = new Printer();
     		printer.SetName(newprintername);
@@ -91,6 +92,7 @@ public class AdminPrintersCreateController extends HttpServlet
     		printer.SetVendor(newprintervendor);
     		printer.SetServerShareName(newprintersharename);
     		printer.SetLocation(newprinterlocation);
+    		printer.SetCustomField1(newprintercustomfield1);
     		
     		Boolean result = AdminPrintersCreateDao.CreatePrinter(printer, newprinterimage);
 	        if(result)

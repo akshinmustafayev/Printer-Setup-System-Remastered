@@ -29,7 +29,6 @@ public class AdminPrintersController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Admin Printers Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
     	
@@ -45,10 +44,8 @@ public class AdminPrintersController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Admin Printers Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	AuthorizeUtil.AuthorizedRedirect(request, response);
-    	
     	
     	if(request.getParameter("button_deleteprinter") != null && request.getParameter("deleteprinterid") != null)
         {
@@ -72,26 +69,6 @@ public class AdminPrintersController extends HttpServlet
 	        	request.setAttribute("ErrorPrinterDelete", true); 
 	        }
         }
-    	
-    	/*
-    	if(request.getParameter("button_createbranch") != null && request.getParameter("newbranchname") != null &&
-    			request.getParameter("newbranchdescription") != null)
-        {
-    		String newbranchname = request.getParameter("newbranchname");
-    		String newbranchdescription = request.getParameter("newbranchdescription");
-    		Part newbranchimage = request.getPart("newbranchimage");
-    		
-	        Boolean result = AdminBranchesDao.CreateBranch(newbranchname, newbranchdescription, newbranchimage);
-	        if(result)
-	        {
-	        	request.setAttribute("NewBranchCreateSuccess", true); 
-	        }
-	        else
-	        {
-	        	request.setAttribute("ErrorNewBranchCreate", true); 
-	        }
-        }
-		*/
     	
     	ArrayList<Printer> printers = AdminPrintersDao.GetPrinters();
     	request.setAttribute("printers", printers);

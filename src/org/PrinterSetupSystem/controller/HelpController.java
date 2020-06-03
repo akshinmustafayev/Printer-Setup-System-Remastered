@@ -27,7 +27,6 @@ public class HelpController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Help Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	
     	String helpmanual = HelpDao.GetHelpManual();
@@ -42,6 +41,8 @@ public class HelpController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Help Controller");
+    	
+    	RequestDispatcher rd = request.getRequestDispatcher("/Help.jsp"); 
+        rd.include(request, response);
     }
 }

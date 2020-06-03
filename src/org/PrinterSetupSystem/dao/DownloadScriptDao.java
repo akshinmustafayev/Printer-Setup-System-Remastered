@@ -34,6 +34,7 @@ public class DownloadScriptDao
             	printer.SetViews(rs.getInt("views"));
             	printer.SetServerShareName(rs.getString("serversharename"));
             	printer.SetLocation(rs.getString("location"));
+            	printer.SetCustomField1(rs.getString("customfield1"));
             } 
            
             pstmt.close();

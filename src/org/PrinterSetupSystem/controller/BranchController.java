@@ -30,7 +30,6 @@ public class BranchController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Branch Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	
     	if(request.getParameter("id") != null &&
@@ -77,6 +76,8 @@ public class BranchController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Branch Controller");
+    	
+        RequestDispatcher rd = request.getRequestDispatcher("/Branch.jsp"); 
+        rd.include(request, response);
     }
 }

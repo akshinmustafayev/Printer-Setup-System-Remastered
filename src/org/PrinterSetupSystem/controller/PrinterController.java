@@ -1,6 +1,5 @@
 package org.PrinterSetupSystem.controller;
 
-import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.dao.PrinterDao;
@@ -31,7 +30,6 @@ public class PrinterController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Printer Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
     	
     	if(request.getParameter("id") != null &&
@@ -54,10 +52,8 @@ public class PrinterController extends HttpServlet
 	    	if(_printer != null)
         	{
 		    	PrinterType _printertype = printer.GetPrinterType();
-		    	Branch _printerbranch = printer.GetPrinterBranch();
 	    		request.setAttribute("printer", _printer);
 	    		request.setAttribute("printertype", _printertype);
-	    		request.setAttribute("printerbranch", _printerbranch);
     			request.setAttribute("vendorlogo", PrinterDao.GetPrinterLogoByName(_printer));
     			request.setAttribute("printeremaillink", PrinterDao.GetPrinterEmailLink(_printer, request));
         	}
@@ -82,6 +78,8 @@ public class PrinterController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Printer Controller");
+    	
+    	RequestDispatcher rd = request.getRequestDispatcher("/Printer.jsp"); 
+        rd.include(request, response);
     }
 }

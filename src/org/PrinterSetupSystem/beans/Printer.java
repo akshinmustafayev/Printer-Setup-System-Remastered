@@ -14,6 +14,7 @@ public class Printer
 	private Integer views;
 	private String serversharename;
 	private String location;
+	private String customfield1;
 	
 	private String branchname;
 	
@@ -119,6 +120,14 @@ public class Printer
 	
 	public void SetLocation(String location) {
 		this.location = location;
+	}
+	
+	public String GetCustomField1() {
+		return customfield1;
+	}
+	
+	public void SetCustomField1(String customfield1) {
+		this.customfield1 = customfield1;
 	}
 	
 

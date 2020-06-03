@@ -26,10 +26,7 @@ public class SearchController extends HttpServlet
     		throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doGet for Search Controller");
     	AuthorizeUtil.SetAdminAuthorized(request, response);
-    	
-    	
     	
         RequestDispatcher rd = request.getRequestDispatcher("/Search.jsp"); 
         rd.include(request, response);
@@ -40,6 +37,8 @@ public class SearchController extends HttpServlet
 			throws ServletException, IOException 
     {
     	AuthorizeUtil.FixUtf8(response);
-    	System.out.println("Enter doPost for Search Controller");
+    	
+    	RequestDispatcher rd = request.getRequestDispatcher("/Search.jsp"); 
+        rd.include(request, response);
     }
 }
