@@ -2,7 +2,6 @@
 <%@ page import="org.PrinterSetupSystem.misc.AuthorizeUtil" %>
 <%
 	AuthorizeUtil.UserLoadedJspRedirect(request, response, "Error404.jsp", "/error404");
-	AuthorizeUtil.AuthorizedRedirectHome(request, response);
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />

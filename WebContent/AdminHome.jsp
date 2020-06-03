@@ -104,6 +104,12 @@
 				        <p class="caption mt-1">Install script</p>
 				    </a>
 				</div>
+				<div class="thumbnails">
+				    <a class="thumbnail" href="${context}/adminother">
+				        <img class="thumbnail-image" src="img/admin/other.png" alt="Other settings" />
+				        <p class="caption mt-1">Other settings</p>
+				    </a>
+				</div>
 	        </div>
         </div>
 	</body>

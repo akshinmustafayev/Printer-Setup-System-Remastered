@@ -77,7 +77,8 @@
 				<p><img class="size-16" src="img/admin/printertypes.png" alt="Printer types"/><a class="ml-2 text-body" href="${context}/adminprintertypes">Printer types</a></p>
 				<p class="mb-1 pt-3"><em>System</em></p>
 				<p class="mb-1"><img class="size-16" src="img/admin/help.png" alt="Manual page settings"/><a class="ml-2 text-body" href="${context}/adminmanualpage">Manual page settings</a></p>
-				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body font-weight-bold" href="${context}/admininstallscript"><u>Install Script page settings</u></a></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body font-weight-bold" href="${context}/admininstallscript"><u>Install Script page settings</u></a></p>
+				<p><img class="size-16" src="img/admin/other.png" alt="Other settings"/><a class="ml-2 text-body" href="${context}/adminother">Other settings</a></p>
 			</div>
 			<div class="col-9 pl-4">
 				<div class="d-flex align-items-center mb-3 border-bottom">
@@ -94,6 +95,7 @@
 					<li class="mb-1"><kbd>%PRINTER_IP%</kbd> - <em>Printer IP address</em></li>
 					<li class="mb-1"><kbd>%PRINTER_VENDOR%</kbd> - <em>Printer vendor</em></li>
 					<li class="mb-1"><kbd>%PRINTER_TYPE%</kbd> - <em>Printer type</em></li>
+					<li class="mb-1"><kbd>%PRINTER_CUSTOM_FIELD1%</kbd> - <em>Printer custom field 1</em></li>
 				</ul>
 				<c:if test = "${InstallScriptSaved == true}">
 					<div class="alert alert-success mt-3" role="alert">Install script saved!</div>

@@ -74,7 +74,8 @@
 				<p><img class="size-16" src="img/admin/printertypes.png" alt="Printer types"/><a class="ml-2 text-body" href="${context}/adminprintertypes">Printer types</a></p>
 				<p class="mb-1 pt-3"><em>System</em></p>
 				<p class="mb-1"><img class="size-16" src="img/admin/help.png" alt="Manual page settings"/><a class="ml-2 text-body" href="${context}/adminmanualpage">Manual page settings</a></p>
-				<p><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body" href="${context}/admininstallscript">Install Script page settings</a></p>
+				<p class="mb-1"><img class="size-16" src="img/admin/installscript.png" alt="Install Script page settings"/><a class="ml-2 text-body" href="${context}/admininstallscript">Install Script page settings</a></p>
+				<p><img class="size-16" src="img/admin/other.png" alt="Other settings"/><a class="ml-2 text-body" href="${context}/adminother">Other settings</a></p>
 			</div>
 			<div class="col-9 pl-4">
 				<div class="d-flex align-items-center border-bottom">
@@ -190,6 +191,18 @@
 					<div class="form-group">
 				  		<label for="inputBranchImage">Image</label>
 				  		<input name="newprinterimage" type="file" class="form-control-file" id="inputPrinterImage">
+					</div>
+					<div class="form-group">
+						<label for="inputPrinterCustomField1">Custom field 1</label>
+						<c:choose>
+							<c:when test = "${printer.GetCustomField1() == null}">
+								<input name="newprintercustomfield1" type="text" class="form-control" id="inputPrinterCustomField1" aria-describedby="inputPrinterCustomField1Help">
+							</c:when>
+							<c:otherwise>
+								<input name="newprintercustomfield1" type="text" class="form-control" id="inputPrinterCustomField1" aria-describedby="inputPrinterCustomField1Help" value="${printer.GetCustomField1()}">
+							</c:otherwise>
+						</c:choose>
+						<small id="inputPrinterCustomField1Help" class="form-text text-muted">Input custom field 1 value. This parameter is not visible anywhere and could be used only for script purposes.</small>
 					</div>
 					<br>
 					<button type="submit" name="button_createprinter" class="btn btn-primary btn-lg">Create</button>

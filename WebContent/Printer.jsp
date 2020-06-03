@@ -64,7 +64,7 @@
 		<nav aria-label="breadcrumb">
 			<ol class="breadcrumb ml-4 mr-4 mt-3">
 				<li class="breadcrumb-item"><a href="${context}/home">Home</a></li>
-				<li class="breadcrumb-item"><a href="${context}/branch?id=${printerbranch.GetId()}">${printerbranch.GetName()}</a></li>
+				<li class="breadcrumb-item"><a href="${context}/branch?id=${printer.GetBranchId()}">${printer.GetBranchName()}</a></li>
 				<li class="breadcrumb-item active" aria-current="page">${printer.GetName()}</li>
 			</ol>
 		</nav>
@@ -73,7 +73,6 @@
 				<div class="align-items-center">
 					<span class="align-middle">Printer</span>
 					<div class="d-inline p-1 bg-dark text-white align-middle float-right rounded"><span class="oi oi-eye"></span> ${printer.GetViews()}</div>
-					
 				</div>
 			</div>
 			<div class="card-body p-0">
