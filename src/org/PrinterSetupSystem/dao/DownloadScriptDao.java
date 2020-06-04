@@ -6,8 +6,17 @@ import java.sql.ResultSet;
 import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Download Script Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class DownloadScriptDao
 {
+	/**
+	Function gets Printer object by its ID.
+	@param	printerid	ID of the printer
+	@return Returns Printer object
+	*/
 	public static Printer GetPrinter(Integer printerid)
 	{
 		Printer printer = null;
@@ -48,6 +57,10 @@ public class DownloadScriptDao
 		return printer;
 	}
 	
+	/**
+	Function gets install script.
+	@return Returns install script string
+	*/
 	public static String GetInstallScript()
 	{
 		String installscript = "none";
@@ -75,6 +88,10 @@ public class DownloadScriptDao
 		return installscript;
 	}
 	
+	/**
+	Function gets install script extension.
+	@return Returns install script extension string
+	*/
 	public static String GetInstallScriptExtension()
 	{
 		String installscriptextension = "none";

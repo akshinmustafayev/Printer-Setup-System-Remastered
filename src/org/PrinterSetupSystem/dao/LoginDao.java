@@ -8,6 +8,10 @@ import org.PrinterSetupSystem.beans.User;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.TimeUtil;
 
+/** Represents Login Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class LoginDao
 {
 	/**

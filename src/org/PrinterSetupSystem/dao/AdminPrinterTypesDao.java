@@ -9,11 +9,15 @@ import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.TimeUtil;
 
+/** Represents Admin Printer Types Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminPrinterTypesDao 
 {
 	/**
-	Function returns printers types from printerstype table.
-	@return Returns string
+	Function gets array list of all printer types.
+	@return Returns ArrayList<PrinterType>
 	*/
 	public static ArrayList<PrinterType> GetPrintersTypes()
     {
@@ -49,6 +53,7 @@ public class AdminPrinterTypesDao
 	
 	/**
 	Function deletes printer type from printerstype table.
+	@return Returns true if successful
 	*/
 	public static Boolean DeletePrintersType(Integer typeid)
     {
@@ -82,7 +87,9 @@ public class AdminPrinterTypesDao
     }
 	
 	/**
-	Function creates administrator in users table.
+	Function creates Printer type in printerstype table.
+	@param	newprintertype	New printer type name
+	@return Returns true if successful
 	*/
 	public static Boolean CreatePrintersType(String newprintertype)
     {

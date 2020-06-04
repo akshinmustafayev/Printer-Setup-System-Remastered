@@ -13,11 +13,16 @@ import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Branch Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class BranchDao 
 {
 	/**
-	Function returns all branches in ArrayList type.
-	@return Returns ArrayList<Branch> array
+	Function gets all Printers of the branch by its ID.
+	@param	branchid	ID of the branch
+	@return Returns ArrayList<Printer>
 	*/
 	public static ArrayList<Printer> GetPrinters(Integer branchid)
     {
@@ -79,8 +84,9 @@ public class BranchDao
     }
 	
 	/**
-	Function returns all branches in ArrayList type.
-	@return Returns ArrayList<Branch> array
+	Function gets Branch object by its ID.
+	@param	branchid	ID of the Branch
+	@return Returns Branch object
 	*/
 	public static Branch GetBranchByID(Integer branchid)
     {

@@ -15,6 +15,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+
+/** Represents Admin Branches Edit Controller
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 @MultipartConfig
 public class AdminBranchesEditController extends HttpServlet 
 {

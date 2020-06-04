@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/** Represents Error 404 Controller
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class Error404Controller extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;

@@ -1,5 +1,9 @@
 package org.PrinterSetupSystem.beans;
 
+/** Represents Branch Bean
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class Branch 
 {
 	private Integer id;

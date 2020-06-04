@@ -13,6 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+/** Represents User settings Controller
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class UserSettingsController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;

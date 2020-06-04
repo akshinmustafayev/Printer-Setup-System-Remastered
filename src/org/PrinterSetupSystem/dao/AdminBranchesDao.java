@@ -12,8 +12,16 @@ import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.TimeUtil;
 
+/** Represents Admin Branches Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminBranchesDao 
 {
+	/**
+	Function returns array list of Branches.
+	@return Returns ArrayList<Branch>
+	*/
 	public static ArrayList<Branch> GetBranches()
     {
 		ArrayList<Branch> branches = new ArrayList<Branch>();
@@ -48,7 +56,9 @@ public class AdminBranchesDao
     }
 	
 	/**
-	Function deletes branch from branches table.
+	Function deletes Branch by its ID.
+	@param	branchid	ID of the branch
+	@return Returns true if successful
 	*/
 	public static Boolean DeleteBranch(Integer branchid)
     {
@@ -81,6 +91,13 @@ public class AdminBranchesDao
 		return result;
     }
 	
+	/**
+	Function creates new Branch.
+	@param	newbranchname	Name of the new branch
+	@param	newbranchdescription	Description of the new branch
+	@param	newbranchimage	Image of the new branch
+	@return Returns true if successful
+	*/
 	public static Boolean CreateBranch(String newbranchname, String newbranchdescription, Part newbranchimage)
     {
 		Boolean result = true;

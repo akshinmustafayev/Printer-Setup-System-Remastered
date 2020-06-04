@@ -9,11 +9,15 @@ import org.PrinterSetupSystem.beans.User;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.HashUtil;
 
+/** Represents Admin Administrator Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminAdminsDao 
 {
 	/**
-	Function returns help manual from systemsettings table.
-	@return Returns string
+	Function returns lists of Administrators from DB.
+	@return Returns array of User
 	*/
 	public static ArrayList<User> GetAdministrators()
     {
@@ -49,7 +53,9 @@ public class AdminAdminsDao
     }
 	
 	/**
-	Function deletes administrator from users table.
+	Function deletes Administrator from DB by its ID.
+	@param	adminid	Administrator id Integer type
+	@return Returns true if successful
 	*/
 	public static Boolean DeleteAdministrator(Integer adminid)
     {
@@ -77,7 +83,11 @@ public class AdminAdminsDao
     }
 	
 	/**
-	Function creates administrator in users table.
+	Function creates Administrator.
+	@param	newadminlogin	New login of administrator
+	@param	newadminfullname	Full name of new administrator
+	@param	newadminpassword	Password
+	@return Returns true if successful
 	*/
 	public static Boolean CreateAdministrator(String newadminlogin, String newadminfullname, String newadminpassword)
     {

@@ -6,11 +6,15 @@ import java.sql.ResultSet;
 
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Help Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class HelpDao 
 {
 	/**
-	Function returns help manual from systemsettings table.
-	@return Returns string
+	Function gets Help Manual string.
+	@return Returns Help Manual string
 	*/
 	public static String GetHelpManual()
     {

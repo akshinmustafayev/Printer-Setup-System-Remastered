@@ -12,6 +12,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/** Represents Help Controller
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class HelpController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;

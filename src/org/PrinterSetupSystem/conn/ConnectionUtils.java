@@ -3,6 +3,10 @@ package org.PrinterSetupSystem.conn;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/** Represents ConnectionUtils to connect to DB
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class ConnectionUtils 
 {
 	public static Connection getConnection() throws ClassNotFoundException, SQLException 

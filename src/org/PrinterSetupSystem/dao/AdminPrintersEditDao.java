@@ -16,8 +16,16 @@ import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Admin Administrator Edit Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminPrintersEditDao 
 {
+	/**
+	Function gets all Branches and returns array list of branches.
+	@return Returns ArrayList<Branch>
+	*/
 	public static ArrayList<Branch> GetBranches()
     {
 		ArrayList<Branch> branches = new ArrayList<Branch>();
@@ -50,6 +58,10 @@ public class AdminPrintersEditDao
 		return branches;
     }
 	
+	/**
+	Function gets all Printer types and returns array list of printer types.
+	@return Returns ArrayList<PrinterType>
+	*/
 	public static ArrayList<PrinterType> GetPrinterTypes()
     {
 		ArrayList<PrinterType> printerstypes = new ArrayList<PrinterType>();
@@ -82,6 +94,11 @@ public class AdminPrintersEditDao
 		return printerstypes;
     }
 	
+	/**
+	Function gets Printer object and returns by its ID.
+	@param	printerid	ID of the printer
+	@return Returns Printer object
+	*/
 	public static Printer GetPrinter(Integer printerid)
     {
 		Printer printer = null;
@@ -149,6 +166,13 @@ public class AdminPrintersEditDao
 		return printer;
     }
 	
+	/**
+	Function updates printer value in database.
+	@param	printer	Printer object
+	@param	editprinterimage	Part object with image
+	@param	editprinterimagenull	Object for deleting image
+	@return Returns true if successful
+	*/
 	public static Boolean SavePrinter(Printer printer, Part editprinterimage, String editprinterimagenull)
     {
 		Boolean result = true;

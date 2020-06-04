@@ -1,6 +1,6 @@
 package org.PrinterSetupSystem.beans;
 
-/** Represents User
+/** Represents Settings Bean
 @author Akshin A. Mustafayev
 @version 1.0
 */

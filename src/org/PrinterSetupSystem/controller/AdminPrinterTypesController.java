@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/** Represents Admin Printers Type Controller
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminPrinterTypesController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;

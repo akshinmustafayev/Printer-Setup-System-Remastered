@@ -16,11 +16,20 @@ import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.interfaces.IPrinterShow;
 import org.PrinterSetupSystem.misc.EncodingUtil;
 
+/** Represents Printer Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class PrinterDao implements IPrinterShow
 {
 	private Printer printer = null;
 	private PrinterType printertype = null;
 	
+	/**
+	Function gets Printer object by its ID
+	@param	printerid	ID of the printer
+	@return Returns Printer object
+	*/
 	@Override
 	public Printer GetPrinter(Integer printerid)
 	{
@@ -91,7 +100,11 @@ public class PrinterDao implements IPrinterShow
 		
 		return printer;
 	}
-
+	
+	/**
+	Function gets Printer Type object.
+	@return Returns Printer Type object
+	*/
 	@Override
 	public PrinterType GetPrinterType()
 	{
@@ -105,6 +118,9 @@ public class PrinterDao implements IPrinterShow
 		return printertype;
 	}
 	
+	/**
+	Function adds count +1 to printer views column.
+	*/
 	private void _AddViewsCountToPrinter(Printer _printer)
 	{
 		try
@@ -124,6 +140,11 @@ public class PrinterDao implements IPrinterShow
         }
 	}
 	
+	/**
+	Function gets Printer logo by Vendor column.
+	@param	_printer	Printer object
+	@return Returns HTML string of the logo image
+	*/
 	public static String GetPrinterLogoByName(Printer _printer)
 	{
 		String vendorlogo = "";
@@ -148,10 +169,28 @@ public class PrinterDao implements IPrinterShow
 		{
 			vendorlogo = "<img src=\"img/vendors/undefined.png\" style=\"margin-right:5px;height:18px;\">";
 		}
+		else if(_printer.GetVendor().toLowerCase().contains("unknown"))
+		{
+			vendorlogo = "<img src=\"img/vendors/undefined.png\" style=\"margin-right:5px;height:18px;\">";
+		}
+		else if(_printer.GetVendor().toLowerCase().equals(""))
+		{
+			vendorlogo = "<img src=\"img/vendors/undefined.png\" style=\"margin-right:5px;height:18px;\">";
+		}
+		else if(_printer.GetVendor().toLowerCase().equals(" "))
+		{
+			vendorlogo = "<img src=\"img/vendors/undefined.png\" style=\"margin-right:5px;height:18px;\">";
+		}
 		
 		return vendorlogo;
 	}
 	
+	/**
+	Function gets send by email link.
+	@param	_printer	Printer object
+	@param	request	Default HttpServletRequest
+	@return Returns HTML string of the mailto: tag
+	*/
 	public static String GetPrinterEmailLink(Printer _printer, HttpServletRequest request)
 	{
 		String emaillink = "";

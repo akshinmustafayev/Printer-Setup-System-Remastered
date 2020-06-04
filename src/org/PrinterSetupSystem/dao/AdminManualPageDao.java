@@ -6,11 +6,15 @@ import java.sql.ResultSet;
 
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Admin Administrator Manual Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminManualPageDao 
 {
 	/**
-	Function returns help manual from systemsettings table.
-	@return Returns string
+	Function gets Help Manual text.
+	@return Returns Help Manual string
 	*/
 	public static String GetHelpManual()
     {
@@ -44,6 +48,8 @@ public class AdminManualPageDao
 	
 	/**
 	Function sets help manual to systemsettings table.
+	@param	helpmanual	Help Manual text
+	@return Returns true if successful
 	*/
 	public static Boolean SetHelpManual(String helpmanual)
     {

@@ -1,7 +1,7 @@
 package org.PrinterSetupSystem.beans;
 import org.PrinterSetupSystem.misc.HashUtil;
 
-/** Represents User
+/** Represents User Bean
 @author Akshin A. Mustafayev
 @version 1.0
 */

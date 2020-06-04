@@ -5,8 +5,18 @@ import java.sql.PreparedStatement;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.HashUtil;
 
+/** Represents Admin Administrator Edit Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminAdminsEditDao 
 {
+	/**
+	Function updates Administrator password.
+	@param	adminid	ID of the administrator
+	@param	newpassword	New password
+	@return Returns true if successful
+	*/
 	public static Boolean UpdatePassword(Integer adminid, String newpassword)
     {
 		Boolean result = true;

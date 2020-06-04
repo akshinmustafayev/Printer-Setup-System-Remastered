@@ -12,6 +12,10 @@ import java.util.Base64;
 import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Home Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class HomeDao 
 {
 	/**

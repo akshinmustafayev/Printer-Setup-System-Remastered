@@ -1,12 +1,17 @@
 package org.PrinterSetupSystem.conn;
 
 import java.io.IOException;
+
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/** Represents MySqlConnectionUtils to work with MySQL DB
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class MySqlConnectionUtils 
 {
 	public static Connection getMySQLConnection() throws ClassNotFoundException, SQLException

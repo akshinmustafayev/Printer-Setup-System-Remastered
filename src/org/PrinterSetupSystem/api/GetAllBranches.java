@@ -20,6 +20,10 @@ import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
 
+/** Represents GetAllBranches API
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class GetAllBranches extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;

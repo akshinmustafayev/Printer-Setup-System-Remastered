@@ -4,6 +4,10 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 
+/** Represents Encoding Util for Encoding and Decoding links to HTML and from HTML format
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class EncodingUtil
 {
 	/**

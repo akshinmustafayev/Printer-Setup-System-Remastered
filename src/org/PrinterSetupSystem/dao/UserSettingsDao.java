@@ -6,8 +6,20 @@ import java.sql.PreparedStatement;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.HashUtil;
 
+/** Represents User Settings Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class UserSettingsDao 
 {
+	/**
+	Function updates Administrator password.
+	@param	newpasswrod	New password
+	@param	newpasswrodconfirm	New password confirm
+	@param	login	User current login from cookies
+	@param	csession	User current session from cookies
+	@return Returns true if successful
+	*/
 	public static Boolean ChangeUserPassword(String newpasswrod, String newpasswrodconfirm, String login, String csession)
     {
 		Boolean result = true;

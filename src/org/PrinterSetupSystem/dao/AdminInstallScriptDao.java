@@ -6,11 +6,15 @@ import java.sql.ResultSet;
 
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Admin Administrator Install Script Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminInstallScriptDao 
 {
 	/**
-	Function returns install script from systemsettings table.
-	@return Returns string
+	Function gets Install Script from database.
+	@return Returns Install Script string
 	*/
 	public static String GetInstallScript()
     {
@@ -43,7 +47,9 @@ public class AdminInstallScriptDao
     }
 	
 	/**
-	Function sets install script to systemsettings table.
+	Function updates Install Script in database.
+	@param	installscript	Script text
+	@return Returns true if successful
 	*/
 	public static Boolean SetInstallScript(String installscript)
     {
@@ -69,10 +75,13 @@ public class AdminInstallScriptDao
 		return result;
     }
 	
+	/**
+	Function gets Install Script Extension.
+	@return Returns Script Extension string
+	*/
 	public static String GetScriptExtension()
     {
 		String scriptextension = "No script extension found";
-		
 		
 		try
         {
@@ -99,6 +108,11 @@ public class AdminInstallScriptDao
 		return scriptextension;
     }
 	
+	/**
+	Function updates Install Script Extension in database.
+	@param	scriptextension	Script Extension text
+	@return Returns true if successful
+	*/
 	public static Boolean SetScriptExtension(String scriptextension)
     {
 		Boolean result = true;

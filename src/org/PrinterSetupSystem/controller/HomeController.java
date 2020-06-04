@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/** Represents Home Controller
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class HomeController extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;

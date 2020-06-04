@@ -87,26 +87,6 @@ public class AuthorizeUtil
     }
 	
 	/**
-	Function for checking if User is authorized and if not forward to /login page.
-	This function should be used for API
-	@param	request	Default HttpServletRequest
-	@param	response	Default HttpServletResponse
-	@return Returns true if user is authorized, else it returns false
-	*/
-	public static Boolean CheckAuthorized(HttpServletRequest request, HttpServletResponse response) throws ServletException
-    {
-        HttpSession session = request.getSession();
-        String login = (String) session.getAttribute("login");
-    	String sessionc = (String) session.getAttribute("session");
-    	String fullname = (String) session.getAttribute("fullname");
-        if (login == null || sessionc == null || fullname == null) 
-        {
-        	return false;
-        }
-        return true;
-    }
-	
-	/**
 	Function for checking if User authorized but pointed to /login page, 
 	and if yes, redirect user to /home page.
 	@param	request	Default HttpServletRequest

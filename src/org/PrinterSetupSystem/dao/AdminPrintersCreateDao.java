@@ -14,8 +14,16 @@ import org.PrinterSetupSystem.beans.PrinterType;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.TimeUtil;
 
+/** Represents Admin Printers Create Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminPrintersCreateDao 
 {
+	/**
+	Function gets all branches as array list.
+	@return Returns ArrayList<Branch>
+	*/
 	public static ArrayList<Branch> GetBranches()
     {
 		ArrayList<Branch> branches = new ArrayList<Branch>();
@@ -48,6 +56,10 @@ public class AdminPrintersCreateDao
 		return branches;
     }
 	
+	/**
+	Function gets all Printer Types as array list.
+	@return Returns ArrayList<PrinterType>
+	*/
 	public static ArrayList<PrinterType> GetPrinterTypes()
     {
 		ArrayList<PrinterType> printerstypes = new ArrayList<PrinterType>();
@@ -80,6 +92,12 @@ public class AdminPrintersCreateDao
 		return printerstypes;
     }
 	
+	/**
+	Function creates Printer.
+	@param	printer	Printer object
+	@param	newprinterimage	Image part of the printer
+	@return Returns true if successful
+	*/
 	public static Boolean CreatePrinter(Printer printer, Part newprinterimage)
     {
 		Boolean result = true;

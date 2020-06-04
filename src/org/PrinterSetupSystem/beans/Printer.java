@@ -1,5 +1,9 @@
 package org.PrinterSetupSystem.beans;
 
+/** Represents Printer Bean
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class Printer 
 {
 	private Integer id;

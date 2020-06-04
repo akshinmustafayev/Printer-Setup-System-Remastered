@@ -8,8 +8,16 @@ import java.util.ArrayList;
 import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Admin Printers Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminPrintersDao 
 {
+	/**
+	Function gets all Printers.
+	@return Returns ArrayList<Printer>
+	*/
 	public static ArrayList<Printer> GetPrinters()
     {
 		ArrayList<Printer> printers = new ArrayList<Printer>();
@@ -44,11 +52,11 @@ public class AdminPrintersDao
 		return printers;
     }
 	
-	
 	/**
-	Function deletes branch from branches table.
+	Function deletes Printer by its ID.
+	@param	printerid	ID of the printer
+	@return Returns true if successful
 	*/
-	
 	public static Boolean DeletePrinter(Integer printerid)
     {
 		Boolean result = true;
@@ -73,49 +81,4 @@ public class AdminPrintersDao
 		
 		return result;
     }
-	
-	/*
-	public static Boolean CreateBranch(String newbranchname, String newbranchdescription, Part newbranchimage)
-    {
-		Boolean result = true;
-		
-		String createddate = TimeUtil.GetTimeNow();
-		
-		try
-        {
-        	Connection conn = ConnectionUtils.getConnection();
-            PreparedStatement pstmt = null;
-            
-            InputStream imagestream = null;
-            if(newbranchimage != null)
-            {
-            	imagestream = newbranchimage.getInputStream();
-            	pstmt = conn.prepareStatement("insert into branches (name, description, image, createddate) values (?, ?, ?, ?)");
-            	pstmt.setString(1, newbranchname);
-                pstmt.setString(2, newbranchdescription);
-                pstmt.setBlob(3, imagestream);
-                pstmt.setString(4, createddate);
-            }
-            else
-            {
-            	pstmt = conn.prepareStatement("insert into branches (name, description, createddate) values (?, ?, ?)");
-            	pstmt.setString(1, newbranchname);
-                pstmt.setString(2, newbranchdescription);
-                pstmt.setString(3, createddate);
-            }
-            
-            pstmt.executeUpdate();
-
-            pstmt.close();
-            conn.close();
-        }
-		catch(Exception e)
-        {
-			result = false;
-            e.printStackTrace();
-        }
-		
-		return result;
-    }
-    */
 }

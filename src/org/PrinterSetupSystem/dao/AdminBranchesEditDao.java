@@ -13,8 +13,17 @@ import javax.servlet.http.Part;
 import org.PrinterSetupSystem.beans.Branch;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
+/** Represents Admin Branches Edit Page DAO
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class AdminBranchesEditDao 
 {
+	/**
+	Function returns Branch by its ID.
+	@param	branchid	ID of the branch
+	@return Returns <Branch>
+	*/
 	public static Branch GetBranch(Integer branchid)
     {
 		Branch branch = null;
@@ -72,6 +81,13 @@ public class AdminBranchesEditDao
 		return branch;
     }
 	
+	/**
+	Function saves Branch after editing.
+	@param	branch	Branch object
+	@param	editbranchimage	Image of the Branch
+	@param	editbranchimagenull	Delete image of the Branch
+	@return Returns true if successful
+	*/
 	public static Boolean SaveBranch(Branch branch, Part editbranchimage, String editbranchimagenull)
     {
 		Boolean result = true;

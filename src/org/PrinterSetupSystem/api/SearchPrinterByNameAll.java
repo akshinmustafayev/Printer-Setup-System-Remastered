@@ -20,6 +20,10 @@ import org.PrinterSetupSystem.beans.Printer;
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 import org.PrinterSetupSystem.misc.AuthorizeUtil;
 
+/** Represents SearchPrinterByNameAll API
+@author Akshin A. Mustafayev
+@version 1.0
+*/
 public class SearchPrinterByNameAll extends HttpServlet 
 {
 	private static final long serialVersionUID = 1L;
