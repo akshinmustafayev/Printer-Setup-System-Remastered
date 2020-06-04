@@ -146,7 +146,6 @@
 												<option value="${printerstype.GetId()}">${printerstype.GetType()}</option>
 											</c:otherwise>
 										</c:choose>
-										<option value="${printerstype.GetId()}">${printerstype.GetType()}</option>
 									</c:forEach>
 								</c:when>
 								<c:otherwise>

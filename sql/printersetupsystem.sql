@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 06:25 PM
+-- Generation Time: Jun 04, 2020 at 01:26 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -40,9 +40,9 @@ CREATE TABLE `branches` (
 --
 
 INSERT INTO `branches` (`id`, `name`, `description`, `image`, `createddate`) VALUES
-(1, 'None', 'If not selected any branch, printer will be added to this group', NULL, 'N/A'),
-(2, 'Head Office', 'Printers from Head Office', '', '17:53 17/05/2020'),
-(3, 'Toronto branch', 'Branch located in Canada, Toronto.', NULL, '19.05.2020 00:00');
+(1, 'None', 'If not selected any branch, printer will be added to this group', NULL, '2020-06-04 00:45'),
+(7, 'Head Office', 'Main office of company', '', '2020-06-04 00:45'),
+(8, 'Toronto branch', 'Branch located in Toronto', '', '2020-06-04 00:45');
 
 -- --------------------------------------------------------
 
@@ -71,11 +71,10 @@ CREATE TABLE `printers` (
 --
 
 INSERT INTO `printers` (`id`, `name`, `description`, `image`, `branchid`, `ip`, `vendor`, `createddate`, `printertypeid`, `views`, `serversharename`, `location`, `customfield1`) VALUES
-(1, 'HP LaserJet 4350 1st floor', 'Printer on the 1st floor', '', 2, '192.168.100.10', 'HP', '2020-06-02 11:03', 5, 103, '\\\\server01\\printer1', 'In the client support division', ''),
-(2, 'Xerox WorkCentre 5325 floor6', 'Xerox work centre printer which is located on 6th floor, near legal issues divison. This printer can print 1000 pages in 1 minutes', '', 2, '192.168.16.16', 'Xerox', '2020-06-01 23:59', 4, 54, '\\\\server01\\printer2', 'At the top of HR department', ''),
-(3, 'HP Color Laserjet 1224 floor3', 'Color printer for all purposes which can print using A4, A3 and A5 type papers. ', NULL, 3, '192.168.67.67', 'HP', '19.05.2020 00:00', 7, 28, 'None', 'In the Copy room', ''),
-(4, 'SomePrinter 3456 floor7', 'Some printer on the 7th floor, which can printer 1000 pages per minute', NULL, 3, '192.168.99.99', 'Unknown', '20.05.2020 00:00', 1, 19, '\\\\printerserver02\\printer9', 'Near legal department', ''),
-(11, 'test', '', '', 3, '10.10.10.10', '123', '2020-06-03 19:21', 9, 3, '', '5th floor', '1');
+(12, 'HP LaserJet 4350 1floor', 'Printer on the first floor near first department', '', 7, '192.168.0.11', 'HP', '2020-06-04 00:31', 8, 4, '\\\\serverasd\\\\printer01', '1st floor', ''),
+(13, 'Canon 1250 4floor', 'Canon printer on 4th floor near HR department', '', 8, '192.168.10.10', 'Canon', '2020-06-04 00:32', 10, 2, '\\\\serverasd\\\\printer05', '4th floor', ''),
+(14, 'Xerox WorkCentre 5325 floor7', 'Xerox printer located on 7th floor', '', 8, '192.168.7.7', 'Xerox', '2020-06-04 00:33', 1, 8, '\\\\serverasd\\\\printer09', '7th floor', ''),
+(15, 'Some Printer 5 floor', 'Unknown vendor printer', '', 7, '192.168.16.16', 'Undefined', '2020-06-04 00:34', 4, 3, '\\\\serverasd\\\\printer07', '5th floor', '');
 
 -- --------------------------------------------------------
 
@@ -148,7 +147,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `fullname`, `lastlogindate`, `passwordsalt`, `session`) VALUES
-(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Administrator', '2020-06-03 18:59', '', '57f6c607f3e946c0b91868a688c6d846fd2bcef550a7c1cde0f6d8af516e8d64'),
+(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Administrator', '2020-06-04 14:45', '', '522e67bafc764a6c2e9ac19b6c9b7bd73f53e94683f68058e1d8e86d9009574'),
 (7, 'user', '4f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb', 'user', '2020-06-02 22:44', '', 'e68693b9a0bd5d0f41b57f655d450d2d8a2d6eb08665a2400bfcf78dafd66a64');
 
 --
@@ -207,13 +206,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `branches`
 --
 ALTER TABLE `branches`
-  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(32) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `printers`
 --
 ALTER TABLE `printers`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `printerstype`

@@ -6,6 +6,14 @@
  %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="context" value="${pageContext.request.contextPath}" />
+<c:set var="ErrorResetPrintersViews" value='${requestScope["ErrorResetPrintersViews"]}'/>
+<c:set var="SuccessResetPrintersViews" value='${requestScope["SuccessResetPrintersViews"]}'/>
+<c:set var="ErrorCleanPrinters" value='${requestScope["ErrorCleanPrinters"]}'/>
+<c:set var="SuccessCleanPrinters" value='${requestScope["SuccessCleanPrinters"]}'/>
+<c:set var="ErrorCleanBranches" value='${requestScope["ErrorCleanBranches"]}'/>
+<c:set var="SuccessCleanBranches" value='${requestScope["SuccessCleanBranches"]}'/>
+<c:set var="ErrorCleanPrintersTypes" value='${requestScope["ErrorCleanPrintersTypes"]}'/>
+<c:set var="SuccessCleanPrintersTypes" value='${requestScope["SuccessCleanPrintersTypes"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -81,7 +89,46 @@
 					<img class="size-64 mr-2" src="img/admin/other.png" alt="Other settings"/>
 					<h1 class="display-5 mr-4 mt-2 mb-4">Other settings</h1>
 				</div>
-				
+				<form method="post" action="adminother" class="ml-4 mr-4 mt-4">
+					<h5>Reset views count to all printers</h5>
+					<c:if test = "${ErrorResetPrintersViews == true}">
+						<div class="alert alert-danger mt-3 mb-3" role="alert">Printer views reset error!</div>
+					</c:if>
+					<c:if test = "${SuccessResetPrintersViews == true}">
+						<div class="alert alert-success mt-3 mb-3" role="alert">Printer views reset success!</div>
+					</c:if>
+					<button name="button_resetviewsallprinters" type="submit" class="btn btn-primary mt-2">Reset views</button>
+				</form>
+				<form method="post" action="adminother" class="ml-4 mr-4 mt-4">
+					<h5>Clean all Printers</h5>
+					<c:if test = "${ErrorCleanPrinters == true}">
+						<div class="alert alert-danger mt-3 mb-3" role="alert">Printers clean error!</div>
+					</c:if>
+					<c:if test = "${SuccessCleanPrinters == true}">
+						<div class="alert alert-success mt-3 mb-3" role="alert">Printers clean success!</div>
+					</c:if>
+					<button name="button_cleanallprinters" type="submit" class="btn btn-warning mt-2">Clean printers</button>
+				</form>
+				<form method="post" action="adminother" class="ml-4 mr-4 mt-4">
+					<h5>Clean all Branches</h5>
+					<c:if test = "${ErrorCleanBranches == true}">
+						<div class="alert alert-danger mt-3 mb-3" role="alert">Branches clean error!</div>
+					</c:if>
+					<c:if test = "${SuccessCleanBranches == true}">
+						<div class="alert alert-success mt-3 mb-3" role="alert">Branches clean success!</div>
+					</c:if>
+					<button name="button_cleanallbranches" type="submit" class="btn btn-warning mt-2">Clean branches</button>
+				</form>
+				<form method="post" action="adminother" class="ml-4 mr-4 mt-4">
+					<h5>Clean all Printers Types</h5>
+					<c:if test = "${ErrorCleanPrintersTypes == true}">
+						<div class="alert alert-danger mt-3 mb-3" role="alert">Printers Types clean error!</div>
+					</c:if>
+					<c:if test = "${SuccessCleanPrintersTypes  == true}">
+						<div class="alert alert-success mt-3 mb-3" role="alert">Printers Types clean success!</div>
+					</c:if>
+					<button name="button_cleanallprinterstypes" type="submit" class="btn btn-warning mt-2">Clean printers types</button>
+				</form>
 			</div>
 		</div>
 	</body>
