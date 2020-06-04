@@ -97,6 +97,19 @@ public class AdminOtherController extends HttpServlet
 	        	request.setAttribute("ErrorCleanPrintersTypes", true); 
 	        }
 		}
+
+    	if(request.getParameter("button_resetinstallscript") != null)
+		{
+    		Boolean result = AdminOtherDao.ResetInstallScript();
+	        if(result)
+	        {
+	        	request.setAttribute("SuccessResetInstallScript", true); 
+	        }
+	        else
+	        {
+	        	request.setAttribute("ErrorResetInstallScript", true); 
+	        }
+		}
     	
         RequestDispatcher rd = request.getRequestDispatcher("/AdminOther.jsp"); 
         rd.include(request, response);
