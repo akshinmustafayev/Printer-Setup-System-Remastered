@@ -14,6 +14,8 @@
 <c:set var="SuccessCleanBranches" value='${requestScope["SuccessCleanBranches"]}'/>
 <c:set var="ErrorCleanPrintersTypes" value='${requestScope["ErrorCleanPrintersTypes"]}'/>
 <c:set var="SuccessCleanPrintersTypes" value='${requestScope["SuccessCleanPrintersTypes"]}'/>
+<c:set var="ErrorResetInstallScript" value='${requestScope["ErrorResetInstallScript"]}'/>
+<c:set var="SuccessResetInstallScript" value='${requestScope["SuccessResetInstallScript"]}'/>
 <!doctype html>
 <html>
 	<head>
@@ -107,7 +109,7 @@
 					<c:if test = "${SuccessCleanPrinters == true}">
 						<div class="alert alert-success mt-3 mb-3" role="alert">Printers clean success!</div>
 					</c:if>
-					<button name="button_cleanallprinters" type="submit" class="btn btn-warning mt-2">Clean printers</button>
+					<button name="button_cleanallprinters" type="submit" class="btn btn-warning mt-2">Clean</button>
 				</form>
 				<form method="post" action="adminother" class="ml-4 mr-4 mt-4">
 					<h5>Clean all Branches</h5>
@@ -117,7 +119,7 @@
 					<c:if test = "${SuccessCleanBranches == true}">
 						<div class="alert alert-success mt-3 mb-3" role="alert">Branches clean success!</div>
 					</c:if>
-					<button name="button_cleanallbranches" type="submit" class="btn btn-warning mt-2">Clean branches</button>
+					<button name="button_cleanallbranches" type="submit" class="btn btn-warning mt-2">Clean</button>
 				</form>
 				<form method="post" action="adminother" class="ml-4 mr-4 mt-4">
 					<h5>Clean all Printers Types</h5>
@@ -127,7 +129,17 @@
 					<c:if test = "${SuccessCleanPrintersTypes  == true}">
 						<div class="alert alert-success mt-3 mb-3" role="alert">Printers Types clean success!</div>
 					</c:if>
-					<button name="button_cleanallprinterstypes" type="submit" class="btn btn-warning mt-2">Clean printers types</button>
+					<button name="button_cleanallprinterstypes" type="submit" class="btn btn-warning mt-2">Clean</button>
+				</form>
+				<form method="post" action="adminother" class="ml-4 mr-4 mt-4">
+					<h5>Reset install script to default</h5>
+					<c:if test = "${ErrorResetInstallScript == true}">
+						<div class="alert alert-danger mt-3 mb-3" role="alert">Install script reset error!</div>
+					</c:if>
+					<c:if test = "${SuccessResetInstallScript  == true}">
+						<div class="alert alert-success mt-3 mb-3" role="alert">Install script reset success!</div>
+					</c:if>
+					<button name="button_resetinstallscript" type="submit" class="btn btn-warning mt-2">Reset</button>
 				</form>
 			</div>
 		</div>

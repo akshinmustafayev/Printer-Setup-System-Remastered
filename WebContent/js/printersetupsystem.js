@@ -233,3 +233,29 @@ function SearchShowBranches()
 	var printerscontent = document.getElementById("PSSBranchesContent");
 	printerscontent.classList.remove("hidden");
 }
+
+function CheckPrinterIsOnline()
+{
+	var printerid = GetDataFromItem("PSSPrinterId");
+	var onlinebadge = document.getElementById("PSSOnlineBadge");
+	
+	$.ajax({
+		type:"GET",
+		url : 'api/CheckPrinterIsOnline',
+		data : {
+			printerid : printerid
+		},
+		success : function(responseText) 
+		{
+			var result = responseText;
+			
+			if(result.trim() == "online")
+			{
+				onlinebadge.classList.remove("hidden");
+			}
+		},
+	    error: function (request, status, error) {
+	    	
+	    }
+	});
+}

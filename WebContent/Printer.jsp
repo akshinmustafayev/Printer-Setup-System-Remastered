@@ -22,6 +22,8 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<script src="js/popper.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/printersetupsystem.js"></script>
+		<script src="js/printer.js"></script>
 		<title>Printer Setup System - Branch Printer</title>
 	</head>
 	<body>
@@ -71,7 +73,7 @@
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
 				<div class="align-items-center">
-					<span class="align-middle">Printer</span>
+					<span class="align-middle" id="PSSPrinterId" data-info="${printer.GetId()}">Printer</span>
 					<div class="d-inline p-1 bg-dark text-white align-middle float-right rounded"><span class="oi oi-eye"></span> ${printer.GetViews()}</div>
 				</div>
 			</div>
@@ -91,7 +93,7 @@
 						</c:choose>
 				    </div>
 				    <div class="col">
-						<h3>${printer.GetName()} <span class="badge badge-secondary">${printertype.GetType()}</span></h3>
+						<h3>${printer.GetName()} <span class="badge badge-secondary">${printertype.GetType()}</span><span id="PSSOnlineBadge" class="badge badge-success hidden ml-2">Online</span></h3>
 						<h6 class="pt-3">Printer Description</h6>
 						<p class="pt-2"><em>${printer.GetDescription()}</em></p>
 						<h6 class="pt-3">Printer Details</h6>

@@ -41,6 +41,10 @@
 	<servlet-name>ApiGetAllBranches</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.api.GetAllBranches</servlet-class>
   </servlet>
+  <servlet>
+	<servlet-name>ApiCheckPrinterIsOnline</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.api.CheckPrinterIsOnline</servlet-class>
+  </servlet>
   
     <!-- Servlets -->
   <servlet>
@@ -229,6 +233,10 @@
   <servlet-mapping>
 	<servlet-name>ApiGetAllBranches</servlet-name>
 	<url-pattern>/api/GetAllBranches</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>ApiCheckPrinterIsOnline</servlet-name>
+	<url-pattern>/api/CheckPrinterIsOnline</url-pattern>
   </servlet-mapping>
   
   <!-- ERRORS mapping -->

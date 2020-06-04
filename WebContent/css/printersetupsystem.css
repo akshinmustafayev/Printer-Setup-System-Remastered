@@ -41,7 +41,7 @@
 }
 
 .hidden{
-	display:none;
+	display:none !important;
 }
 
 .table-overflow{
