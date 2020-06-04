@@ -46,6 +46,7 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 - [x] Reset all printer views count
 - [x] Clear all printers
 - [x] Clear all branches
+- [x] "Online" badge shows if printer is online
 
 ## Small fixes:
 - [x] Fix all descriptions of the functions
