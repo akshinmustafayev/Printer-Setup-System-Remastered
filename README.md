@@ -32,6 +32,7 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 - [x] Create basic Admin Edit Administrators page
 - [x] Create basic Admin Printer types
 - [x] Create basic Admin Manual Page 
+- [x] Create basic Admin Other Settings Page 
 - [x] Create basic Install Script Page 
 - [x] Refactor code
 - [x] Implement additional features
@@ -40,14 +41,14 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 - [ ] List of paper types which printer can print
 - [ ] Create basic Admin Printer paper types page
 - [ ] Create Reports page for statistic reports
-- [ ] Create common system tasks page:
+- [x] Create common system tasks page:
 
-* Reset all printer views count
-* Clear all printers
-* Clear all branches
+- [x] Reset all printer views count
+- [x] Clear all printers
+- [x] Clear all branches
 
 ## Small fixes:
-- [ ] Fix all descriptions of the functions
+- [x] Fix all descriptions of the functions
 - [x] Refactor Printer.jsp page logic
 
 Images:
