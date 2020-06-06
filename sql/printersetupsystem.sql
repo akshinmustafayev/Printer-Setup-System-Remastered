@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2020 at 01:26 PM
+-- Generation Time: Jun 06, 2020 at 05:53 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -20,6 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `printersetupsystem`
 --
+CREATE DATABASE IF NOT EXISTS `printersetupsystem` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `printersetupsystem`;
 
 -- --------------------------------------------------------
 
@@ -40,9 +42,7 @@ CREATE TABLE `branches` (
 --
 
 INSERT INTO `branches` (`id`, `name`, `description`, `image`, `createddate`) VALUES
-(1, 'None', 'If not selected any branch, printer will be added to this group', NULL, '2020-06-04 00:45'),
-(7, 'Head Office', 'Main office of company', '', '2020-06-04 00:45'),
-(8, 'Toronto branch', 'Branch located in Toronto', '', '2020-06-04 00:45');
+(1, 'None', 'If not selected any branch, printer will be added to this group', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -66,16 +66,6 @@ CREATE TABLE `printers` (
   `customfield1` text NOT NULL DEFAULT '\'\''
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `printers`
---
-
-INSERT INTO `printers` (`id`, `name`, `description`, `image`, `branchid`, `ip`, `vendor`, `createddate`, `printertypeid`, `views`, `serversharename`, `location`, `customfield1`) VALUES
-(12, 'HP LaserJet 4350 1floor', 'Printer on the first floor near first department', '', 7, '192.168.0.11', 'HP', '2020-06-04 00:31', 8, 4, '\\\\serverasd\\\\printer01', '1st floor', ''),
-(13, 'Canon 1250 4floor', 'Canon printer on 4th floor near HR department', '', 8, '192.168.10.10', 'Canon', '2020-06-04 00:32', 10, 2, '\\\\serverasd\\\\printer05', '4th floor', ''),
-(14, 'Xerox WorkCentre 5325 floor7', 'Xerox printer located on 7th floor', '', 8, '192.168.7.7', 'Xerox', '2020-06-04 00:33', 1, 8, '\\\\serverasd\\\\printer09', '7th floor', ''),
-(15, 'Some Printer 5 floor', 'Unknown vendor printer', '', 7, '192.168.16.16', 'Undefined', '2020-06-04 00:34', 4, 3, '\\\\serverasd\\\\printer07', '5th floor', '');
-
 -- --------------------------------------------------------
 
 --
@@ -93,17 +83,7 @@ CREATE TABLE `printerstype` (
 --
 
 INSERT INTO `printerstype` (`id`, `type`, `createddate`) VALUES
-(1, 'None', '18.05.2020 00:00'),
-(2, 'Laser Printer', '18.05.2020 00:00'),
-(3, 'Solid Ink Printer', '18.05.2020 00:00'),
-(4, 'LED Printer', '18.05.2020 00:00'),
-(5, 'Business InkJet Printer', '18.05.2020 00:00'),
-(6, 'Home Office Printer', '18.05.2020 00:00'),
-(7, 'Multifunction printer', '18.05.2020 00:00'),
-(8, 'All-in-One InkJet', '18.05.2020 00:00'),
-(9, 'Dot Matrix', '18.05.2020 00:00'),
-(10, 'A3 Printer', '18.05.2020 00:00'),
-(11, '3D Printer', '18.05.2020 00:00');
+(1, 'None', '');
 
 -- --------------------------------------------------------
 
@@ -122,8 +102,8 @@ CREATE TABLE `systemsettings` (
 --
 
 INSERT INTO `systemsettings` (`id`, `parameter`, `value`) VALUES
-(1, 'installscript', '#SOME SCRIPT\r\n\r\nName = \"%PRINTER_NAME%\"\r\nShare name = \"%PRINTER_SHARE_NAME%\"\r\nCustom Field 1 = \"%PRINTER_CUSTOM_FIELD1%\"\r\n\r\nFUNCTION AAA()\r\n{\r\nint a = 0;\r\nint b = 1; int c=4;\r\nreturn a+b-c;\r\n}\r\n\r\nAAA();\'?\';'),
-(2, 'installscriptextension', 'bat'),
+(1, 'installscript', 'printerName = \"%PRINTER_SHARE_NAME%\"\r\n\r\nSet objExplorer = CreateObject(\"InternetExplorer.Application\")\r\n\r\nobjExplorer.Navigate \"about:blank\"  \r\nobjExplorer.ToolBar = 0\r\nobjExplorer.StatusBar = 0\r\nobjExplorer.Left = 500\r\nobjExplorer.Top = 250\r\nobjExplorer.Width = 500\r\nobjExplorer.Height = 220\r\nobjExplorer.Visible = 1\r\n\r\nobjExplorer.Document.Title = \"Installation of the printer\"\r\nobjExplorer.Document.Body.InnerHTML = \"<table style=\"\"width:100%\"\"><tr><td id=\"\"progress\"\" style=\"\"font-family:Segoe UI;text-align: center;font-size:48px;border-bottom:1px solid black;\"\">Installing printer: 0%</td></tr><tr><td style=\"\"font-family:Segoe UI;text-align: center;font-size:22px;\"\">\" & printerName & \"</td></tr></table>\"\r\n\r\nWscript.Sleep 500\r\nobjExplorer.document.getElementById(\"progress\").innerText = \"Installing printer: 10%\"\r\n\r\nSet WshNetwork = CreateObject(\"WScript.Network\")\r\nWshNetwork.AddWindowsPrinterConnection printerName\r\nWSHNetwork.SetDefaultPrinter printerName\r\n\r\nWscript.Sleep 200\r\nobjExplorer.document.getElementById(\"progress\").innerText = \"Installing printer: 20%\"\r\n\r\nWscript.Sleep 200\r\nobjExplorer.document.getElementById(\"progress\").innerText = \"Installing printer: 40%\"\r\n\r\nWscript.Sleep 200\r\nobjExplorer.document.getElementById(\"progress\").innerText = \"Installing printer: 60%\"\r\n\r\nWscript.Sleep 200\r\nobjExplorer.document.getElementById(\"progress\").innerText = \"Installing printer: 80%\"\r\n\r\nWscript.Sleep 100\r\nobjExplorer.document.getElementById(\"progress\").innerText = \"Printer installed!\"\r\n\r\nWscript.Sleep 3000\r\nobjExplorer.Quit'),
+(2, 'installscriptextension', 'vbs'),
 (3, 'helpmanual', '<p>To be able to install printer please follow instructions below.</p><ul><li>1</li><li>2</li><li>3</li><li>4</li><li>5</li><li>6</li></ul><p style=\"text-align: left;\">Thank you!</p><p style=\"text-align: left;\"></p>');
 
 -- --------------------------------------------------------
@@ -147,8 +127,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `login`, `password`, `fullname`, `lastlogindate`, `passwordsalt`, `session`) VALUES
-(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Administrator', '2020-06-04 14:45', '', '522e67bafc764a6c2e9ac19b6c9b7bd73f53e94683f68058e1d8e86d9009574'),
-(7, 'user', '4f8996da763b7a969b1028ee3007569eaf3a635486ddab211d512c85b9df8fb', 'user', '2020-06-02 22:44', '', 'e68693b9a0bd5d0f41b57f655d450d2d8a2d6eb08665a2400bfcf78dafd66a64');
+(1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Administrator', '', '', '');
 
 --
 -- Indexes for dumped tables

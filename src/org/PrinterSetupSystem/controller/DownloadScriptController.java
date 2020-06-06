@@ -48,7 +48,7 @@ public class DownloadScriptController extends HttpServlet
         	}
         	catch (NumberFormatException e) 
         	{
-            		request.getRequestDispatcher("/home").forward(request, response);
+            	request.getRequestDispatcher("/home").forward(request, response);
         	}
         	
     		Printer printer = DownloadScriptDao.GetPrinter(printerid);

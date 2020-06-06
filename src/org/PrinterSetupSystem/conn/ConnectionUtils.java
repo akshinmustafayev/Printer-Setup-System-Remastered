@@ -37,4 +37,9 @@ public class ConnectionUtils
 		} 
 		catch (Exception e) { }
 	}
+	
+	public static Connection getConnectionInstall(String hostName, String dbname, String userName, String password) throws ClassNotFoundException, SQLException 
+	{
+		return MySqlConnectionUtils.getMySQLConnectionInstall(hostName, dbname, userName, password);
+	}
 }
