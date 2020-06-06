@@ -41,7 +41,16 @@ public class DownloadScriptController extends HttpServlet
         
     	if(request.getParameter("printerid") != null)
         {
-    		Integer printerid = Integer.parseInt(request.getParameter("printerid"));
+    		Integer printerid = 0;
+        	try
+        	{
+        		printerid = Integer.parseInt(request.getParameter("printerid"));
+        	}
+        	catch (NumberFormatException e) 
+        	{
+            		request.getRequestDispatcher("/home").forward(request, response);
+        	}
+        	
     		Printer printer = DownloadScriptDao.GetPrinter(printerid);
     		if(printer != null)
     		{
@@ -63,7 +72,7 @@ public class DownloadScriptController extends HttpServlet
 	    		script = script.replace("%PRINTER_TYPE%", printer.GetPrinterTypeId().toString());
 	    		script = script.replace("%PRINTER_CUSTOM_FIELD1%", printer.GetCustomField1());
 	    		
-	    		request.setAttribute("printer", printer); 
+	    		//request.setAttribute("printer", printer); 
 	    		
 	    		response.setContentType("application/octet-stream");
 	    		response.setHeader("Content-Disposition", "attachment;filename=" + scriptname + "." + scriptextension);
