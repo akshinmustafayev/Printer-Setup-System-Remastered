@@ -127,6 +127,10 @@
 	<servlet-name>UserSettings</servlet-name>
 	<servlet-class>org.PrinterSetupSystem.controller.UserSettingsController</servlet-class>
   </servlet>
+  <servlet>
+	<servlet-name>Install</servlet-name>
+	<servlet-class>org.PrinterSetupSystem.controller.InstallController</servlet-class>
+  </servlet>
   
   <!-- ****************************************************************** -->
   <!-- SSERVLET MAPPINGS -->
@@ -211,6 +215,10 @@
   <servlet-mapping>
 	<servlet-name>UserSettings</servlet-name>
 	<url-pattern>/usersettings</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+	<servlet-name>Install</servlet-name>
+	<url-pattern>/install</url-pattern>
   </servlet-mapping>
   
   <!-- APIs mapping -->
