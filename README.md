@@ -14,6 +14,7 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 * Rename it to _ROOT.war_ file. 
 * Copy renamed WAR file to your Tomcat 8 installation _WEBAPPS_ folder
 * Run http://yourserver:port/install, specify DB server ip (127.0.0.1 or localhost if mysql installed on the same server), login, password and press install button to create required tables
+* Open http://yourserver:port/login to login into the system. Login: **admin** password: **admin**
 
 ## Tasks which should be done:
 - [x] Create basic Home Page
