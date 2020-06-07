@@ -1,0 +1,1 @@
+Copying to sell, publishing without permission, compiling for selling purpose, selling, or distributing this software, either in source code form or as a compiled binary, for any purpose, commercial or non-commercial, and by any means is strictly prohibited.
