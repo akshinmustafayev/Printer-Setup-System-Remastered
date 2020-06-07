@@ -16,6 +16,12 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 * Run http://yourserver:port/install, specify DB server ip (127.0.0.1 or localhost if mysql installed on the same server), login, password and press install button to create required tables
 * Open http://yourserver:port/login to login into the system. Login: **admin** password: **admin**. Do not forget to change password for security reasons
 
+## Fixing Issues
+Database config file is located under folder: WEB-INF\classes\config.properties. To set manually database configuration change this file. To open install page, set: "db.configured=no". By default system creates "printersetupsystem" database and sets "db.configured=yes".
+
+You can manually import database by loading WEB-INF\classes\printersetupsystem.sql file. To lock install page set "db.configured=yes" again. 
+
+
 ## Tasks which should be done:
 - [x] Create basic Home Page
 - [x] Create basic Branch Printers Page
