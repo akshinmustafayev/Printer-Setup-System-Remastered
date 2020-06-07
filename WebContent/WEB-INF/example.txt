@@ -1,5 +1,0 @@
-InputStream input = getServletContext().getResourceAsStream("/WEB-INF/config.xml");
-    	
-    	BufferedReader br = new BufferedReader( new InputStreamReader( input ));
-
-    	System.out.println(br.readLine());
