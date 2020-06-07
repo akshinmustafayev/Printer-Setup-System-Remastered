@@ -62,28 +62,26 @@ You can manually import database by loading WEB-INF\classes\printersetupsystem.s
 
 Images:
 
-1) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/1.PNG" alt="alt text" width="600" height="293">
+1) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/1.png" alt="alt text" width="600" height="293">
 
-2) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/2.PNG" alt="alt text" width="600" height="293">
+2) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/2.PNG" alt="alt text" width="600" height="293">
 
-3) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/3.png" alt="alt text" width="600" height="293">
+3) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/3.png" alt="alt text" width="600" height="293">
 
-4) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/4.PNG" alt="alt text" width="600" height="293">
+4) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/4.PNG" alt="alt text" width="600" height="293">
 
-5) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/5.PNG" alt="alt text" width="600" height="293">
+5) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/5.PNG" alt="alt text" width="600" height="293">
 
-6) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/6.PNG" alt="alt text" width="600" height="293">
+6) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/6.PNG" alt="alt text" width="600" height="293">
 
-7) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/7.PNG" alt="alt text" width="600" height="293">
+7) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/7.PNG" alt="alt text" width="600" height="293">
 
-8) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/8.PNG" alt="alt text" width="600" height="293">
+8) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/8.PNG" alt="alt text" width="600" height="293">
 
-9) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/9.PNG" alt="alt text" width="600" height="293">
+9) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/9.PNG" alt="alt text" width="600" height="293">
 
-10) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/10.PNG" alt="alt text" width="600" height="293">
+10) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/10.PNG" alt="alt text" width="600" height="293">
 
-11) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/11.PNG" alt="alt text" width="600" height="293">
+11) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/11.PNG" alt="alt text" width="600" height="293">
 
-12) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/12.PNG" alt="alt text" width="600" height="293">
-
-13) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/images/13.PNG" alt="alt text" width="600" height="293">
+12) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/12.PNG" alt="alt text" width="600" height="293">
