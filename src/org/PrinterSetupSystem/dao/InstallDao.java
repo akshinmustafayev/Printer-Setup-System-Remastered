@@ -1,14 +1,16 @@
 package org.PrinterSetupSystem.dao;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.util.Properties;
+
+import javax.servlet.ServletContext;
 
 import org.PrinterSetupSystem.conn.ConnectionUtils;
 
@@ -24,13 +26,13 @@ public class InstallDao
 	Function Installs system.
 	@return Returns true if successful
 	*/
-	public static Boolean InstallSystem(String installdbip, String installdbuser, String installdbpassword)
+	public static Boolean InstallSystem(String installdbip, String installdbuser, String installdbpassword, ServletContext sc)
     {
 		Boolean result = true;
 		
 		try
         {
-			Properties prop = LoadProperties();
+			Properties prop = LoadProperties(sc);
 			if(prop != null)
 			{
 				if(prop.getProperty("db.configured").trim().toString().equals("no"))
@@ -48,7 +50,7 @@ public class InstallDao
 							"db.hostname=" + installdbip + "\r\n" + 
 							"db.dbname=printersetupsystem\r\n" + 
 							"db.username=" + installdbuser + "\r\n" + 
-							"db.password=" + installdbpassword);
+							"db.password=" + installdbpassword, sc);
 				}
 				else
 				{
@@ -69,40 +71,18 @@ public class InstallDao
 		return result;
     }
 	
-	/*private static void LoadProperties()
-    {
-		Properties prop = new Properties();
-		ClassLoader loader = Thread.currentThread().getContextClassLoader();           
-		InputStream stream = loader.getResourceAsStream("config.properties");
-		try 
-		{
-			prop.load(stream);
-			System.out.println(prop.getProperty("db.hostname"));
-		}
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
-    }*/
-	
 	/**
 	Function Loads properties file
 	@return Returns Properties
 	*/
-	public static Properties LoadProperties()
+	public static Properties LoadProperties(ServletContext sc)
     {
 		Properties prop = null;
-		FileInputStream stream = null;
+		
 		try 
 		{
-			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-			File file = new File(classLoader.getResource("config.properties").getFile());
-		  
-			stream = new FileInputStream(file);
-			InputStreamReader input = new InputStreamReader(stream);
-			
 			prop = new Properties();
-			prop.load(input);
+			prop.load(sc.getResourceAsStream("/WEB-INF/classes/config.properties"));
 		}
 		catch (FileNotFoundException e)
 		{
@@ -119,12 +99,12 @@ public class InstallDao
 	/**
 	Function saves configuration to properties file
 	*/
-	private static void SaveProperties(String text)
+	private static void SaveProperties(String text, ServletContext sc)
     {
-		try 
+		try
 		{
-			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-			File file = new File(classLoader.getResource("config.properties").getFile());
+			//File file = new File(sc.getResource("/WEB-INF/config.properties").getPath());
+			File file = new File(URLDecoder.decode(sc.getResource("/WEB-INF/classes/config.properties").getPath(), "utf-8"));
 		    FileOutputStream outputStream = new FileOutputStream(file);
 		    byte[] strToBytes = text.getBytes();
 		    outputStream.write(strToBytes);

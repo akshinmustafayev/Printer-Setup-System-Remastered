@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -24,7 +25,7 @@ public class InstallController extends HttpServlet
 	@Override
 	public void init(ServletConfig config) throws ServletException 
 	{
-        super.init();
+        super.init(config);
     }
 
     @Override
@@ -33,16 +34,19 @@ public class InstallController extends HttpServlet
     {
     	AuthorizeUtil.FixUtf8(response);
     	
-    	Properties prop = InstallDao.LoadProperties();
+    	ServletContext sc = getServletContext();
+    	Properties prop = InstallDao.LoadProperties(sc);
 		if(prop != null)
 		{
 			if(prop.getProperty("db.configured").trim().toString().equals("yes"))
 			{
+				System.out.println("Error doget Install db.configured == yes");
 				request.getRequestDispatcher("/home").forward(request, response);
 			}
 		}
 		else
 		{
+			System.out.println("Error doget Install prop not found");
 			request.getRequestDispatcher("/home").forward(request, response);
 		}
 		
@@ -64,12 +68,14 @@ public class InstallController extends HttpServlet
     		String installdbip = request.getParameter("installdbip");
     		String installdbuser = request.getParameter("installdbuser");
     		String installdbpassword = request.getParameter("installdbpassword");
-    		Properties prop = InstallDao.LoadProperties();
+    		
+    		ServletContext sc = getServletContext();
+    		Properties prop = InstallDao.LoadProperties(sc);
 			if(prop != null)
 			{
 				if(prop.getProperty("db.configured").trim().toString().equals("no"))
 				{
-		    		Boolean result = InstallDao.InstallSystem(installdbip, installdbuser, installdbpassword);
+		    		Boolean result = InstallDao.InstallSystem(installdbip, installdbuser, installdbpassword, sc);
 		    		if(result)
 		    		{
 		    			request.getRequestDispatcher("/home").forward(request, response);
