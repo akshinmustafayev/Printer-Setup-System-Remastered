@@ -32,11 +32,11 @@ You can manually import database by loading WEB-INF\classes\printersetupsystem.s
 * Admin panel which allows you to edit all system settings
 * Possibility to edit DB connection config file without rebuilding an entire application
 * Possibility to edit printer install script and its extension. (For example your ps1 script, or VBS script and so on)
-* Ability to setup system database from system (httpyourserverportinstall link) at first setup
+* Ability to setup system database from system (http://yourserver:port/install link) at first setup
 * Printer information page, where are shown following information
   * Name
   * Description
-  * Online badge if printer is online
+  * _Online_ badge if printer is online
   * IP
   * Printer location
   * Printer vendor
