@@ -22,35 +22,34 @@ Database config file is located under folder: WEB-INF\classes\config.properties.
 You can manually import database by loading WEB-INF\classes\printersetupsystem.sql file. To lock install page set "db.configured=yes" again. 
 
 
-## Tasks which should be done:
-- [x] Create basic Home Page
-- [x] Create basic Branch Printers Page
-- [x] Create basic Printer Page
-- [x] Create basic Manual Page
-- [x] Create basic Search Page
-- [x] Create basic Admin Login page
-- [x] Create basic Admin Home page
-- [x] Create basic Admin Branches page
-- [x] Create basic Admin Edit Branch page
-- [x] Create basic Admin Printers page
-- [x] Create basic Admin Create Printer page
-- [x] Create basic Admin Edit Printer page
-- [x] Create basic Admin Administrators page
-- [x] Create basic Admin Edit Administrators page
-- [x] Create basic Admin Printer types
-- [x] Create basic Admin Manual Page 
-- [x] Create basic Admin Other Settings Page 
-- [x] Create basic Install Script Page 
-- [x] Create basic Install Database Page
-- [x] Refactor code
-- [x] Implement additional features
+## Features:
+* Home page where users select branch first
+* User can search branch on Home page
+* Page where are shown list of printers of selected branch
+* Ability to search a printer on a branch printers page
+* Page where users can globally search for Branch or Printer
+* Page with Manual, content of which you can edit via WYSIWYG editor in admin panel
+* Admin panel which allows you to edit all system settings
+* Possibility to edit DB connection config file without rebuilding an entire application
+* Possibility to edit printer install script and its extension. (For example your ps1 script, or VBS script and so on)
+* Ability to setup system database from system (httpyourserverportinstall link) at first setup
+* Printer information page, where are shown following information
+  * Name
+  * Description
+  * Online badge if printer is online
+  * IP
+  * Printer location
+  * Printer vendor
+  * Printer page views count
+  * Ability to send current print page link via email
+  * Install button, which downloads your script to install printer
+  * Printer type
 
 ## Features for future implementation:
 - [ ] List of paper types which printer can print
 - [ ] Create basic Admin Printer paper types page
 - [ ] Create Reports page for statistic reports
 - [x] Create common system tasks page:
-
 - [x] Reset all printer views count
 - [x] Clear all printers
 - [x] Clear all branches
