@@ -20,37 +20,37 @@ public class AdminAdminsDao
 	@return Returns array of User
 	*/
 	public static ArrayList<User> GetAdministrators()
-    {
+	{
 		ArrayList<User> administrators = new ArrayList<User>();
 		
 		try
-        {
-        	Connection conn = ConnectionUtils.getConnection();
-            PreparedStatement pstmt = null;
+		{
+			Connection conn = ConnectionUtils.getConnection();
+			PreparedStatement pstmt = null;
             
-            pstmt = conn.prepareStatement("select * from users");
-            ResultSet rs = pstmt.executeQuery();
+			pstmt = conn.prepareStatement("select * from users");
+			ResultSet rs = pstmt.executeQuery();
             
-            while (rs.next())
-            {
-            	User administrator = new User();
-            	administrator.SetId(rs.getInt("id"));
-            	administrator.SetLogin(rs.getString("login"));
-            	administrator.SetFullName(rs.getString("fullname"));
-            	administrators.add(administrator);
-            }
+			while (rs.next())
+			{
+				User administrator = new User();
+				administrator.SetId(rs.getInt("id"));
+				administrator.SetLogin(rs.getString("login"));
+				administrator.SetFullName(rs.getString("fullname"));
+				administrators.add(administrator);
+			}
             
-            rs.close();
-            pstmt.close();
-            conn.close();
-        }
+			rs.close();
+			pstmt.close();
+			conn.close();
+		}
 		catch(Exception e)
-        {
-            e.printStackTrace();
-        }
+		{
+			e.printStackTrace();
+		}
 		
 		return administrators;
-    }
+	}
 	
 	/**
 	Function deletes Administrator from DB by its ID.
@@ -58,29 +58,29 @@ public class AdminAdminsDao
 	@return Returns true if successful
 	*/
 	public static Boolean DeleteAdministrator(Integer adminid)
-    {
+	{
 		Boolean result = true;
 		
 		try
-        {
-        	Connection conn = ConnectionUtils.getConnection();
-            PreparedStatement pstmt = null;
+        	{
+        		Connection conn = ConnectionUtils.getConnection();
+        		PreparedStatement pstmt = null;
             
-            pstmt = conn.prepareStatement("delete from users where id=?");
-            pstmt.setInt(1, adminid);
-            pstmt.executeUpdate();
+        		pstmt = conn.prepareStatement("delete from users where id=?");
+        		pstmt.setInt(1, adminid);
+        		pstmt.executeUpdate();
 
-            pstmt.close();
-            conn.close();
-        }
-		catch(Exception e)
-        {
-			result = false;
-            e.printStackTrace();
-        }
+        		pstmt.close();
+        		conn.close();
+        	}
+        	catch(Exception e)
+        	{
+        		result = false;
+        		e.printStackTrace();
+        	}
 		
 		return result;
-    }
+	}
 	
 	/**
 	Function creates Administrator.
