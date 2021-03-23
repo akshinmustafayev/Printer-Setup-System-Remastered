@@ -1,4 +1,4 @@
-# Printer Setup System Remastered
+# PrintDesk - Printer Setup System Remastered
 
 ## Overview
 
