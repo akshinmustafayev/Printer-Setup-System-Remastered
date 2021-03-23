@@ -9,7 +9,7 @@ Printer Setup System is a center that provides a single point of contact between
 ## Installation
 System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 
-* Install Tomcat 8 and MYSQL to your server. 
+* Install Tomcat 8 and MYSQL on your server. 
 * Download from release page or directly [PrinterSetupSystem.war](https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/releases/download/1.0.0/PrinterSetupSystem.war) file. 
 * Rename it to _ROOT.war_ file. 
 * Copy renamed WAR file to your Tomcat 8 installation _WEBAPPS_ folder
@@ -17,17 +17,17 @@ System can be deployed both _Windows_ and _Linux_ Tomcat 8 server with MYSQL.
 * Open http://yourserver:port/login to login into the system. Login: **admin** password: **admin**. Do not forget to change password for security reasons
 
 ## Fixing Issues
-Database config file is located under folder: WEB-INF\classes\config.properties. To set manually database configuration change this file. To open install page, set: "db.configured=no". By default system creates "printersetupsystem" database and sets "db.configured=yes".
+Database config file is located in: WEB-INF\classes\config.properties. To set manually database configuration change this file. To open install page, set: "db.configured=no". By default system creates "printersetupsystem" database and sets "db.configured=yes".
 
 You can manually import database by loading WEB-INF\classes\printersetupsystem.sql file. To lock install page set "db.configured=yes" again. 
 
 
 ## Features:
-* Home page where users select branch first
+* Home page where users can select branch first
 * User can search branch on Home page
 * Page where are shown list of printers of selected branch
 * Ability to search a printer on a branch printers page
-* Page where users can globally search for Branch or Printer
+* Page where users can globally search for a Branch or a Printer
 * Page with Manual, content of which you can edit via WYSIWYG editor in admin panel
 * Admin panel which allows you to edit all system settings
 * Possibility to edit DB connection config file without rebuilding an entire application
@@ -61,26 +61,26 @@ You can manually import database by loading WEB-INF\classes\printersetupsystem.s
 
 Images:
 
-1) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/1.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/1.png" alt="alt text">
 
-2) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/2.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/2.png" alt="alt text">
 
-3) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/3.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/3.png" alt="alt text">
 
-4) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/4.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/4.png" alt="alt text">
 
-5) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/5.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/5.png" alt="alt text">
 
-6) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/6.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/6.png" alt="alt text">
 
-7) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/7.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/7.png" alt="alt text">
 
-8) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/8.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/8.png" alt="alt text">
 
-9) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/9.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/9.png" alt="alt text">
 
-10) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/10.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/10.png" alt="alt text">
 
-11) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/11.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/11.png" alt="alt text">
 
-12) <img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/12.png" alt="alt text" width="600" height="293">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/12.png" alt="alt text">
