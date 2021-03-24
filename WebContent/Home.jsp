@@ -120,6 +120,11 @@
 											<p class="card-text">${branch.GetDescription()}</p>
 											<a href="${context}/branch?id=${branch.GetId()}" class="stretched-link"></a>
 										</div>
+										<c:if test = "${isAdminEntered == true}">
+											<div class="card-footer branch-edit">
+										    	<a href="${context}/adminbranchesedit?branchid=${branch.GetId()}"><button type="button" class="btn btn-primary btn-sm"><span class="oi oi-pencil"></span></button></a>
+											</div>
+									    </c:if>
 									</div>
 								</div>
 							</c:forEach>

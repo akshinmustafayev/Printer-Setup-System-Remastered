@@ -62,8 +62,13 @@
 		</nav>
 		<div class="card ml-4 mr-4 mt-2 mb-4">
 			<div class="card-header">
-				<div class="d-flex align-items-center">
+				<div class="align-items-center">
 					<span class="align-middle">Help</span>
+					<c:if test = "${isAdminEntered == true}">
+						<div class="d-inline align-middle float-right">
+							<a href="${context}/adminmanualpage"><button type="button" class="btn btn-primary btn-sm"><span class="oi oi-pencil"></span></button></a>
+						</div>
+					</c:if>
 				</div>
 			</div>
 			<div class="card-body">

@@ -71,8 +71,8 @@
 				</div>
 			</div>
 			<div class="card-body p-0">
-				<div class="jumbotron card card-image rounded-0 border-0" style="background-image: url(img/admin/usersettings_jumbotron.jpg);">
-					<div class="text-white text-sm-left">
+				<div class="jumbotron card card-image rounded-0 border-0 usersettings-jumbotron">
+					<div class="text-white text-sm-left usersettings-jumbotron-text">
 						<div>
 							<h2 class="card-title font-weight-light"><%=session.getAttribute("fullname")%></h2>
 						</div>

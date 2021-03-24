@@ -74,6 +74,11 @@
 			<div class="card-header">
 				<div class="align-items-center">
 					<span class="align-middle" id="PSSPrinterId" data-info="${printer.GetId()}">Printer</span>
+					<c:if test = "${isAdminEntered == true}">
+						<div class="d-inline align-middle float-right ml-2">
+							<a href="${context}/adminprintersedit?printerid=${printer.GetId()}"><button type="button" class="btn btn-primary btn-sm"><span class="oi oi-pencil"></span></button></a>
+						</div>
+					</c:if>
 					<div class="d-inline p-1 bg-dark text-white align-middle float-right rounded"><span class="oi oi-eye"></span> ${printer.GetViews()}</div>
 				</div>
 			</div>
