@@ -61,26 +61,26 @@ You can manually import database by loading WEB-INF\classes\printersetupsystem.s
 
 Images:
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/1.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/1.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/2.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/2.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/3.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/3.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/4.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/4.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/5.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/5.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/6.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/6.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/7.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/7.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/8.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/8.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/9.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/9.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/10.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/10.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/11.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/11.png" alt="PrintDesk">
 
-<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/deploy/img/12.png" alt="alt text">
+<img src="https://github.com/akshinmustafayev/Printer-Setup-System-Remastered/blob/master/pssr/assets/images/12.png" alt="PrintDesk">
