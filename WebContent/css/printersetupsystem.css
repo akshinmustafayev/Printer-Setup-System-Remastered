@@ -62,3 +62,18 @@
 .text-center{
 	text-align:center;
 }
+
+.usersettings-jumbotron{
+	background-image: url(img/admin/usersettings_jumbotron.jpg);
+    padding: 0px !important;
+}
+
+.usersettings-jumbotron-text{
+	backdrop-filter: blur(4px); 
+	background: hsla(0,0%,100%,.14); 
+	padding: 4rem 2rem !important;
+}
+
+.branch-edit{
+	z-index: 100;
+}
