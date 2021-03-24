@@ -202,7 +202,7 @@
 								<input name="newprintercustomfield1" type="text" class="form-control" id="inputPrinterCustomField1" aria-describedby="inputPrinterCustomField1Help" value="${printer.GetCustomField1()}">
 							</c:otherwise>
 						</c:choose>
-						<small id="inputPrinterCustomField1Help" class="form-text text-muted">Input custom field 1 value. This parameter is not visible anywhere and could be used only for script purposes.</small>
+						<small id="inputPrinterCustomField1Help" class="form-text text-muted">Input custom field 1 value. This parameter is not visible anywhere and could be used only for scripting purposes.</small>
 					</div>
 					<br>
 					<button type="submit" name="button_createprinter" class="btn btn-primary btn-lg">Create</button>
