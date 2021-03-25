@@ -24,6 +24,7 @@ function SearchBranchPrinter(pssbranchid, pssprintername, pssresult)
 	$.ajax({
 		type:"GET",
 		url : 'api/SearchPrinterByName',
+        contentType: "application/json;charset=UTF-8",
 		data : {
 			printername : printername.value,
 			printerbranch : printerbranch
@@ -65,6 +66,7 @@ function SearchPrinter(pssprintername, pssresult)
 	$.ajax({
 		type:"GET",
 		url : 'api/SearchPrinterByNameAll',
+        contentType: "application/json;charset=UTF-8",
 		data : {
 			printername : printername.value
 		},
@@ -107,6 +109,7 @@ function ResetBranchPrinter(pssbranchid, pssresult)
 	$.ajax({
 		type:"GET",
 		url : 'api/GetAllBranchPrinters',
+        contentType: "application/json;charset=UTF-8",
 		data : {
 			printerbranch : printerbranch
 		},
@@ -149,6 +152,7 @@ function BranchReset(pssresult)
 	$.ajax({
 		type:"GET",
 		url : 'api/GetAllBranches',
+        contentType: "application/json;charset=UTF-8",
 		success : function(responseText) 
 		{
 			var result = JSON.parse(responseText);
@@ -186,6 +190,7 @@ function BranchSearch(pssbranchname, pssresult)
 	$.ajax({
 		type:"GET",
 		url : 'api/SearchBranchByName',
+        contentType: "application/json;charset=UTF-8",
 		data : {
 			branchname : branchname.value
 		},
@@ -242,6 +247,7 @@ function CheckPrinterIsOnline()
 	$.ajax({
 		type:"GET",
 		url : 'api/CheckPrinterIsOnline',
+        contentType: "application/json;charset=UTF-8",
 		data : {
 			printerid : printerid
 		},
