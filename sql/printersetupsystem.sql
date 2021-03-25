@@ -83,7 +83,17 @@ CREATE TABLE `printerstype` (
 --
 
 INSERT INTO `printerstype` (`id`, `type`, `createddate`) VALUES
-(1, 'None', '');
+(1, 'None', ''),
+(2, 'Laser Printer', '2021-01-01 23:45'),
+(3, 'Solid Ink Printer', '2021-01-01 23:45'),
+(4, 'LED Printer', '2021-01-01 23:45'),
+(5, 'Business InkJet Printer', '2021-01-01 23:45'),
+(6, 'Home Office Printer', '2021-01-01 23:45'),
+(7, 'Multifunction Printer', '2021-01-01 23:45'),
+(8, 'All-in-One InkJet', '2021-01-01 23:45'),
+(9, 'Dot Matrix', '2021-01-01 23:45'),
+(0, 'A3 Printer', '2021-01-01 23:45'),
+(10, '3D Printer', '2021-01-01 23:45');
 
 -- --------------------------------------------------------
 
@@ -128,24 +138,6 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `login`, `password`, `fullname`, `lastlogindate`, `passwordsalt`, `session`) VALUES
 (1, 'admin', '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918', 'Administrator', '', '', '');
-
-
---
--- Dumping data for table `printerstype`
---
-
-INSERT INTO `printerstype` (`id`, `type`, `createddate`) VALUES
-(1, 'None', '2021-01-01 23:45'),
-(2, 'Laser Printer', '2021-01-01 23:45'),
-(3, 'Solid Ink Printer', '2021-01-01 23:45'),
-(4, 'LED Printer', '2021-01-01 23:45'),
-(5, 'Business InkJet Printer', '2021-01-01 23:45'),
-(6, 'Home Office Printer', '2021-01-01 23:45'),
-(7, 'Multifunction Printer', '2021-01-01 23:45'),
-(8, 'All-in-One InkJet', '2021-01-01 23:45'),
-(9, 'Dot Matrix', '2021-01-01 23:45'),
-(0, 'A3 Printer', '2021-01-01 23:45'),
-(10, '3D Printer', '2021-01-01 23:45');
 
 
 --
